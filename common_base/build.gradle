@@ -18,6 +18,8 @@ android {
         targetSdkVersion root_configs.targetSdk_version
         versionCode root_configs.version_code
         versionName root_configs.version_name
+        //MultiDex分包方法
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        externalNativeBuild {
@@ -28,6 +30,8 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
+                includeCompileClasspath = true
+
             }
         }
     }
@@ -72,10 +76,6 @@ android {
 //            path "CMakeLists.txt"
 //        }
 //    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 
 }
 
@@ -119,7 +119,7 @@ dependencies {
 
     api "androidx.paging:paging-runtime:$root_configs.paging_version"
     api "androidx.room:room-runtime:$root_configs.room_version"
-    annotationProcessor "androidx.room:room-compiler:$root_configs.room_version"
+//    annotationProcessor "androidx.room:room-compiler:$root_configs.room_version"
 
 //    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 

@@ -18,6 +18,8 @@ android {
         targetSdkVersion root_configs.targetSdk_version
         versionCode root_configs.version_code
         versionName root_configs.version_name
+        //MultiDex分包方法
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -30,14 +32,9 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
-    }
+                includeCompileClasspath = true
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
         }
     }
 
@@ -72,7 +69,7 @@ dependencies {
     implementation project(':common_base')
 //    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    //Arouter路由
-//    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+    //ARouter
+    annotationProcessor "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
 
 }

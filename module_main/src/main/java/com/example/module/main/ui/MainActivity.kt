@@ -22,8 +22,8 @@ import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
-@Route(path = "/main/main")
-class MainActivity : BaseActivity() {
+@Route(path = "/main/main1")
+public class MainActivity : BaseActivity() {
 
     lateinit var navHostFragment : NavHostFragment
 
@@ -41,7 +41,7 @@ class MainActivity : BaseActivity() {
                     toast("hello!")
 
 
-                    ARouter.getInstance().build("/share/share").navigation()
+                    ARouter.getInstance().build("/share/share1").navigation()
 
 
                 }

@@ -9,8 +9,8 @@ import org.jetbrains.anko.toast
 import org.jetbrains.anko.verticalLayout
 
 
-@Route(path = "/share/share")
-class ShareActivity: BaseActivity(){
+@Route(path = "/share/share1")
+public class ShareActivity: BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

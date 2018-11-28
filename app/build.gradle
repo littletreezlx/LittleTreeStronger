@@ -28,6 +28,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
+                includeCompileClasspath = true
             }
         }
 
@@ -56,9 +57,9 @@ android {
 
 }
 
-configurations.all {
-    resolutionStrategy.force "com.android.support:support-annotations:$root_configs.supportLibrary_version"
-}
+//configurations.all {
+//    resolutionStrategy.force "com.android.support:support-annotations:$root_configs.supportLibrary_version"
+//}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -66,16 +67,22 @@ dependencies {
 //    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 
     //公用依赖包
-    implementation project(':common_base')
+//    implementation project(':common_base')
+//
+//    if (!Boolean.valueOf(root_configs.isModule)) {
+//        //main模块
+//        implementation project(':module_main')
+//        implementation project(':module_time')
+//        implementation project(':module_share')
+//    }
 
-    if (!Boolean.valueOf(root_configs.isModule)) {
-        //main模块
-        implementation project(':module_main')
-        implementation project(':module_time')
-        implementation project(':module_share')
-    }
-//    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
-repositories {
-    mavenCentral()
+    implementation project(':common_base')
+    implementation project(':module_main')
+    implementation project(':module_time')
+    implementation project(':module_share')
+
+
+//ARouter
+//    compile  "com.alibaba:arouter-api:$root_configs.arouter_api_version"
+    annotationProcessor "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
 }
