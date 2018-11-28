@@ -1,0 +1,130 @@
+def root_configs = rootProject.ext
+
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+//apply plugin: "androidx.navigation.safeargs"
+
+
+android {
+    compileSdkVersion root_configs.compileSdk_version
+    buildToolsVersion root_configs.buildTools_version
+
+    defaultConfig {
+        minSdkVersion root_configs.minSdk_version
+        targetSdkVersion root_configs.targetSdk_version
+        versionCode root_configs.version_code
+        versionName root_configs.version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags ""
+//            }
+//        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+//
+//    sourceSets {
+//        main {
+//            if (isDebug.toBoolean()) {
+//                manifest.srcFile 'src/debug/AndroidManifest.xml'
+//            } else {
+//                manifest.srcFile 'src/release/AndroidManifest.xml'
+//            }
+//        }
+//    }
+
+//    lintOptions {
+//        abortOnError root_config.abortOnLintError
+//        checkReleaseBuilds root_config.checkReleaseBuilds
+//        ignoreWarnings root_config.ignoreWarnings
+//    }
+
+//    compileOptions {
+//        sourceCompatibility Dependencies.javaVersion
+//        targetCompatibility Dependencies.javaVersion
+//    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+//    externalNativeBuild {
+//        cmake {
+//            path "CMakeLists.txt"
+//        }
+//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    testApi 'junit:junit:4.12'
+    androidTestApi 'androidx.test:runner:1.1.0'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.1.0'
+
+
+    //ARouter
+    api "com.alibaba:arouter-api:$root_configs.arouter_api_version"
+    annotationProcessor "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
+
+
+    //kotlin
+    api "androidx.core:core-ktx:$root_configs.ktx_version"
+    api "org.jetbrains.anko:anko:$root_configs.anko_version"
+
+//    implementation 'com.jakewharton:butterknife:8.8.1'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //  retrofit+rxjava网络层
+    api "com.squareup.retrofit2:retrofit:$root_configs.retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$root_configs.retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$root_configs.retrofit_version"
+    api "io.reactivex.rxjava2:rxandroid:$root_configs.rxjava_android_version"
+    api "io.reactivex.rxjava2:rxjava:$root_configs.rxjava_version"
+    api "com.squareup.okhttp3:okhttp:$root_configs.okhttp_version"
+
+
+    //jetpack
+    api "android.arch.navigation:navigation-fragment:$root_configs.navigation_version"
+    api "android.arch.navigation:navigation-ui:$root_configs.navigation_version"
+
+    api "androidx.paging:paging-runtime:$root_configs.paging_version"
+    api "androidx.room:room-runtime:$root_configs.room_version"
+    annotationProcessor "androidx.room:room-compiler:$root_configs.room_version"
+
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+
+
+    //common
+    api "com.google.code.gson:gson:$root_configs.gson_version"
+
+
+}

@@ -1,43 +1,81 @@
-apply plugin: 'com.android.application'
+def root_configs = rootProject.ext
 
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 android {
-    compileSdkVersion 28
+    compileSdkVersion root_configs.compileSdk_version
+    buildToolsVersion root_configs.buildTools_version
+
     defaultConfig {
-        applicationId "com.example.littletreestronger"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags ""
+        applicationId root_configs.applicationId
+        minSdkVersion root_configs.minSdk_version
+        targetSdkVersion root_configs.targetSdk_version
+        versionCode root_configs.version_code
+        versionName root_configs.version_name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //MultiDex分包方法
+        multiDexEnabled true
+
+        //Arouter路由配置
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [moduleName: project.getName()]
+//                includeCompileClasspath = true
+//            }
+//        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+
     }
+
+//    signingConfigs {
+//        config {
+//            keyAlias 'amd'
+//            keyPassword '123456'
+//            storeFile file('../key/amd.jsk')
+//            storePassword '123456'
+//        }
+//    }
+
     buildTypes {
+        debug {
+//            signingConfig signingConfigs.config
+        }
         release {
+//            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-        }
-    }
+
+
+}
+
+configurations.all {
+    resolutionStrategy.force "com.android.support:support-annotations:$root_configs.supportLibrary_version"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+//    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+
+    //公用依赖包
+    implementation project(':common_base')
+
+    if (!Boolean.valueOf(root_configs.isModule)) {
+        //main模块
+        implementation project(':module_main')
+        implementation project(':module_time')
+        implementation project(':module_share')
+    }
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
