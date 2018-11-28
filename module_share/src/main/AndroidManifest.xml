@@ -3,6 +3,9 @@
           package="com.example.module.share">
 
     <application>
+
+        <activity android:name=".ShareActivity"></activity>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.module.main.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewManager
 import androidx.fragment.app.Fragment
@@ -11,16 +12,23 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.module.main.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import okhttp3.internal.Internal.instance
 import org.jetbrains.anko.*
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
+
+@Route(path = "/main/main")
 class MainActivity : BaseActivity() {
 
-
     lateinit var navHostFragment : NavHostFragment
+
+    val instance by lazy { this }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +39,11 @@ class MainActivity : BaseActivity() {
             button("say hello"){
                 onClick {
                     toast("hello!")
+
+
+                    ARouter.getInstance().build("/share/share").navigation()
+
+
                 }
             }
 

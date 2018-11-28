@@ -70,7 +70,7 @@ dependencies {
     //公用依赖包
     implementation project(':common_base')
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Arouter路由
 //    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]

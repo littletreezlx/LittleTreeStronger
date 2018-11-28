@@ -74,7 +74,7 @@ dependencies {
         implementation project(':module_time')
         implementation project(':module_share')
     }
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()
