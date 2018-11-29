@@ -7,7 +7,11 @@ if (Boolean.valueOf(rootProject.ext.isModule)) {
 }
 
 apply plugin: 'kotlin-android'
+
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion root_configs.compileSdk_version
@@ -28,11 +32,18 @@ android {
 //                cppFlags ""
 //            }
 //        }
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-                includeCompileClasspath = true
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//                includeCompileClasspath = true
+//
+//            }
+//        }
 
+        //ARouter
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
             }
         }
     }
@@ -69,6 +80,9 @@ dependencies {
 //    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //ARouter
-    annotationProcessor "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
+    kapt "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
+
+    kapt "androidx.room:room-compiler:$root_configs.room_version"
+
 }
 

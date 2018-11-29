@@ -6,6 +6,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
+
 //apply plugin: "androidx.navigation.safeargs"
 
 
@@ -27,11 +30,18 @@ android {
 //                cppFlags ""
 //            }
 //        }
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-                includeCompileClasspath = true
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//                includeCompileClasspath = true
+//
+//            }
+//        }
 
+        //ARouter
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
             }
         }
     }
@@ -92,13 +102,16 @@ dependencies {
 
     //ARouter
     api "com.alibaba:arouter-api:$root_configs.arouter_api_version"
-    annotationProcessor "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
+    kapt "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
 
 
     //kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api "androidx.core:core-ktx:$root_configs.ktx_version"
+
     api "org.jetbrains.anko:anko:$root_configs.anko_version"
+    api "org.jetbrains.anko:anko-recyclerview-v7:$root_configs.anko_version"
+    api "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$root_configs.anko_version"
 
 
 //    implementation 'com.jakewharton:butterknife:8.8.1'
@@ -114,15 +127,20 @@ dependencies {
 
 
     //jetpack
-    api "android.arch.navigation:navigation-fragment:$root_configs.navigation_version"
-    api "android.arch.navigation:navigation-ui:$root_configs.navigation_version"
 
-    api "androidx.paging:paging-runtime:$root_configs.paging_version"
+    //lifecycle
+    api "androidx.lifecycle:lifecycle-extensions:$root_configs.lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$root_configs.lifecycle_version"
+    //room
     api "androidx.room:room-runtime:$root_configs.room_version"
-//    annotationProcessor "androidx.room:room-compiler:$root_configs.room_version"
-
-//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-
+    kapt "androidx.room:room-compiler:$root_configs.room_version"
+    //paging
+    api "androidx.paging:paging-runtime-ktx:$root_configs.paging_version"
+    //navigation
+    api "android.arch.navigation:navigation-fragment-ktx:$root_configs.navigation_version"
+    api "android.arch.navigation:navigation-ui-ktx:$root_configs.navigation_version"
+    //workmanager
+    api "android.arch.work:work-runtime-ktx:$root_configs.work_version"
 
 
     //common

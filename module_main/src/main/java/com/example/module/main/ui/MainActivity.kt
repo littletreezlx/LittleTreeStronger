@@ -3,6 +3,8 @@ package com.example.module.main.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Gravity
 import android.view.ViewManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -14,6 +16,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.common.util.TestUtil
 import com.example.module.main.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import okhttp3.internal.Internal.instance
@@ -22,7 +25,7 @@ import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
 
-@Route(path = "/main/main1")
+@Route(path = "/main/main")
 public class MainActivity : BaseActivity() {
 
     lateinit var navHostFragment : NavHostFragment
@@ -34,26 +37,28 @@ public class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         verticalLayout {
+            lparams(matchParent, matchParent)
 
 
-            button("say hello"){
+            button("exercise"){
                 onClick {
-                    toast("hello!")
-
-
-                    ARouter.getInstance().build("/share/share1").navigation()
-
+                    ARouter.getInstance().build("/time/exercise").navigation()
 
                 }
+            }.lparams {
+                width = matchParent
+                height = dip(100)
             }
 
-//            linearLayout {
-//                id = R.id.main_navhostfragment
-////                supportFragmentManager.beginTransaction()
-////                    .replace(R.id.main_navhostfragment, finalHost)
-////                    .setPrimaryNavigationFragment(finalHost) // this is the equivalent to app:defaultNavHost="true"
-////                    .commit()
-//            }
+            button("run"){
+                onClick {
+
+                }
+            }.lparams {
+                width = matchParent
+                height = dip(100)
+            }
+
 
             navHostFragment = NavHostFragment.create(R.navigation.main_navigation)
 
@@ -65,17 +70,32 @@ public class MainActivity : BaseActivity() {
                     .commit()
             }.lparams {
                 width = matchParent
-                height = dip(300)
+                height = matchParent
             }
 
-            bottomNavigationView {
-                id = R.id.main_bottomnavigationview
+            relativeLayout {
+                bottomNavigationView {
+                    id = R.id.main_bottomnavigationview
+
+                }.lparams{
+                    width = matchParent
+                    height = dip(100)
+                    gravity = Gravity.BOTTOM
+
+                }
             }.lparams{
                 width = matchParent
-                height = dip(100)
+                height = dip(0)
+                weight = 1f
+                gravity = Gravity.BOTTOM
+
             }
 
+
+
         }
+
+
 
         //        MainActivityUI().setContentView(this)
 
@@ -94,19 +114,17 @@ public class MainActivity : BaseActivity() {
 //        NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
 
 
-
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottomnavigationview)
+        bottomNavigationView.inflateMenu(R.menu.main_bottom_navigation)
 
     }
 
 
     override fun onResume() {
         super.onResume()
-
 //        val navController = findNavController(R.id.main_navhostfragment)
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottomnavigationview)
+//        bottomNavigationView.inflateMenu(R.menu.main_bottom_navigation)
         NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
 
     }
@@ -179,10 +197,15 @@ fun androidx.fragment.app.FragmentActivity.replaceFragment(fragment: Fragment, f
 }
 
 
-public inline fun ViewManager.bottomNavigationView(theme: Int = 0) = bottomNavigationView(theme) {}
+inline fun ViewManager.bottomNavigationView(theme: Int = 0) = bottomNavigationView(theme) {}
+inline fun ViewManager.bottomNavigationView(theme: Int = 0, init: BottomNavigationView.() -> Unit) = ankoView({ BottomNavigationView(it) }, theme, init)
 
-public inline fun ViewManager.bottomNavigationView(theme: Int = 0, init: BottomNavigationView.() -> Unit) = ankoView({ BottomNavigationView(it) }, theme, init)
 
+
+
+//public inline fun Any.debug(str: String){
+//    println("DEBUG___"+str)
+//}
 
 
 

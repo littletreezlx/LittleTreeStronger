@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.module.time">
 
-<application></application>
+<application>
+
+
+    <activity android:name=".ui.ExerciseTimeActivity"></activity>
+
+</application>
 
 </manifest>

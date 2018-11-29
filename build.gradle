@@ -13,6 +13,8 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha07"
+
         classpath "com.alibaba:arouter-register:1.0.2"
 
 
@@ -69,9 +71,11 @@ ext {
 
 
     //jetpack
+    lifecycle_version = "2.0.0"
     room_version = "2.1.0-alpha02"
     navigation_version = "1.0.0-alpha07"
     paging_version = "2.1.0-beta01"
+    work_version = "1.0.0-alpha11"
 
 
     leakcanary_version = '1.3'
