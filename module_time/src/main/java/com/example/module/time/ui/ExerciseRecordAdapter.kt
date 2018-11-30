@@ -4,11 +4,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.module.time.ExerciseRecord
+import com.example.module.time.data.ExerciseRecord
 import com.example.module.time.ExerciseRecordUI
 import com.example.module.time.R
 import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.find
 
 
 class ExerciseRecordAdapter(val list: ArrayList<ExerciseRecord> = arrayListOf()) : RecyclerView.Adapter<ExerciseRecordAdapter.ExerciseRecordHolder>(){
@@ -51,7 +50,7 @@ class ExerciseRecordAdapter(val list: ArrayList<ExerciseRecord> = arrayListOf())
 
     fun updateList(){
 
-        this.list.add(ExerciseRecord("c",10));
+        this.list.add(ExerciseRecord("c", 10));
 
     }
 
