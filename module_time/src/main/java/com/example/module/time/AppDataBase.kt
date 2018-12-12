@@ -16,7 +16,7 @@ import kotlin.random.Random
 
 
 @Database(entities = [ExerciseRecord::class], version = 1, exportSchema = false)
-//@TypeConverters(Converters::class)
+@TypeConverters(CalenderConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
 
@@ -60,11 +60,15 @@ abstract class AppDatabase : RoomDatabase() {
 
         override fun doInBackground(vararg params: Void): Void? {
 
+
             //dangerous!!!
             dao.deleteAll()
 
             val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt())
             dao.insertExerciseRecord(record)
+
+            val record1 = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt())
+            dao.insertExerciseRecord(record1)
 
             return null
         }

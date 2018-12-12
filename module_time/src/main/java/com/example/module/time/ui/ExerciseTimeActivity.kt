@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.common.BaseActivity
+import com.example.common.base.BaseActivity
 import com.example.module.time.ExerciseActionEnum
 import com.example.module.time.data.ExerciseRecord
 import com.example.module.time.ExerciseTimeViewModel

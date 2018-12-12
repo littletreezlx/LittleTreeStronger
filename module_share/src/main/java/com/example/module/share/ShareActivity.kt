@@ -2,7 +2,7 @@ package com.example.module.share
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.example.common.BaseActivity
+import com.example.common.base.BaseActivity
 import org.jetbrains.anko.button
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.toast

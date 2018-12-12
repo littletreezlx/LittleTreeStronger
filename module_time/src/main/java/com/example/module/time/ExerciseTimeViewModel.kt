@@ -1,7 +1,9 @@
 package com.example.module.time
 
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.common.MyApplication
 import com.example.module.time.data.ExerciseRecord
 import com.example.module.time.repository.ExerciseRecordRepository
 
@@ -23,10 +25,11 @@ class ExerciseTimeViewModel : ViewModel(){
     private fun loadEexerciseRecords() {
 
 
-        exerciseRecords.value = arrayListOf()
+//        exerciseRecords.value = arrayListOf()
 
 
 
+        exerciseRecords.value = ExerciseRecordRepository.getInstance(AppDatabase.getInstance()).getExerciseRecordByDate().value
 
 
     }

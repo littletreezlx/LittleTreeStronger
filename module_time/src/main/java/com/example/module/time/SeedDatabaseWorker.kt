@@ -1,15 +1,10 @@
 package com.example.module.time
 
-import android.content.Context
-import android.util.Log
-import androidx.work.Worker
-import androidx.work.WorkerParameters
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
-class SeedDatabaseWorker(context: Context, workerParams: WorkerParameters)
+
+//class SeedDatabaseWorker(context: Context, workerParams: WorkerParameters)
 //    : Worker(context, workerParams)
-{
+//{
 //    private val TAG by lazy { SeedDatabaseWorker::class.java.simpleName }
 //
 //    override fun doWork(): Worker.resu {
@@ -30,4 +25,4 @@ class SeedDatabaseWorker(context: Context, workerParams: WorkerParameters)
 //            jsonReader?.close()
 //        }
 //    }
-}
+//}

@@ -25,9 +25,7 @@ interface ExerciseRecordDao {
 
 
     @Query("SELECT * FROM exercise_record WHERE exercise_date = :exerciseRecordDate")
-    fun getExerciseRecordByDate(exerciseRecordDate: Calendar): LiveData<ArrayList<ExerciseRecord>>
-
-
+    fun getExerciseRecordByDate(exerciseRecordDate: Calendar): LiveData<List<ExerciseRecord>>
 
 
 //    @Insert

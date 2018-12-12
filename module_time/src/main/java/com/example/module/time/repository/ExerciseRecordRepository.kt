@@ -23,6 +23,7 @@ class ExerciseRecordRepository
         }
     }
 
+
     fun getExerciseRecordByDate(date: Calendar) =
         exerciseRecordDao.getExerciseRecordByDate(date)
 

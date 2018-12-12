@@ -82,7 +82,5 @@ dependencies {
     //ARouter
     kapt "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
 
-    kapt "androidx.room:room-compiler:$root_configs.room_version"
-
 }
 

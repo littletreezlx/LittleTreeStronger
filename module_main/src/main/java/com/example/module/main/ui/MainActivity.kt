@@ -1,14 +1,12 @@
 package com.example.module.main.ui
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.ViewManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import com.example.common.BaseActivity
+import com.example.common.base.BaseActivity
 import org.jetbrains.anko.verticalLayout
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -16,10 +14,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.example.common.util.TestUtil
 import com.example.module.main.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import okhttp3.internal.Internal.instance
 import org.jetbrains.anko.*
 import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.sdk27.coroutines.onClick

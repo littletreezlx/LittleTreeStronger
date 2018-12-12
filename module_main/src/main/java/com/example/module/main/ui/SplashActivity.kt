@@ -6,9 +6,8 @@ import android.os.Handler
 import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
-import com.example.common.BaseActivity
+import com.example.common.base.BaseActivity
 import org.jetbrains.anko.matchParent
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.textView
 import org.jetbrains.anko.verticalLayout
 
