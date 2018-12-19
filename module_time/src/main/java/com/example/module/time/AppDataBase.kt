@@ -7,8 +7,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.example.common.DATABASE_NAME
 import com.example.module.time.dao.ExerciseRecordDao
 import com.example.module.time.data.ExerciseRecord
@@ -39,7 +37,6 @@ abstract class AppDatabase : RoomDatabase() {
                         super.onCreate(db)
 //                        val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
 //                        WorkManager.getInstance().enqueue(request)
-
 
 
                         PopulateDbAsync(instance!!).execute()

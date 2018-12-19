@@ -124,6 +124,8 @@ dependencies {
     api "io.reactivex.rxjava2:rxandroid:$root_configs.rxjava_android_version"
     api "io.reactivex.rxjava2:rxjava:$root_configs.rxjava_version"
     api "com.squareup.okhttp3:okhttp:$root_configs.okhttp_version"
+    api "com.squareup.okhttp3:logging-interceptor:$root_configs.okhttp_version"
+
 
 
     //jetpack
@@ -143,8 +145,17 @@ dependencies {
     api "android.arch.work:work-runtime-ktx:$root_configs.work_version"
 
 
+    //di
+    api "org.kodein.di:kodein-di-generic-jvm:$root_configs.kodein_version"
+    api "org.kodein.di:kodein-di-framework-android-core:$root_configs.kodein_version"
+
+
     //common
     api "com.google.code.gson:gson:$root_configs.gson_version"
+    api "com.jakewharton.timber:timber:$root_configs.timber_version"
+
+
+
 
 
 }

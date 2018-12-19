@@ -11,13 +11,13 @@ class ExerciseRecordRepository
     private constructor(private val exerciseRecordDao: ExerciseRecordDao)
 {
 
-    fun createExerciseRecord(exerciseRecord: ExerciseRecord) {
+    fun insertExerciseRecord(exerciseRecord: ExerciseRecord) {
         runOnIoThread {
             exerciseRecordDao.insertExerciseRecord(exerciseRecord)
         }
     }
 
-    fun removeExerciseRecord(exerciseRecord: ExerciseRecord) {
+    fun deleteExerciseRecord(exerciseRecord: ExerciseRecord) {
         runOnIoThread {
             exerciseRecordDao.deleteExerciseRecord(exerciseRecord)
         }

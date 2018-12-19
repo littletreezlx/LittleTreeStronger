@@ -1,19 +1,34 @@
 package com.example.common.base
 
-import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
-import com.alibaba.android.arouter.launcher.ARouter
 import android.content.pm.ApplicationInfo
+import com.alibaba.android.arouter.launcher.ARouter
+import com.example.common.di.httpDiModule
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.androidModule
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.singleton
+import timber.log.Timber
+
+
+open class BaseApplication : Application(), KodeinAware{
 
 
 
 
-open class BaseApplication : Application(){
+    override val kodein: Kodein = Kodein.lazy {
+        bind<Context>() with singleton { this@BaseApplication }
+        import(androidModule(this@BaseApplication))
+//        import(androidSupportModule(this@BaseApplication))
+
+        import(httpDiModule)
+    }
 
     private var application: BaseApplication? = null
 
-    private var activityManage: ActivityManager? = null
+//    private var activityManage: ActivityManager? = null
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -26,19 +41,32 @@ open class BaseApplication : Application(){
         super.onCreate()
         instance = this
 //        activityManage = ActivityManager()
-
         initARouter()
-//        initLogger()
+        initLogger()
+
+
+
     }
 
      fun initARouter(){
-        if (isDebug(this)) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+        if (isDebug(this)) {
             ARouter.openLog()    // 打印日志
             ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this) // 尽可能早，推荐在Application中初始化
     }
 
+
+    fun initLogger(){
+        if (isDebug(this)) {
+            Timber.plant(Timber.DebugTree())
+        }
+
+        Timber.d("Timber Start!")
+//        else {
+//            Timber.plant(new CrashReportingTree());
+//        }
+    }
 
 
 

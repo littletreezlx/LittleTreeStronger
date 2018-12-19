@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.module.time.data.ExerciseRecord
 import java.util.*
-import kotlin.collections.ArrayList
 
 @Dao
 interface ExerciseRecordDao {
