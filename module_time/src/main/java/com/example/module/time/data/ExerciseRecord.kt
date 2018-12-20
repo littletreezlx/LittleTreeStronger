@@ -1,6 +1,8 @@
 package com.example.module.time.data
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.*
 
 
@@ -15,13 +17,13 @@ data class ExerciseRecord(
     val title: String,
 
     @ColumnInfo(name = "exercise_times")
-    val times: Int
+    val times: Int,
+
+    @ColumnInfo(name = "exercise_date")
+    val date: Calendar = Calendar.getInstance()
 
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var ExerciseRecordId: Long = 0
-
-    @ColumnInfo(name = "exercise_date")
-    val date: Calendar = Calendar.getInstance()
+    var exerciseRecordId: Long = 0
 }

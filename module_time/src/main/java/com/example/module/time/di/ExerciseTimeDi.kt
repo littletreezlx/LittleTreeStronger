@@ -1,7 +1,9 @@
 package com.example.module.time.di
 
 import androidx.lifecycle.ViewModelProviders
+import com.example.common.base.BaseApplication
 import com.example.module.time.AppDatabase
+import com.example.module.time.dao.ExerciseRecordDao
 import com.example.module.time.repository.ExerciseRecordRepository
 import com.example.module.time.ui.ExerciseTimeActivity
 import com.example.module.time.viewmodel.ExerciseTimeViewModel
@@ -27,13 +29,17 @@ val exerciseTimeDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
 
 
 
-    bind<AppDatabase>() with scoped(ActivityRetainedScope).singleton {
-        AppDatabase.getInstance(context)
+    bind<AppDatabase>() with singleton {
+        AppDatabase.getInstance(BaseApplication.instance())
+    }
+
+    bind<ExerciseRecordDao>() with singleton {
+        (instance() as AppDatabase).exerciseRecordDao()
     }
 
 
-    bind<ExerciseRecordRepository>() with scoped(ActivityRetainedScope).singleton {
-        ExerciseRecordRepository.getInstance((instance() as AppDatabase).exerciseRecordDao())
+    bind<ExerciseRecordRepository>() with singleton {
+        ExerciseRecordRepository.getInstance(instance())
     }
 
 

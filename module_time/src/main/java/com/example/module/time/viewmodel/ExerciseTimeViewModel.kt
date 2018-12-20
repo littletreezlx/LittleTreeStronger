@@ -1,6 +1,7 @@
 package com.example.module.time.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.module.time.ExerciseActionEnum
 import com.example.module.time.data.ExerciseRecord
@@ -18,9 +19,11 @@ class ExerciseTimeViewModel(
 
     fun getExerciseRecords(): LiveData<List<ExerciseRecord>> {
         if (!::exerciseRecords.isInitialized) {
-//            exerciseRecords = MutableLiveData()
+            exerciseRecords = MutableLiveData()
             loadEexerciseRecords()
         }
+
+
         return exerciseRecords
     }
 
@@ -36,7 +39,9 @@ class ExerciseTimeViewModel(
 
         exerciseRecords = repo.getExerciseRecordByDate(Calendar.getInstance())
 
-
+        if (exerciseRecords.value == null){
+            exerciseRecords = MutableLiveData()
+        }
 
 
 //        exerciseRecords.value!!.add(ExerciseRecord("a",0))

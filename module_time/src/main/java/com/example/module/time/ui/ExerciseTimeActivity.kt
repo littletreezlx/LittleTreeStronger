@@ -54,10 +54,6 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.getExerciseRecords().observe(this, Observer<List<ExerciseRecord>>{ exerciseRecords ->
-            recordAdapter.notifyDataSetChanged()
-        })
-
 
         verticalLayout {
 
@@ -67,7 +63,6 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
                 layoutManager = LinearLayoutManager(this@ExerciseTimeActivity)
 
 //                recordAdapter = ExerciseRecordAdapter(arrayListOf(ExerciseRecord("a",0), ExerciseRecord("b",1)))
-
                 recordAdapter = ExerciseRecordAdapter(viewModel.getExerciseRecords().value!!)
 
                 adapter = recordAdapter
@@ -116,6 +111,10 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
                 height = dip(100)
             }
         }
+
+        viewModel.getExerciseRecords().observe(this, Observer <List<ExerciseRecord>>{ exerciseRecords ->
+            recordAdapter.notifyDataSetChanged()
+        })
 
 //        val viewModel = ViewModelProviders.of(this).get(ExerciseTimeViewModel::class.java)
     }

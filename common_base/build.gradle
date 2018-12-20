@@ -148,6 +148,7 @@ dependencies {
     //di
     api "org.kodein.di:kodein-di-generic-jvm:$root_configs.kodein_version"
     api "org.kodein.di:kodein-di-framework-android-core:$root_configs.kodein_version"
+    api "org.kodein.di:kodein-di-framework-android-x:$root_configs.kodein_version"
 
 
     //common
