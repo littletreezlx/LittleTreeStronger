@@ -26,6 +26,8 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
+
     }
 }
 
@@ -38,7 +40,7 @@ ext {
     //true 每个业务Module可以单独开发
     //false 每个业务Module以lib的方式运行
     //修改之后需要Sync方可生效
-    isModule = false
+    isModule = true
 
     // Sdk and tools
     applicationId = "com.example.littletreestronger"
@@ -89,6 +91,7 @@ ext {
     //common
     gson_version = "2.8.5"
     timber_version = "4.7.1"
+    rxpermissions_version = "0.10.2"
 
 
 }

@@ -46,6 +46,8 @@ open class BaseApplication : Application(), KodeinAware{
 
 
 
+
+
     }
 
      fun initARouter(){

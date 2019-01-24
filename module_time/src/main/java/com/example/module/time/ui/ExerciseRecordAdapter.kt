@@ -10,7 +10,9 @@ import com.example.module.time.data.ExerciseRecord
 import org.jetbrains.anko.AnkoContext
 
 
-class ExerciseRecordAdapter(val list: List<ExerciseRecord> = listOf()) : RecyclerView.Adapter<ExerciseRecordAdapter.ExerciseRecordHolder>(){
+class ExerciseRecordAdapter
+    (val list: List<ExerciseRecord>? = listOf())
+    : RecyclerView.Adapter<ExerciseRecordAdapter.ExerciseRecordHolder>(){
 
 
 
@@ -36,6 +38,11 @@ class ExerciseRecordAdapter(val list: List<ExerciseRecord> = listOf()) : Recycle
 //        holder.titleTv.text = exerciseRecord.title
 //        holder.timesTv.text = exerciseRecord.times.toString()
 
+
+        if (list == null || list.size == 0){
+            return
+        }
+
         list[position].let {
             with(holder){
                 titleTv.text = it.title
@@ -47,7 +54,12 @@ class ExerciseRecordAdapter(val list: List<ExerciseRecord> = listOf()) : Recycle
 
 
     override fun getItemCount(): Int {
-        return list.size
+
+        if (list != null){
+            return list.size
+        }else{
+            return 0
+        }
     }
 
     fun updateList(){

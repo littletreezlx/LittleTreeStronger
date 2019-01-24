@@ -63,7 +63,7 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
                 layoutManager = LinearLayoutManager(this@ExerciseTimeActivity)
 
 //                recordAdapter = ExerciseRecordAdapter(arrayListOf(ExerciseRecord("a",0), ExerciseRecord("b",1)))
-                recordAdapter = ExerciseRecordAdapter(viewModel.getExerciseRecords().value!!)
+                recordAdapter = ExerciseRecordAdapter(viewModel.getExerciseRecords().value)
 
                 adapter = recordAdapter
             }.lparams{

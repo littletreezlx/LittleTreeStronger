@@ -1,11 +1,11 @@
 package com.example.module.time.viewmodel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.module.time.ExerciseActionEnum
 import com.example.module.time.data.ExerciseRecord
 import com.example.module.time.repository.ExerciseRecordRepository
+import org.jetbrains.anko.AnkoLogger
 import java.util.*
 import kotlin.random.Random
 
@@ -17,9 +17,11 @@ class ExerciseTimeViewModel(
     private lateinit var exerciseRecords: LiveData<List<ExerciseRecord>>
 
 
+    //init
     fun getExerciseRecords(): LiveData<List<ExerciseRecord>> {
         if (!::exerciseRecords.isInitialized) {
-            exerciseRecords = MutableLiveData()
+
+//            exerciseRecords = MutableLiveData()
             loadEexerciseRecords()
         }
 
@@ -39,16 +41,21 @@ class ExerciseTimeViewModel(
 
         exerciseRecords = repo.getExerciseRecordByDate(Calendar.getInstance())
 
-        if (exerciseRecords.value == null){
-            exerciseRecords = MutableLiveData()
-        }
+
+        //
+//        if (exerciseRecords.value == null){
+//            exerciseRecords = MutableLiveData()
+//        }
 
 
 //        exerciseRecords.value!!.add(ExerciseRecord("a",0))
     }
 
 
+    private val log = AnkoLogger(this.javaClass)
 
+
+    //test
     public fun addExerciseRecords(){
 
         repo.insertExerciseRecord(ExerciseRecord(
@@ -63,6 +70,10 @@ class ExerciseTimeViewModel(
             ExerciseActionEnum.WOTUI.chineseName,
             Random.nextInt()
         ))
+
+//        log.debug(repo.getExerciseRecordByDate(Calendar.getInstance()).value!!.size)
+
+
     }
 
 }

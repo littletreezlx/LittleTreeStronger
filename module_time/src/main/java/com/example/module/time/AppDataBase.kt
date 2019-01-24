@@ -10,12 +10,15 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.common.DATABASE_NAME
 import com.example.module.time.dao.ExerciseRecordDao
 import com.example.module.time.data.ExerciseRecord
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.debug
 import kotlin.random.Random
 
 
 @Database(entities = [ExerciseRecord::class], version = 1, exportSchema = false)
 @TypeConverters(CalenderConverters::class)
 abstract class AppDatabase : RoomDatabase() {
+
 
 
     abstract fun exerciseRecordDao(): ExerciseRecordDao
@@ -28,9 +31,14 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+
+
         // Create and pre-populate the database. See this article for more details:
         // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
         private fun buildDatabase(context: Context): AppDatabase {
+            val log = AnkoLogger(this.javaClass)
+            log.debug("build database")
+
 
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                 .addCallback(object : RoomDatabase.Callback() {
@@ -61,8 +69,12 @@ abstract class AppDatabase : RoomDatabase() {
         override fun doInBackground(vararg params: Void): Void? {
 
 
+            val log = AnkoLogger(this.javaClass)
+            log.debug("prepare database")
+
+
             //dangerous!!!
-            dao.deleteAll()
+//            dao.deleteAll()
 
             val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt())
             dao.insertExerciseRecord(record)

@@ -21,12 +21,6 @@ val EXERCISE_TIME_DI_MODULE = "exerciseTimeDiModule"
 val exerciseTimeDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
 
 
-    bind<ExerciseTimeViewModel>() with scoped(ActivityRetainedScope).singleton {
-        ViewModelProviders
-            .of(context as ExerciseTimeActivity, ExerciseTimeViewModelFactory(instance()))
-            .get(ExerciseTimeViewModel::class.java)
-    }
-
 
 
     bind<AppDatabase>() with singleton {
@@ -34,7 +28,9 @@ val exerciseTimeDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
     }
 
     bind<ExerciseRecordDao>() with singleton {
-        (instance() as AppDatabase).exerciseRecordDao()
+
+        instance<AppDatabase>().exerciseRecordDao()
+//        (instance() as AppDatabase).exerciseRecordDao()
     }
 
 
@@ -43,6 +39,11 @@ val exerciseTimeDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
     }
 
 
+    bind<ExerciseTimeViewModel>() with scoped(ActivityRetainedScope).singleton {
+        ViewModelProviders
+            .of(context as ExerciseTimeActivity, ExerciseTimeViewModelFactory(instance()))
+            .get(ExerciseTimeViewModel::class.java)
+    }
 
 
 }

@@ -129,13 +129,13 @@ dependencies {
 
 
     //jetpack
+    kapt "androidx.lifecycle:lifecycle-compiler:$root_configs.lifecycle_version"
+    kapt "androidx.room:room-compiler:$root_configs.room_version"
 
     //lifecycle
     api "androidx.lifecycle:lifecycle-extensions:$root_configs.lifecycle_version"
-    kapt "androidx.lifecycle:lifecycle-compiler:$root_configs.lifecycle_version"
     //room
     api "androidx.room:room-runtime:$root_configs.room_version"
-    kapt "androidx.room:room-compiler:$root_configs.room_version"
     //paging
     api "androidx.paging:paging-runtime-ktx:$root_configs.paging_version"
     //navigation
@@ -154,6 +154,8 @@ dependencies {
     //common
     api "com.google.code.gson:gson:$root_configs.gson_version"
     api "com.jakewharton.timber:timber:$root_configs.timber_version"
+    api "com.github.tbruyelle:rxpermissions:$root_configs.rxpermissions_version"
+
 
 
 
