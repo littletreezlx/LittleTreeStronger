@@ -5,3 +5,5 @@ enum class ExerciseActionEnum(val chineseName: String){
     YINGLA("硬拉"),
     SHENDUN("深蹲"),
 }
+
+

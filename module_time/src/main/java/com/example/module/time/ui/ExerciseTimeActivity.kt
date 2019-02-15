@@ -82,7 +82,15 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
                 layoutManager = LinearLayoutManager(this@ExerciseTimeActivity)
 
 //                recordAdapter = ExerciseRecordAdapter(arrayListOf(ExerciseRecord("a",0), ExerciseRecord("b",1)))
-                recordAdapter = ExerciseRecordAdapter(viewModel.getExerciseRecords().value)
+
+
+                val modelValue = viewModel.getExerciseRecords().value
+
+                if (modelValue != null){
+                    recordAdapter = ExerciseRecordAdapter(modelValue)
+                }else{
+                    recordAdapter = ExerciseRecordAdapter()
+                }
 
                 adapter = recordAdapter
             }.lparams{
@@ -100,30 +108,9 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
 //                    recordAdapter.updateList()
 //                    recordAdapter.notifyDataSetChanged()
 
-//                    viewModel.getExerciseRecords().apply {
-//
-//                        value = value?.apply {
-//                            add(
-//                                ExerciseRecord(
-//                                    ExerciseActionEnum.YINGLA.chineseName,
-//                                    Random.nextInt()
-//                                )
-//                            )
-//                            add(
-//                                ExerciseRecord(
-//                                    ExerciseActionEnum.SHENDUN.chineseName,
-//                                    Random.nextInt()
-//                                )
-//                            )
-//                            add(
-//                                ExerciseRecord(
-//                                    ExerciseActionEnum.WOTUI.chineseName,
-//                                    Random.nextInt()
-//                                )
-//                            )
-//                        }
-//                    }
                     viewModel.addExerciseRecords()
+
+
                 }
             }.lparams{
                 width = matchParent
@@ -131,7 +118,10 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
             }
         }
 
+
+
         viewModel.getExerciseRecords().observe(this, Observer <List<ExerciseRecord>>{ exerciseRecords ->
+            recordAdapter.updateList(exerciseRecords)
             recordAdapter.notifyDataSetChanged()
         })
 
@@ -143,6 +133,8 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
     }
 
 
+
+    //request permissions
     fun requestPermissions(){
 
         RxPermissions(this)

@@ -156,6 +156,10 @@ dependencies {
     api "com.jakewharton.timber:timber:$root_configs.timber_version"
     api "com.github.tbruyelle:rxpermissions:$root_configs.rxpermissions_version"
 
+    //database
+    api "com.facebook.stetho:stetho:$root_configs.stetho_version"
+
+
 
 
 

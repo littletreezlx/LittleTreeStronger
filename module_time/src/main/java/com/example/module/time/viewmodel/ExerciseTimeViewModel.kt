@@ -1,6 +1,6 @@
 package com.example.module.time.viewmodel
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.module.time.ExerciseActionEnum
 import com.example.module.time.data.ExerciseRecord
@@ -14,11 +14,11 @@ class ExerciseTimeViewModel(
 ) : ViewModel(){
 
 
-    private lateinit var exerciseRecords: LiveData<List<ExerciseRecord>>
+    private lateinit var exerciseRecords: MutableLiveData<List<ExerciseRecord>>
 
 
     //init
-    fun getExerciseRecords(): LiveData<List<ExerciseRecord>> {
+    fun getExerciseRecords(): MutableLiveData<List<ExerciseRecord>> {
         if (!::exerciseRecords.isInitialized) {
 
 //            exerciseRecords = MutableLiveData()
@@ -39,7 +39,10 @@ class ExerciseTimeViewModel(
 
 //        exerciseRecords.value = ExerciseRecordRepository.getInstance(AppDatabase.getInstance().exerciseRecordDao()).getExerciseRecordByDate().value
 
-        exerciseRecords = repo.getExerciseRecordByDate(Calendar.getInstance())
+
+
+//        exerciseRecords = repo.getExerciseRecordByDate(Calendar.getInstance())
+        exerciseRecords.value = repo.getExerciseRecordByDate(Calendar.getInstance()).value
 
 
         //
@@ -57,23 +60,13 @@ class ExerciseTimeViewModel(
 
     //test
     public fun addExerciseRecords(){
-
         repo.insertExerciseRecord(ExerciseRecord(
-            ExerciseActionEnum.YINGLA.chineseName,
-            Random.nextInt()
+            ExerciseActionEnum.values().run {
+                this.get(Random.nextInt(this.size))
+            }.chineseName,
+            Random.nextInt(100),
+            Random.nextInt(12)
         ))
-        repo.insertExerciseRecord(ExerciseRecord(
-            ExerciseActionEnum.SHENDUN.chineseName,
-            Random.nextInt()
-        ))
-        repo.insertExerciseRecord(ExerciseRecord(
-            ExerciseActionEnum.WOTUI.chineseName,
-            Random.nextInt()
-        ))
-
-//        log.debug(repo.getExerciseRecordByDate(Calendar.getInstance()).value!!.size)
-
-
     }
 
 }

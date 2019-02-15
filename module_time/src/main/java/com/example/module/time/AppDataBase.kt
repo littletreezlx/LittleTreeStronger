@@ -74,13 +74,19 @@ abstract class AppDatabase : RoomDatabase() {
 
 
             //dangerous!!!
-//            dao.deleteAll()
+            dao.deleteAll()
 
-            val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt())
-            dao.insertExerciseRecord(record)
+//            val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt(10))
+//            dao.insertExerciseRecord(record)
 
-            val record1 = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt())
-            dao.insertExerciseRecord(record1)
+
+                dao.insertExerciseRecord(ExerciseRecord(
+                    ExerciseActionEnum.values().run {
+                        this.get(this.size)
+                    }.chineseName,
+                    Random.nextInt(100),
+                    Random.nextInt(12)
+                ))
 
             return null
         }

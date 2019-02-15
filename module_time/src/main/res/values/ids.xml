@@ -4,6 +4,7 @@
 
     <item name="time_recyclerview" type="id" />
     <item name="time_recyclerview_item_title_tv" type="id" />
+    <item name="time_recyclerview_item_weight_tv" type="id" />
     <item name="time_recyclerview_item_times_tv" type="id" />
 
 

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.common.di.httpDiModule
+import com.facebook.stetho.Stetho
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.androidModule
@@ -40,17 +41,23 @@ open class BaseApplication : Application(), KodeinAware{
     override fun onCreate() {
         super.onCreate()
         instance = this
-//        activityManage = ActivityManager()
+        //router
         initARouter()
+        //log
         initLogger()
-
-
-
-
+        //database
+        initStetho()
 
     }
 
-     fun initARouter(){
+
+    private fun initStetho(){
+        if (isDebug(this)) {
+            Stetho.initializeWithDefaults(this)
+        }
+    }
+
+    private  fun initARouter(){
         if (isDebug(this)) {
             ARouter.openLog()    // 打印日志
             ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
@@ -59,11 +66,10 @@ open class BaseApplication : Application(), KodeinAware{
     }
 
 
-    fun initLogger(){
+    private fun initLogger(){
         if (isDebug(this)) {
             Timber.plant(Timber.DebugTree())
         }
-
         Timber.d("Timber Start!")
 //        else {
 //            Timber.plant(new CrashReportingTree());

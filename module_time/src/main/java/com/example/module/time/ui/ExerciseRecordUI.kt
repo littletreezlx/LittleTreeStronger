@@ -1,9 +1,10 @@
-package com.example.module.time
+package com.example.module.time.ui
 
 import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.example.module.time.R
 import org.jetbrains.anko.*
 
 class ExerciseRecordUI : AnkoComponent<ViewGroup>{
@@ -16,9 +17,9 @@ class ExerciseRecordUI : AnkoComponent<ViewGroup>{
             padding = dip(16)
             orientation = LinearLayout.HORIZONTAL
 
+            //name
             textView {
                 id = R.id.time_recyclerview_item_title_tv
-                text = "Sherlock"
                 textSize = 16f // <- it is sp, no worries
                 textColor = Color.BLACK
             }.lparams{
@@ -27,9 +28,19 @@ class ExerciseRecordUI : AnkoComponent<ViewGroup>{
                 weight = 2f
             }
 
+            //weight
+            textView {
+                id = R.id.time_recyclerview_item_weight_tv
+                textSize = 14f
+            }.lparams{
+                width = dip(0)
+                height = dip(50)
+                weight = 1f
+            }
+
+            //times
             textView {
                 id = R.id.time_recyclerview_item_times_tv
-                text = "2009"
                 textSize = 14f
             }.lparams{
                 width = dip(0)

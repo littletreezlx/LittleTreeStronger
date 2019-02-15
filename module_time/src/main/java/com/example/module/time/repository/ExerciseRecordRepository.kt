@@ -25,7 +25,7 @@ class ExerciseRecordRepository
 
 
     fun getExerciseRecordByDate(date: Calendar) =
-        exerciseRecordDao.getExerciseRecordByDate(date)
+        exerciseRecordDao.getExerciseRecordByDate(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH))
 
 
     companion object {

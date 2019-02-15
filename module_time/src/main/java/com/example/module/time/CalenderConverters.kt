@@ -17,12 +17,13 @@
 package com.example.module.time
 
 import androidx.room.TypeConverter
-import java.util.Calendar
+import java.util.*
 
 /**
  * Type converters to allow Room to reference complex data types.
  */
 class CalenderConverters {
+
     @TypeConverter fun calendarToDatestamp(calendar: Calendar): Long = calendar.timeInMillis
 
     @TypeConverter fun datestampToCalendar(value: Long): Calendar =

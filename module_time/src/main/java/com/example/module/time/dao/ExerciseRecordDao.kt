@@ -3,7 +3,6 @@ package com.example.module.time.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.module.time.data.ExerciseRecord
-import java.util.*
 
 @Dao
 interface ExerciseRecordDao {
@@ -23,8 +22,15 @@ interface ExerciseRecordDao {
     fun getExerciseRecordById(exerciseRecordId: Long): LiveData<ExerciseRecord>
 
 
-    @Query("SELECT * FROM exercise_record WHERE exercise_date = :exerciseRecordDate")
-    fun getExerciseRecordByDate(exerciseRecordDate: Calendar): LiveData<List<ExerciseRecord>>
+    //NO!
+//    @Query("SELECT * FROM exercise_record WHERE exercise_date = :exerciseRecordDate ")
+//    fun getExerciseRecordByDate(exerciseRecordDate: Calendar): LiveData<List<ExerciseRecord>>
+
+
+    @Query("SELECT * FROM exercise_record WHERE exercise_year = :year And  exercise_month = :month And  exercise_day = :day ")
+    fun getExerciseRecordByDate(year: Int, month: Int, day: Int): LiveData<List<ExerciseRecord>>
+
+
 
 
 //    @Insert
