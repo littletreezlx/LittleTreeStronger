@@ -1,4 +1,4 @@
-package com.example.module.time
+package com.example.module.time.data
 
 import android.content.Context
 import android.os.AsyncTask
@@ -8,8 +8,9 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.common.DATABASE_NAME
-import com.example.module.time.dao.ExerciseRecordDao
-import com.example.module.time.data.ExerciseRecord
+import com.example.module.time.constants.ExerciseActionEnum
+import com.example.module.time.data.dao.ExerciseRecordDao
+import com.example.module.time.data.model.ExerciseRecord
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
 import kotlin.random.Random
@@ -27,7 +28,8 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile private var instance: AppDatabase? = null
         fun getInstance(context: Context): AppDatabase {
             return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+                instance
+                    ?: buildDatabase(context).also { instance = it }
             }
         }
 
@@ -49,7 +51,8 @@ abstract class AppDatabase : RoomDatabase() {
 
 
 
-                        PopulateDbAsync(instance!!).execute()
+                        PopulateDbAsync(instance!!)
+                            .execute()
 
                     }
                 })
@@ -80,13 +83,15 @@ abstract class AppDatabase : RoomDatabase() {
 //            dao.insertExerciseRecord(record)
 
 
-                dao.insertExerciseRecord(ExerciseRecord(
-                    ExerciseActionEnum.values().run {
-                        this.get(this.size)
-                    }.chineseName,
-                    Random.nextInt(100),
-                    Random.nextInt(12)
-                ))
+                dao.insertExerciseRecord(
+                    ExerciseRecord(
+                        ExerciseActionEnum.values().run {
+                            this.get(this.size)
+                        }.chineseName,
+                        Random.nextInt(100),
+                        Random.nextInt(12)
+                    )
+                )
 
             return null
         }

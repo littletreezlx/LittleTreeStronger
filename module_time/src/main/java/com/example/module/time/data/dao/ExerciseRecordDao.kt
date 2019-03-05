@@ -1,8 +1,8 @@
-package com.example.module.time.dao
+package com.example.module.time.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.module.time.data.ExerciseRecord
+import com.example.module.time.data.model.ExerciseRecord
 
 @Dao
 interface ExerciseRecordDao {

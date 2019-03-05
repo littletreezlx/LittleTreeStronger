@@ -1,9 +1,9 @@
-package com.example.module.time.data
+package com.example.module.time.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.module.time.ExerciseActionEnum
+import com.example.module.time.constants.ExerciseActionEnum
 import java.util.*
 import kotlin.random.Random
 
@@ -63,10 +63,11 @@ data class ExerciseRecord(
 
 }
 
-fun createNewRecord() : ExerciseRecord = ExerciseRecord(
-    ExerciseActionEnum.values().run {
-        this.get(this.size)
-    }.chineseName,
-    Random.nextInt(100),
-    Random.nextInt(12)
-)
+fun createNewRecord() : ExerciseRecord =
+    ExerciseRecord(
+        ExerciseActionEnum.values().run {
+            this.get(this.size)
+        }.chineseName,
+        Random.nextInt(100),
+        Random.nextInt(12)
+    )

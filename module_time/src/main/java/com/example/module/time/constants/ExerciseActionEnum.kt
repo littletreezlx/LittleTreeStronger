@@ -1,4 +1,4 @@
-package com.example.module.time
+package com.example.module.time.constants
 
 enum class ExerciseActionEnum(val chineseName: String){
     WOTUI("卧推"),

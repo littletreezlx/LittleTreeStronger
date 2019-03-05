@@ -1,13 +1,13 @@
-package com.example.module.time.di
+package com.example.module.time.kodein
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.common.base.BaseApplication
-import com.example.module.time.AppDatabase
-import com.example.module.time.dao.ExerciseRecordDao
-import com.example.module.time.repository.ExerciseRecordRepository
+import com.example.module.time.data.AppDatabase
+import com.example.module.time.data.dao.ExerciseRecordDao
+import com.example.module.time.data.repository.ExerciseRecordRepository
 import com.example.module.time.ui.ExerciseTimeActivity
-import com.example.module.time.viewmodel.ExerciseTimeViewModel
-import com.example.module.time.viewmodel.ExerciseTimeViewModelFactory
+import com.example.module.time.ui.viewmodel.ExerciseTimeViewModel
+import com.example.module.time.ui.viewmodel.ExerciseTimeViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.android.ActivityRetainedScope
 import org.kodein.di.generic.bind

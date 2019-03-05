@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.module.time
+package com.example.module.time.data
 
 import androidx.room.TypeConverter
 import java.util.*

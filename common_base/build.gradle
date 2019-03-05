@@ -1,4 +1,5 @@
-def root_configs = rootProject.ext
+def android_configs = rootProject.ext
+def dependencies = rootProject.ext.dependencies
 
 apply plugin: 'com.android.library'
 
@@ -13,14 +14,14 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion root_configs.compileSdk_version
-    buildToolsVersion root_configs.buildTools_version
+    compileSdkVersion android_configs.compileSdk_version
+    buildToolsVersion android_configs.buildTools_version
 
     defaultConfig {
-        minSdkVersion root_configs.minSdk_version
-        targetSdkVersion root_configs.targetSdk_version
-        versionCode root_configs.version_code
-        versionName root_configs.version_name
+        minSdkVersion android_configs.minSdk_version
+        targetSdkVersion android_configs.targetSdk_version
+        versionCode android_configs.version_code
+        versionName android_configs.version_name
         //MultiDex分包方法
         multiDexEnabled true
 
@@ -92,7 +93,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'androidx.appcompat:appcompat:1.0.2'
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     testImplementation 'junit:junit:4.12'
@@ -101,36 +101,32 @@ dependencies {
 
 
     //ARouter
-    api "com.alibaba:arouter-api:$root_configs.arouter_api_version"
-    kapt "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
-
+    api dependencies.arouter
+    kapt dependencies.arouter_kapt
 
     //kotlin
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "androidx.core:core-ktx:$root_configs.ktx_version"
-
-    api "org.jetbrains.anko:anko:$root_configs.anko_version"
-    api "org.jetbrains.anko:anko-recyclerview-v7:$root_configs.anko_version"
-    api "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$root_configs.anko_version"
+    api dependencies.kotlin
+    api dependencies.ktx
+    api dependencies.anko
+    api dependencies.anko_recyclerview
+    api dependencies.anko_recyclerview_corountines
 
 
 //    implementation 'com.jakewharton:butterknife:8.8.1'
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //  retrofit+rxjava网络层
-    api "com.squareup.retrofit2:retrofit:$root_configs.retrofit_version"
-    api "com.squareup.retrofit2:converter-gson:$root_configs.retrofit_version"
-    api "com.squareup.retrofit2:adapter-rxjava2:$root_configs.retrofit_version"
-    api "io.reactivex.rxjava2:rxandroid:$root_configs.rxjava_android_version"
-    api "io.reactivex.rxjava2:rxjava:$root_configs.rxjava_version"
-    api "com.squareup.okhttp3:okhttp:$root_configs.okhttp_version"
-    api "com.squareup.okhttp3:logging-interceptor:$root_configs.okhttp_version"
-
-
+    api dependencies.retrofit
+    api dependencies.retrofit_gson
+    api dependencies.retrogit_rxjava2
+    api rxjava2_android
+    api rxjava2
+    api dependencies.okhttp
+    api dependencies.okhttp_loginterceptor
 
     //jetpack
-    kapt "androidx.lifecycle:lifecycle-compiler:$root_configs.lifecycle_version"
-    kapt "androidx.room:room-compiler:$root_configs.room_version"
+    kapt dependencies.lifecycles_kapt
+    kapt dependencies.room_kapt
 
     //lifecycle
     api "androidx.lifecycle:lifecycle-extensions:$root_configs.lifecycle_version"

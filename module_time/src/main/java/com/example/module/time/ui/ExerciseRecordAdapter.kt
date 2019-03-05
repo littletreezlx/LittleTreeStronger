@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.module.time.R
-import com.example.module.time.data.ExerciseRecord
+import com.example.module.time.data.model.ExerciseRecord
 import org.jetbrains.anko.AnkoContext
 
 

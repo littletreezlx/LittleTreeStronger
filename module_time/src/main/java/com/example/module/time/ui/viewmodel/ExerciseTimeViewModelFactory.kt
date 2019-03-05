@@ -1,8 +1,8 @@
-package com.example.module.time.viewmodel
+package com.example.module.time.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.module.time.repository.ExerciseRecordRepository
+import com.example.module.time.data.repository.ExerciseRecordRepository
 
 class ExerciseTimeViewModelFactory(
     private val repository: ExerciseRecordRepository

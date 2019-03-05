@@ -1,7 +1,7 @@
 package com.example.common.base
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import org.jetbrains.anko.AnkoLogger
 
 
@@ -18,5 +18,6 @@ open class BaseActivity : AppCompatActivity(), AnkoLogger{
         super.onDestroy()
 //        BaseApplication.getApplication()!!.getActivityManage().removeActivityty(this)
     }
+
 
 }

@@ -1,8 +1,8 @@
-package com.example.module.time.repository
+package com.example.module.time.data.repository
 
 import com.example.common.util.runOnIoThread
-import com.example.module.time.dao.ExerciseRecordDao
-import com.example.module.time.data.ExerciseRecord
+import com.example.module.time.data.dao.ExerciseRecordDao
+import com.example.module.time.data.model.ExerciseRecord
 import java.util.*
 
 

@@ -1,10 +1,10 @@
-package com.example.module.time.viewmodel
+package com.example.module.time.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.module.time.ExerciseActionEnum
-import com.example.module.time.data.ExerciseRecord
-import com.example.module.time.repository.ExerciseRecordRepository
+import com.example.module.time.constants.ExerciseActionEnum
+import com.example.module.time.data.model.ExerciseRecord
+import com.example.module.time.data.repository.ExerciseRecordRepository
 import org.jetbrains.anko.AnkoLogger
 import java.util.*
 import kotlin.random.Random
@@ -60,13 +60,15 @@ class ExerciseTimeViewModel(
 
     //test
     public fun addExerciseRecords(){
-        repo.insertExerciseRecord(ExerciseRecord(
-            ExerciseActionEnum.values().run {
-                this.get(Random.nextInt(this.size))
-            }.chineseName,
-            Random.nextInt(100),
-            Random.nextInt(12)
-        ))
+        repo.insertExerciseRecord(
+            ExerciseRecord(
+                ExerciseActionEnum.values().run {
+                    this.get(Random.nextInt(this.size))
+                }.chineseName,
+                Random.nextInt(100),
+                Random.nextInt(12)
+            )
+        )
     }
 
 }

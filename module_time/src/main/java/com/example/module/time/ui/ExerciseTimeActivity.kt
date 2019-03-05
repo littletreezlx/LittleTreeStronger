@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.system.Os.bind
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -11,9 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.common.base.BaseActivity
 import com.example.module.time.R
-import com.example.module.time.data.ExerciseRecord
-import com.example.module.time.di.exerciseTimeDiModule
-import com.example.module.time.viewmodel.ExerciseTimeViewModel
+import com.example.module.time.data.model.ExerciseRecord
+import com.example.module.time.kodein.exerciseTimeDiModule
+import com.example.module.time.ui.viewmodel.ExerciseTimeViewModel
 import com.google.gson.Gson
 import com.tbruyelle.rxpermissions2.RxPermissions
 import org.jetbrains.anko.*
@@ -24,7 +25,6 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.android.retainedKodein
-import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 
 
@@ -131,8 +131,6 @@ class ExerciseTimeActivity: BaseActivity(), KodeinAware{
 
 //        val viewModel = ViewModelProviders.of(this).get(ExerciseTimeViewModel::class.java)
     }
-
-
 
     //request permissions
     fun requestPermissions(){
