@@ -1,4 +1,6 @@
-def root_configs = rootProject.ext
+def android_configs = rootProject.ext.android_configs
+def root_dependencies = rootProject.ext.dependencies
+
 
 if (Boolean.valueOf(rootProject.ext.isModule)) {
     apply plugin: 'com.android.application'
@@ -14,14 +16,14 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion root_configs.compileSdk_version
-    buildToolsVersion root_configs.buildTools_version
+    compileSdkVersion android_configs.compileSdk_version
+    buildToolsVersion android_configs.buildTools_version
 
     defaultConfig {
-        minSdkVersion root_configs.minSdk_version
-        targetSdkVersion root_configs.targetSdk_version
-        versionCode root_configs.version_code
-        versionName root_configs.version_name
+        minSdkVersion android_configs.minSdk_version
+        targetSdkVersion android_configs.targetSdk_version
+        versionCode android_configs.version_code
+        versionName android_configs.version_name
         //MultiDex分包方法
         multiDexEnabled true
 
@@ -81,11 +83,10 @@ dependencies {
 //    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //ARouter
-    kapt "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
+    kapt root_dependencies.arouter_kapt
 
-
-    kapt "androidx.lifecycle:lifecycle-compiler:$root_configs.lifecycle_version"
-    kapt "androidx.room:room-compiler:$root_configs.room_version"
+    kapt root_dependencies.lifecycle_kapt
+    kapt root_dependencies.room_kapt
 
 
 }

@@ -7,7 +7,7 @@
 <application>
 
 
-    <activity android:name=".ui.ExerciseTimeActivity"></activity>
+    <activity android:name="com.example.module.main.ui.ExerciseTimeActivity"></activity>
 
 </application>
 

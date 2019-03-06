@@ -1,5 +1,5 @@
-def android_configs = rootProject.ext
-def dependencies = rootProject.ext.dependencies
+def android_configs = rootProject.ext.android_configs
+def root_dependencies = rootProject.ext.dependencies
 
 apply plugin: 'com.android.library'
 
@@ -94,66 +94,67 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api 'androidx.appcompat:appcompat:1.0.2'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test:runner:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
 
     //ARouter
-    api dependencies.arouter
-    kapt dependencies.arouter_kapt
+    api root_dependencies.arouter
+    kapt root_dependencies.arouter_kapt
 
     //kotlin
-    api dependencies.kotlin
-    api dependencies.ktx
-    api dependencies.anko
-    api dependencies.anko_recyclerview
-    api dependencies.anko_recyclerview_corountines
+    api root_dependencies.kotlin
+    api root_dependencies.ktx
+    api root_dependencies.anko
+    api root_dependencies.anko_recyclerview
+    api root_dependencies.anko_recyclerview_corountines
 
 
 //    implementation 'com.jakewharton:butterknife:8.8.1'
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //  retrofit+rxjava网络层
-    api dependencies.retrofit
-    api dependencies.retrofit_gson
-    api dependencies.retrogit_rxjava2
-    api rxjava2_android
-    api rxjava2
-    api dependencies.okhttp
-    api dependencies.okhttp_loginterceptor
+    api root_dependencies.retrofit
+    api root_dependencies.retrofit_gson
+    api root_dependencies.retrofit_rxjava2
+    api root_dependencies.rxjava2_android
+    api root_dependencies.rxjava2
+    api root_dependencies.okhttp
+    api root_dependencies.okhttp_loginterceptor
 
     //jetpack
-    kapt dependencies.lifecycles_kapt
-    kapt dependencies.room_kapt
+    kapt root_dependencies.lifecycle_kapt
+    kapt root_dependencies.room_kapt
 
     //lifecycle
-    api "androidx.lifecycle:lifecycle-extensions:$root_configs.lifecycle_version"
+    api root_dependencies.lifecycle_ext
     //room
-    api "androidx.room:room-runtime:$root_configs.room_version"
+    api root_dependencies.room
     //paging
-    api "androidx.paging:paging-runtime-ktx:$root_configs.paging_version"
+    api root_dependencies.paging
     //navigation
-    api "android.arch.navigation:navigation-fragment-ktx:$root_configs.navigation_version"
-    api "android.arch.navigation:navigation-ui-ktx:$root_configs.navigation_version"
+    api root_dependencies.navigation
+    api root_dependencies.navigation_ui
     //workmanager
-    api "android.arch.work:work-runtime-ktx:$root_configs.work_version"
+    api root_dependencies.workmanager
 
 
     //di
-    api "org.kodein.di:kodein-di-generic-jvm:$root_configs.kodein_version"
-    api "org.kodein.di:kodein-di-framework-android-core:$root_configs.kodein_version"
-    api "org.kodein.di:kodein-di-framework-android-x:$root_configs.kodein_version"
+    api root_dependencies.kodein
+    api root_dependencies.kodein_android
+    api root_dependencies.kodein_androidx
 
 
     //common
-    api "com.google.code.gson:gson:$root_configs.gson_version"
-    api "com.jakewharton.timber:timber:$root_configs.timber_version"
-    api "com.github.tbruyelle:rxpermissions:$root_configs.rxpermissions_version"
+    api root_dependencies.gson
+    api root_dependencies.timber
+    api root_dependencies.rxpermissions
 
     //database
-    api "com.facebook.stetho:stetho:$root_configs.stetho_version"
+    api root_dependencies.stetho
 
 
 

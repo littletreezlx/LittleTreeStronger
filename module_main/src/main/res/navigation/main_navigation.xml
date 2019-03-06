@@ -5,13 +5,13 @@
             app:startDestination="@+id/recordFragment">
 
 
-    <fragment android:id="@+id/recordFragment" android:name="com.example.module.main.ui.RecordFragment"
+    <fragment android:id="@+id/recordFragment" android:name="com.example.module.main.uia.RecordFragment"
               android:label="RecordFragment">
         <action android:id="@+id/action_recordFragment_to_galleryFragment" app:destination="@id/galleryFragment"/>
         <action android:id="@+id/action_recordFragment_to_shareFragment2" app:destination="@id/shareFragment"/>
     </fragment>
-    <fragment android:id="@+id/galleryFragment" android:name="com.example.module.main.ui.GalleryFragment"
+    <fragment android:id="@+id/galleryFragment" android:name="com.example.module.main.uia.GalleryFragment"
               android:label="GalleryFragment"/>
-    <fragment android:id="@+id/shareFragment" android:name="com.example.module.main.ui.ShareFragment"
+    <fragment android:id="@+id/shareFragment" android:name="com.example.module.main.uia.ShareFragment"
               android:label="ShareFragment"/>
 </navigation>

@@ -2,10 +2,9 @@ package com.example.common.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import org.jetbrains.anko.AnkoLogger
 
 
-open class BaseActivity : AppCompatActivity(), AnkoLogger{
+open class BaseActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

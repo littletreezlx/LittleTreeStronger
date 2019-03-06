@@ -1,239 +1,139 @@
 package com.example.module.main.ui
 
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
-import android.view.Gravity
-import android.view.ViewManager
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
-import com.example.common.base.BaseActivity
-import org.jetbrains.anko.verticalLayout
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import android.view.KeyEvent
+import android.widget.Toast
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
+import com.example.common.base.BaseActivity
 import com.example.module.main.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.jetbrains.anko.*
-import org.jetbrains.anko.custom.ankoView
-import org.jetbrains.anko.sdk27.coroutines.onClick
+import com.example.module.main.kodein.exerciseTimeDiModule
+import com.tbruyelle.rxpermissions2.RxPermissions
+import org.kodein.di.Copy
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.android.retainedKodein
 
 
 @Route(path = "/main/main")
-public class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), KodeinAware {
 
-    lateinit var navHostFragment : NavHostFragment
 
     val instance by lazy { this }
+
+    private val parentKodein by closestKodein()
+
+
+    override val kodein: Kodein by retainedKodein {
+        extend(parentKodein, copy = Copy.All)
+        import(exerciseTimeDiModule)
+//        bind<ExerciseTimeActivity>() with instance(this@ExerciseTimeActivity)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        verticalLayout {
-            lparams(matchParent, matchParent)
+        setContentView(R.layout.activity_main)
 
 
-            button("exercise"){
-                onClick {
-                    ARouter.getInstance().build("/time/exercise").navigation()
-
-                }
-            }.lparams {
-                width = matchParent
-                height = dip(100)
-            }
-
-            button("run"){
-                onClick {
-
-                }
-            }.lparams {
-                width = matchParent
-                height = dip(100)
-            }
-
-
-            navHostFragment = NavHostFragment.create(R.navigation.main_navigation)
-
-            linearLayout {
-                id = R.id.main_navhostfragment
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_navhostfragment, navHostFragment)
-                    .setPrimaryNavigationFragment(navHostFragment) // this is the equivalent to app:defaultNavHost="true"
-                    .commit()
-            }.lparams {
-                width = matchParent
-                height = matchParent
-            }
-
-            relativeLayout {
-                bottomNavigationView {
-                    id = R.id.main_bottomnavigationview
-
-                }.lparams{
-                    width = matchParent
-                    height = dip(100)
-                    gravity = Gravity.BOTTOM
-
-                }
-            }.lparams{
-                width = matchParent
-                height = dip(0)
-                weight = 1f
-                gravity = Gravity.BOTTOM
-
-            }
-
-
-
-        }
-
-
-
-        //        MainActivityUI().setContentView(this)
-
-
-//        val finalHost = NavHostFragment.create(R.navigation.main_navigation)
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.main_navhostfragment, finalHost)
-//            .setPrimaryNavigationFragment(finalHost) // this is the equivalent to app:defaultNavHost="true"
-//            .commit()
-
-//        Navigation.setViewNavController(window.decorView, finalHost.navController);
-//        val navHostFragment =  supportFragmentManager.findFragmentById(R.id.main_navhostfragment) as NavHostFragment
-
-
-//        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottomnavigationview)
-//        NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
-
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottomnavigationview)
-        bottomNavigationView.inflateMenu(R.menu.main_bottom_navigation)
-
+        requestPermissions()
     }
 
 
     override fun onResume() {
         super.onResume()
-//        val navController = findNavController(R.id.main_navhostfragment)
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottomnavigationview)
-//        bottomNavigationView.inflateMenu(R.menu.main_bottom_navigation)
-        NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
+//        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottomnavigationview)
+//        NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
 
     }
 
     override fun onSupportNavigateUp() =
         Navigation.findNavController(this, R.id.main_navhostfragment).navigateUp()
 
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-//    external fun stringFromJNI(): String
-//
-//    companion object {
-//
-//        // Used to load the 'native-lib' library on application startup.
-//        init {
-//            System.loadLibrary("native-lib")
-//        }
-//    }
-}
 
-
-//class MainActivityUI : AnkoComponent<MainActivity> {
-//
-//    override fun createView(ui: AnkoContext<MainActivity>) =  ui.apply {
-//        verticalLayout {
-//
-//            val name = editText()
-//            button("say hello"){
-//                onClick {
-//                    ctx.toast("hello, ${name.text}!")
-//                    Navigation.findNavController(it!!).navigate(R.id.settingFragment2)
+    fun requestPermissions(){
+        RxPermissions(this)
+            .requestEach(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE
+            )
+            .subscribe { permission ->
+                if (permission.granted) {
+                    //agree
+//                    onGranted()
+                } else {
+                    showDialog(permission.name)
+                }
+            }
+//            .subscribe(new Consumer<Permission>() {
+//                @Override
+//                public void accept(Permission permission) throws Exception {
+//                    if (permission.granted) {
+//                        // 用户已经同意该权限
+//                        Log.d(TAG, permission.name + " is granted.");
+//                    } else if (permission.shouldShowRequestPermissionRationale) {
+//                        // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
+//                        Log.d(TAG, permission.name + " is denied. More info should be provided.");
+//                    } else {
+//                        // 用户拒绝了该权限，并且选中『不再询问』
+//                        Log.d(TAG, permission.name + " is denied.");
+//                    }
 //                }
-//            }
-//
-//            linearLayout {
-//                id = 1
-//            }
-//
-//            include<View>(R.layout.main_navhostfragment)
-//        }
-//    }.view
-//}
+//            });
+
+
+    }
 
 
 
+    fun showDialog(permissionName : String){
+        val keylistener = DialogInterface.OnKeyListener { _, keyCode, event ->
+            keyCode == KeyEvent.KEYCODE_BACK && event.repeatCount == 0
+        }
 
-//
-//inline fun ViewManager.fragment(theme : Int = 0) = NavHostFragment()
-//
-//inline fun ViewManager.fragment(theme : Int = 0, init : NavHostFragment.() -> Unit) : NavHostFragment{
-//    return  ankoView({NavHostFragment(it)}, theme, init)
-//}
+        var dialog = AlertDialog.Builder(this)
+            .setTitle("权限申请")
+            .setMessage("${permissionName}为必选项，开通后方可正常使用APP,请在设置中开启。")
+            .setOnKeyListener(keylistener)
+            .setCancelable(false)
+            .setPositiveButton("去开启") { _, _ ->
+                //                                JumpPermissionManagement.GoToSetting(this)
+                finish()
+            }
+            .setNegativeButton("结束") { _, _ ->
+                Toast.makeText(this, "${permissionName}权限未开启，不能使用该功能！", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            .create()
 
+        dialog.show()
+    }
 
-inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
-    val fragmentTransaction = beginTransaction()
-    fragmentTransaction.func()
-    fragmentTransaction.commit()
-}
-
-fun androidx.fragment.app.FragmentActivity.addFragment(fragment: Fragment, frameId: Int){
-    supportFragmentManager.inTransaction { add(frameId, fragment) }
-}
-
-
-fun androidx.fragment.app.FragmentActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-    supportFragmentManager.inTransaction{replace(frameId, fragment)}
 }
 
 
-inline fun ViewManager.bottomNavigationView(theme: Int = 0) = bottomNavigationView(theme) {}
-inline fun ViewManager.bottomNavigationView(theme: Int = 0, init: BottomNavigationView.() -> Unit) = ankoView({ BottomNavigationView(it) }, theme, init)
 
 
 
 
-//public inline fun Any.debug(str: String){
-//    println("DEBUG___"+str)
-//}
 
 
 
-//private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-//    when (item.itemId) {
-//        R.id.navigation_home -> {
-////                message.setText(R.string.title_home)
-//            return@OnNavigationItemSelectedListener true
-//        }
-//        R.id.navigation_dashboard -> {
-////                message.setText(R.string.title_dashboard)
-//
-//            return@OnNavigationItemSelectedListener true
-//        }
-//        R.id.navigation_notifications -> {
-////                message.setText(R.string.title_notifications)
-//            return@OnNavigationItemSelectedListener true
-//        }
+//ARouter.getInstance().build("/time/exercise").navigation()
+//    navHostFragment = NavHostFragment.create(R.navigation.main_navigation)
+//    linearLayout {
+//        id = R.id.main_navhostfragment
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.main_navhostfragment, navHostFragment)
+//            .setPrimaryNavigationFragment(navHostFragment) // this is the equivalent to app:defaultNavHost="true"
+//            .commit()
+//    }.lparams {
+//        width = matchParent
+//        height = matchParent
 //    }
-//    false
-//}
-//
-//override fun onCreate(savedInstanceState: Bundle?) {
-//    super.onCreate(savedInstanceState)
-//    setContentView(R.layout.activity_bottom)
-//
-//    navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-//}
-
-
-//navigation.setOnNavigationItemSelectedListener {item ->
-//
-//    onNavDestinationSelected(item, Navigation.findNavController(this, R.id.my_nav_host_fragment))
-//
-//}

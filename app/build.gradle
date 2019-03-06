@@ -1,4 +1,5 @@
-def root_configs = rootProject.ext
+def android_configs = rootProject.ext.android_configs
+def root_dependencies = rootProject.ext.dependencies
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -7,15 +8,16 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion root_configs.compileSdk_version
-    buildToolsVersion root_configs.buildTools_version
+    compileSdkVersion android_configs.compileSdk_version
+    buildToolsVersion android_configs.buildTools_version
 
     defaultConfig {
-        applicationId root_configs.applicationId
-        minSdkVersion root_configs.minSdk_version
-        targetSdkVersion root_configs.targetSdk_version
-        versionCode root_configs.version_code
-        versionName root_configs.version_name
+        applicationId "com.example.littletreestronger"
+
+        minSdkVersion android_configs.minSdk_version
+        targetSdkVersion android_configs.targetSdk_version
+        versionCode android_configs.version_code
+        versionName android_configs.version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //MultiDex分包方法
         multiDexEnabled true
@@ -71,28 +73,22 @@ android {
 }
 
 //configurations.all {
-//    resolutionStrategy.force "com.android.support:support-annotations:$root_configs.supportLibrary_version"
+//    resolutionStrategy.force "com.android.support:support-annotations:$android_configs.supportLibrary_version"
 //}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-//    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
-
 //    公用依赖包
     implementation project(':common_base')
 
-    if (!Boolean.valueOf(root_configs.isModule)) {
+    if (!Boolean.valueOf(android_configs.isModule)) {
         //main模块
         implementation project(':module_main')
-        implementation project(':module_time')
         implementation project(':module_share')
     }
 
-//ARouter
-    kapt "com.alibaba:arouter-compiler:$root_configs.arouter_compiler_version"
-
-    kapt "androidx.lifecycle:lifecycle-compiler:$root_configs.lifecycle_version"
-    kapt "androidx.room:room-compiler:$root_configs.room_version"
+//    kapt root_dependencies.arouter_kapt
+//    kapt root_dependencies.lifecycle_kapt
+//    kapt root_dependencies.room_kapt
 
 }
