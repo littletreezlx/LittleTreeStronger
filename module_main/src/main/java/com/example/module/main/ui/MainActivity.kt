@@ -7,7 +7,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.common.base.BaseActivity
 import com.example.module.main.R
@@ -16,23 +16,24 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
+import org.kodein.di.android.kodein
 import org.kodein.di.android.retainedKodein
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
 
 
 @Route(path = "/main/main")
 class MainActivity : BaseActivity(), KodeinAware {
 
 
-    val instance by lazy { this }
+//    val instance by lazy { this }
 
-    private val parentKodein by closestKodein()
-
+    private val parentKodein by kodein()
 
     override val kodein: Kodein by retainedKodein {
         extend(parentKodein, copy = Copy.All)
         import(exerciseTimeDiModule)
-//        bind<ExerciseTimeActivity>() with instance(this@ExerciseTimeActivity)
+        bind<MainActivity>() with instance(this@MainActivity)
     }
 
 
@@ -51,9 +52,6 @@ class MainActivity : BaseActivity(), KodeinAware {
 //        NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
 
     }
-
-    override fun onSupportNavigateUp() =
-        Navigation.findNavController(this, R.id.main_navhostfragment).navigateUp()
 
 
     fun requestPermissions(){
@@ -115,6 +113,11 @@ class MainActivity : BaseActivity(), KodeinAware {
         dialog.show()
     }
 
+
+
+    // 在Activity中设置Navcontroller
+    override fun onSupportNavigateUp()
+            = findNavController(R.id.nav_host_fragment).navigateUp()
 }
 
 

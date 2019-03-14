@@ -21,7 +21,6 @@ class ExerciseTimeViewModel(
 
     //expected expose a unMutableLiveData
     fun getExerciseRecords(): LiveData<List<ExerciseRecord>> {
-
 //        loadEexerciseRecords()
 //        return exerciseRecords
         return repo.getExerciseRecordByDate(Calendar.getInstance())
@@ -34,9 +33,7 @@ class ExerciseTimeViewModel(
 //        exerciseRecords.value = ExerciseRecordRepository.getInstance(AppDatabase.getInstance().exerciseRecordDao()).getExerciseRecordByDate().value
 
 //        exerciseRecords = repo.getExerciseRecordByDate(Calendar.getInstance())
-
         exerciseRecords.value = repo.getExerciseRecordByDate(Calendar.getInstance()).value
-
         //
 //        if (exerciseRecords.value == null){
 //            exerciseRecords = MutableLiveData()

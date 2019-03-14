@@ -5,10 +5,14 @@
 
     <fragment android:id="@+id/mainFragment" android:name="com.example.module.main.ui.MainFragment"
               android:label="MainFragment">
-        <action android:id="@+id/action_mainFragment_to_exerciseRecordListFragment"
-                app:destination="@id/exerciseRecordListFragment"/>
+        <action android:id="@+id/action_mainFragment_to_exerciseTimeFragment"
+                app:destination="@id/exerciseTimeFragment"/>
+        <action android:id="@+id/action_mainFragment_to_exercisePlanTableFragment"
+                app:destination="@id/exercisePlanTableFragment"/>
     </fragment>
-    <fragment android:id="@+id/exerciseRecordListFragment"
-              android:name="com.example.module.main.ExerciseRecordListFragment"
-              android:label="ExerciseRecordListFragment"/>
+    <fragment android:id="@+id/exerciseTimeFragment" android:name="com.example.module.main.ui.ExerciseTimeFragment"
+              android:label="ExerciseTimeFragment"/>
+    <fragment android:id="@+id/exercisePlanTableFragment"
+              android:name="com.example.module.main.ui.ExercisePlanTableFragment"
+              android:label="ExercisePlanTableFragment"/>
 </navigation>

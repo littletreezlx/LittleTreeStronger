@@ -10,8 +10,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common_base" />
+            <option value="$PROJECT_DIR$/module_community" />
             <option value="$PROJECT_DIR$/module_main" />
-            <option value="$PROJECT_DIR$/module_share" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

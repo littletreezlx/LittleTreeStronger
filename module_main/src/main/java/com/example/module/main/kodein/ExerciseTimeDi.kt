@@ -5,7 +5,7 @@ import com.example.common.base.BaseApplication
 import com.example.module.main.data.AppDatabase
 import com.example.module.main.data.dao.ExerciseRecordDao
 import com.example.module.main.data.repository.ExerciseRecordRepository
-import com.example.module.main.ui.ExerciseTimeActivity
+import com.example.module.main.ui.MainActivity
 import com.example.module.main.viewmodel.ExerciseTimeViewModel
 import com.example.module.main.viewmodel.ExerciseTimeViewModelFactory
 import org.kodein.di.Kodein
@@ -39,9 +39,9 @@ val exerciseTimeDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
     }
 
 
-    bind<ExerciseTimeViewModel>() with scoped(ActivityRetainedScope).singleton {
+    bind<ExerciseTimeViewModel>() with scoped(ActivityRetainedScope.MultiItem).singleton {
         ViewModelProviders
-            .of(context as ExerciseTimeActivity, ExerciseTimeViewModelFactory(instance()))
+            .of(context as MainActivity, ExerciseTimeViewModelFactory(instance()))
             .get(ExerciseTimeViewModel::class.java)
     }
 

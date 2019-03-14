@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.module.main.R
-import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment : Fragment() {
@@ -21,18 +22,24 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.main_fragment, container, false)
-
-        btn_exercise_record.setOnClickListener {
-        }
-
+        val view =  inflater.inflate(R.layout.fragment_main, container, false)
 
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProviders.of(this).get(MainFragmentViewModel::class.java)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btn_exercise_record.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_exerciseTimeFragment)
+        }
+        btn_exercise_plan_table.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_exercisePlanTableFragment)
+        }
     }
+
+
+
 
 }

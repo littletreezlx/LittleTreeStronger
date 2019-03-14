@@ -8,7 +8,7 @@ import com.example.common.di.httpDiModule
 import com.facebook.stetho.Stetho
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
-import org.kodein.di.android.androidModule
+import org.kodein.di.android.x.androidXModule
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton
 import timber.log.Timber
@@ -21,7 +21,7 @@ open class BaseApplication : Application(), KodeinAware{
 
     override val kodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApplication }
-        import(androidModule(this@BaseApplication))
+        import(androidXModule(this@BaseApplication))
 //        import(androidSupportModule(this@BaseApplication))
 
         import(httpDiModule)

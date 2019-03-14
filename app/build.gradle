@@ -84,7 +84,7 @@ dependencies {
     if (!Boolean.valueOf(android_configs.isModule)) {
         //main模块
         implementation project(':module_main')
-        implementation project(':module_share')
+        implementation project(':module_community')
     }
 
 //    kapt root_dependencies.arouter_kapt
