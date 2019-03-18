@@ -2,6 +2,7 @@ package com.example.common.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 
 open class BaseFragment : Fragment(){
@@ -18,5 +19,9 @@ open class BaseFragment : Fragment(){
 //        BaseApplication.getApplication()!!.getActivityManage().removeActivityty(this)
     }
 
+
+    fun navigateUp(){
+        findNavController().navigateUp()
+    }
 
 }

@@ -1,9 +1,9 @@
 <resources>
 
 
-    <item name="main_navhostfragment" type="id" />
-    <item name="settingfragment" type="id" />
-    <item name="main_bottomnavigationview" type="id" />
+    <!--<item name="main_navhostfragment" type="id" />-->
+    <!--<item name="settingfragment" type="id" />-->
+    <!--<item name="main_bottomnavigationview" type="id" />-->
 
 
 

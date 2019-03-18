@@ -30,16 +30,27 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-        <fragment
-                android:id="@+id/nav_host_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/main_left_navigation"
                 android:layout_below="@+id/appbar"
                 android:layout_above="@+id/bottom_navigationview"
-        />
+        >
+        </androidx.viewpager.widget.ViewPager>
+
+
+        <!--<fragment-->
+                <!--android:id="@+id/nav_host_fragment"-->
+                <!--android:name="androidx.navigation.fragment.NavHostFragment"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:defaultNavHost="true"-->
+                <!--app:navGraph="@navigation/navigation_main"-->
+
+        <!--/>-->
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -47,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:menu="@menu/main_bottom_navigation"
+                app:labelVisibilityMode="labeled"
                 android:layout_alignParentBottom="true"
         />
 

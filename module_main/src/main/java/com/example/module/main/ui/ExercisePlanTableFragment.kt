@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.common.base.BaseFragment
 import com.example.module.main.R
 import com.example.module.main.adapter.ExercisePlanTableAdapter
 import com.example.module.main.viewmodel.ExercisePlanViewModel
 import kotlinx.android.synthetic.main.fragment_exercise_plan_table.*
 
 
-class ExercisePlanTableFragment : Fragment() {
+class ExercisePlanTableFragment : BaseFragment() {
 
 
     private val viewModel = ExercisePlanViewModel()

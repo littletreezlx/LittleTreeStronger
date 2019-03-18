@@ -10,9 +10,13 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.common.base.BaseActivity
+import com.example.common.base.BaseFragment
 import com.example.module.main.R
+import com.example.module.main.adapter.ViewPagerAdapter
 import com.example.module.main.kodein.exerciseTimeDiModule
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tbruyelle.rxpermissions2.RxPermissions
+import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -28,6 +32,8 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 //    val instance by lazy { this }
 
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
+
     private val parentKodein by kodein()
 
     override val kodein: Kodein by retainedKodein {
@@ -37,10 +43,42 @@ class MainActivity : BaseActivity(), KodeinAware {
     }
 
 
+    private val onBottomNavigationViewClickedListener = BottomNavigationView.OnNavigationItemSelectedListener {
+        when (it.itemId){
+            R.id.main -> {
+                viewpager.currentItem = 0
+                true
+            }
+            R.id.discovery -> {
+                viewpager.currentItem = 1
+                true
+            }
+            R.id.community -> {
+                viewpager.currentItem = 0
+                true
+            }
+            R.id.me -> {
+                viewpager.currentItem = 1
+                true
+            }
+            else -> {
+                false
+            }
+        }
+//        false
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+        viewpager.adapter = viewPagerAdapter
+        bottom_navigationview.setOnNavigationItemSelectedListener(onBottomNavigationViewClickedListener)
+
+//        bottom_navigationview.setupWithNavController(findNavController(R.id.bottom_navigationview))
 
         requestPermissions()
     }
@@ -115,9 +153,29 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 
 
-    // 在Activity中设置Navcontroller
     override fun onSupportNavigateUp()
-            = findNavController(R.id.nav_host_fragment).navigateUp()
+            = findNavController(when (viewpager.currentItem){
+        0 -> R.id.fragment_container_main
+        1 -> R.id.fragment_container_discovery
+        else -> R.id.fragment_container_main
+        }).navigateUp()
+
+
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+
+//        val a = findNavController(when (viewpager.currentItem){
+//            0 -> R.id.fragment_container_main
+//            1 -> R.id.fragment_container_discovery
+//            else -> R.id.fragment_container_main
+//        })
+//        a.navigateUp()
+//
+//
+        val topFragment = viewPagerAdapter.getTopFragment(viewpager.currentItem) as BaseFragment
+        topFragment.navigateUp()
+    }
 }
 
 

@@ -1,4 +1,4 @@
-package com.example.module.main.uia
+package com.example.module.main
 
 import android.content.Intent
 import android.os.Bundle
