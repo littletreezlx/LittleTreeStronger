@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/navigation_exercise"
+        app:startDestination="@id/exerciseFragment">
+
+    <fragment android:id="@+id/exerciseFragment"
+            android:name="com.example.littletreestronger.ui.ExerciseFragment"
+            android:label="ExerciseFragment">
+        <action android:id="@+id/action_exerciseFragment_to_exerciseTimeFragment"
+                app:destination="@id/exerciseTimeFragment"/>
+        <action android:id="@+id/action_exerciseFragment_to_exercisePlanTableFragment"
+                app:destination="@id/exercisePlanTableFragment"/>
+    </fragment>
+
+
+    <fragment android:id="@+id/exerciseTimeFragment" android:name="com.example.littletreestronger.ui.ExerciseTimeFragment"
+              android:label="ExerciseTimeFragment"/>
+    <fragment android:id="@+id/exercisePlanTableFragment"
+              android:name="com.example.littletreestronger.ui.ExercisePlanTableFragment"
+              android:label="ExercisePlanTableFragment"/>
+</navigation>

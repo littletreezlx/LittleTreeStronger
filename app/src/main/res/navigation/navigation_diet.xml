@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/navigation_diet"
+            app:startDestination="@id/dietFragment">
+
+    <fragment android:id="@+id/dietFragment"
+            android:name="com.example.littletreestronger.ui.DietFragment"
+              android:label="DietFragment">
+        <action android:id="@+id/action_dietFragment_to_recommendFoodFragment"
+                app:destination="@id/recommendFoodFragment"/>
+    </fragment>
+    <fragment android:id="@+id/recommendFoodFragment" android:name="com.example.littletreestronger.ui.RecommendFoodFragment"
+              android:label="RecommendFoodFragment"/>
+</navigation>

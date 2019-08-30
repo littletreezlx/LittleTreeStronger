@@ -78,17 +78,69 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    公用依赖包
-    implementation project(':common_base')
 
-    if (!Boolean.valueOf(android_configs.isModule)) {
-        //main模块
-        implementation project(':module_main')
-        implementation project(':module_community')
-    }
+    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
 
-//    kapt root_dependencies.arouter_kapt
-//    kapt root_dependencies.lifecycle_kapt
-//    kapt root_dependencies.room_kapt
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test:runner:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    //kotlin
+    api root_dependencies.kotlin
+    api root_dependencies.ktx
+    api root_dependencies.anko
+    api root_dependencies.anko_recyclerview
+    api root_dependencies.anko_recyclerview_corountines
+
+
+//    implementation 'com.jakewharton:butterknife:8.8.1'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //  retrofit+rxjava网络层
+    api root_dependencies.retrofit
+    api root_dependencies.retrofit_gson
+    api root_dependencies.retrofit_rxjava2
+    api root_dependencies.rxjava2_android
+    api root_dependencies.rxjava2
+    api root_dependencies.okhttp
+    api root_dependencies.okhttp_loginterceptor
+
+    //jetpack
+    kapt root_dependencies.lifecycle_kapt
+    kapt root_dependencies.room_kapt
+
+    //lifecycle
+    api root_dependencies.lifecycle_ext
+    //room
+    api root_dependencies.room
+    //paging
+    api root_dependencies.paging
+    //navigation
+    api root_dependencies.navigation
+    api root_dependencies.navigation_ui
+    //workmanager
+    api root_dependencies.workmanager
+
+
+    //di
+    api root_dependencies.kodein
+    api root_dependencies.kodein_android
+    api root_dependencies.kodein_androidx
+
+
+    //common
+    api root_dependencies.gson
+    api root_dependencies.timber
+    api root_dependencies.rxpermissions
+
+    //database
+    api root_dependencies.stetho
+
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
 
 }
