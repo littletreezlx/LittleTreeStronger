@@ -1,13 +1,11 @@
-package com.example.littletreestronger.ui
+package com.example.littletreestronger.ui.myself
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
-import kotlinx.android.synthetic.main.fragment_diet.*
 
 
 class MyselfFragment : BaseFragment() {

@@ -5,11 +5,21 @@
             app:startDestination="@id/dietFragment">
 
     <fragment android:id="@+id/dietFragment"
-            android:name="com.example.littletreestronger.ui.DietFragment"
+            android:name="com.example.littletreestronger.ui.diet.DietFragment"
               android:label="DietFragment">
-        <action android:id="@+id/action_dietFragment_to_recommendFoodFragment"
-                app:destination="@id/recommendFoodFragment"/>
+        <action
+                android:id="@+id/action_dietFragment_to_recommendFoodFragment"
+                app:destination="@id/recommendFoodFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-    <fragment android:id="@+id/recommendFoodFragment" android:name="com.example.littletreestronger.ui.RecommendFoodFragment"
-              android:label="RecommendFoodFragment"/>
+    <fragment android:id="@+id/recommendFoodFragment" android:name="com.example.littletreestronger.ui.diet.RecommendFoodFragment"
+              android:label="RecommendFoodFragment">
+        <argument
+                android:name="name"
+                app:argType="string"
+                android:defaultValue="default" />
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.littletreestronger.ui
+package com.example.littletreestronger.ui.community
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
 
 
-class ContainerCommunityFragment : BaseFragment() {
+class CommunityFragment : BaseFragment() {
 
     companion object {
-        fun newInstance() = ContainerCommunityFragment()
+        fun newInstance() = CommunityFragment()
     }
 
 //    private lateinit var viewModel: MainFragmentViewModel
@@ -20,13 +20,14 @@ class ContainerCommunityFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_container_community, container, false)
+        val view =  inflater.inflate(R.layout.fragment_community, container, false)
 
         return view
     }
 
-
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 
 
 }

@@ -6,6 +6,6 @@
 
     <fragment
             android:id="@+id/communityFragment"
-            android:name="com.example.littletreestronger.ui.CommunityFragment"
+            android:name="com.example.littletreestronger.ui.community.CommunityFragment"
             android:label="CommunityFragment" />
 </navigation>

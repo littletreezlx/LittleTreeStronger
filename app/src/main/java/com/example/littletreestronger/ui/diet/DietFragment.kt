@@ -1,4 +1,4 @@
-package com.example.littletreestronger.ui
+package com.example.littletreestronger.ui.diet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -31,7 +31,11 @@ class DietFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_discovery_test.setOnClickListener {
-            it.findNavController().navigate(R.id.action_dietFragment_to_recommendFoodFragment)
+            val directions = DietFragmentDirections.actionDietFragmentToRecommendFoodFragment()
+                .run {
+                setName("alice")
+            }
+            it.findNavController().navigate(directions)
         }
     }
 

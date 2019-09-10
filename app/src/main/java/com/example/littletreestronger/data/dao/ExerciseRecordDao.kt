@@ -1,6 +1,7 @@
 package com.example.littletreestronger.data.dao
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 import com.example.littletreestronger.data.model.ExerciseRecord
 
@@ -27,10 +28,11 @@ interface ExerciseRecordDao {
 //    fun getExerciseRecordByDate(exerciseRecordDate: Calendar): LiveData<List<ExerciseRecord>>
 
 
+//    @Query("SELECT * FROM exercise_record WHERE exercise_year = :year And  exercise_month = :month And  exercise_day = :day ")
+//    fun getExerciseRecordByDate(year: Int, month: Int, day: Int): LiveData<List<ExerciseRecord>>
+
     @Query("SELECT * FROM exercise_record WHERE exercise_year = :year And  exercise_month = :month And  exercise_day = :day ")
-    fun getExerciseRecordByDate(year: Int, month: Int, day: Int): LiveData<List<ExerciseRecord>>
-
-
+    fun getExerciseRecordByDate(year: Int, month: Int, day: Int): DataSource.Factory<Int, ExerciseRecord>
 
 
 //    @Insert

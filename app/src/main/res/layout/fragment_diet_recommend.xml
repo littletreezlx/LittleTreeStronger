@@ -8,10 +8,20 @@
 >
 
     <TextView
-            android:id="@+id/tv_discovery_test"
+            android:id="@+id/tv_rec"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="recommend food"
     />
+
+
+    <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={ viemodel. }" />
+
+
+
 
 </LinearLayout>

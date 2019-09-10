@@ -5,7 +5,7 @@
         app:startDestination="@id/exerciseFragment">
 
     <fragment android:id="@+id/exerciseFragment"
-            android:name="com.example.littletreestronger.ui.ExerciseFragment"
+            android:name="com.example.littletreestronger.ui.exercise.ExerciseFragment"
             android:label="ExerciseFragment">
         <action android:id="@+id/action_exerciseFragment_to_exerciseTimeFragment"
                 app:destination="@id/exerciseTimeFragment"/>
@@ -14,9 +14,9 @@
     </fragment>
 
 
-    <fragment android:id="@+id/exerciseTimeFragment" android:name="com.example.littletreestronger.ui.ExerciseTimeFragment"
+    <fragment android:id="@+id/exerciseTimeFragment" android:name="com.example.littletreestronger.ui.exercise.ExerciseTimeFragment"
               android:label="ExerciseTimeFragment"/>
     <fragment android:id="@+id/exercisePlanTableFragment"
-              android:name="com.example.littletreestronger.ui.ExercisePlanTableFragment"
+              android:name="com.example.littletreestronger.ui.exercise.ExercisePlanTableFragment"
               android:label="ExercisePlanTableFragment"/>
 </navigation>

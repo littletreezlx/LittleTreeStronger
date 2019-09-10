@@ -3,9 +3,11 @@ package com.example.littletreestronger.ui
 import android.Manifest
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
+import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.littletreestronger.base.BaseActivity
@@ -30,9 +32,15 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 //    val instance by lazy { this }
 
+    companion object {
+        val s = this
+    }
+
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
     private val parentKodein by kodein()
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,10 +50,7 @@ class MainActivity : BaseActivity(), KodeinAware {
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewpager.adapter = viewPagerAdapter
         bottom_navigationview.setOnNavigationItemSelectedListener(onBottomNavigationViewClickedListener)
-//        bottom_navigationview.setupWithNavController(findNavController(R.id.bottom_navigationview))
         requestPermissions()
-
-
 
         viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
@@ -60,9 +65,10 @@ class MainActivity : BaseActivity(), KodeinAware {
                     it.selectedItemId= it.menu.getItem(position).getItemId()
                 }
             }
-
         })
     }
+
+
 
 
     override fun onResume() {
@@ -77,8 +83,6 @@ class MainActivity : BaseActivity(), KodeinAware {
         import(exerciseTimeDiModule)
         bind<MainActivity>() with instance(this@MainActivity)
     }
-
-
 
 
 
@@ -174,29 +178,46 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 
 
-    override fun onSupportNavigateUp()
-            = findNavController(when (viewpager.currentItem){
-        0 -> R.id.fragment_container_main
-        1 -> R.id.fragment_container_discovery
-        else -> R.id.fragment_container_main
-        }).navigateUp()
-
+//    override fun onSupportNavigateUp() =
+//        findNavController(
+//        when (viewpager.currentItem){
+//        0 -> R.id.fragment_nav_host_diet
+//        1 -> R.id.fragment_nav_host_exercise
+//        2 -> R.id.fragment_nav_host_community
+//        3 -> R.id.fragment_nav_host_myself
+//        else -> R.id.fragment_nav_host_diet
+//        }).navigateUp()
 
 
     override fun onBackPressed() {
-//        super.onBackPressed()
-
-//        val a = findNavController(when (viewpager.currentItem){
-//            0 -> R.id.fragment_container_exercise
-//            1 -> R.id.fragment_container_diet
-//            else -> R.id.fragment_container_exercise
-//        })
-//        a.navigateUp()
-//
-//
-        val topFragment = viewPagerAdapter.getTopFragment(viewpager.currentItem) as BaseFragment
-        topFragment.navigateUp()
+//        val topFragment = viewPagerAdapter.getTopFragment(viewpager.currentItem) as BaseFragment
+//        topFragment.navigateUp()
+        if (!navigateUp()){
+            val intent = Intent().run {
+                action = "android.intent.action.MAIN"
+                addCategory("android.intent.category.HOME")
+                addCategory("android.intent.category.DEFAULT")
+                addCategory("android.intent.category.MONKEY")
+            }
+            startActivity(intent)
+        }
     }
+
+
+    fun navigateUp() : Boolean{
+        return findNavController(
+            when (viewpager.currentItem){
+                0 -> R.id.fragment_nav_host_diet
+                1 -> R.id.fragment_nav_host_exercise
+                2 -> R.id.fragment_nav_host_community
+                3 -> R.id.fragment_nav_host_myself
+                else -> R.id.fragment_nav_host_diet
+            }).navigateUp()
+    }
+
+
+
+
 }
 
 

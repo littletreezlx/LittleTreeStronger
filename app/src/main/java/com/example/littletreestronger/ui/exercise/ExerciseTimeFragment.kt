@@ -1,4 +1,4 @@
-package com.example.littletreestronger.ui
+package com.example.littletreestronger.ui.exercise
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -63,15 +63,20 @@ class ExerciseTimeFragment: BaseFragment(), KodeinAware{
 
         val adapter = ExerciseRecordAdapter()
         recyclerview_exercise_reocrd.adapter = adapter
-        viewModel.getExerciseRecords().observe(this, Observer <List<ExerciseRecord>>{ exerciseRecords ->
-            adapter.updateList(exerciseRecords)
-            adapter.notifyDataSetChanged()
+//        viewModel.getExerciseRecords().observe(this, Observer <List<ExerciseRecord>>{ exerciseRecords ->
+//            adapter.updateList(exerciseRecords)
+//            adapter.notifyDataSetChanged()
+//        })
+        viewModel.getExerciseRecords().observe(this, Observer{
+            adapter.submitList(it)
+            val i =1
         })
-
 
         btn_add_random_records.setOnClickListener {
             viewModel.addExerciseRecords()
         }
+
+
     }
 
 

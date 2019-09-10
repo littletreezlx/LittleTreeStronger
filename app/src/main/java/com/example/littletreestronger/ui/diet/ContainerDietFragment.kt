@@ -1,4 +1,4 @@
-package com.example.littletreestronger.ui
+package com.example.littletreestronger.ui.diet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
 
 
-class ContainerExerciseFragment : BaseFragment() {
+class ContainerDietFragment : BaseFragment() {
 
     companion object {
-        fun newInstance() = ContainerExerciseFragment()
+        fun newInstance() = ContainerDietFragment()
     }
 
 //    private lateinit var viewModel: MainFragmentViewModel
@@ -20,12 +20,10 @@ class ContainerExerciseFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_container_exercise, container, false)
+        val view =  inflater.inflate(R.layout.fragment_container_diet, container, false)
 
         return view
     }
-
-
 
 
 

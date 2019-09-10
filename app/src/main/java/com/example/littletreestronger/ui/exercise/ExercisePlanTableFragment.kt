@@ -1,4 +1,4 @@
-package com.example.littletreestronger.ui
+package com.example.littletreestronger.ui.exercise
 
 import android.os.Bundle
 import android.view.LayoutInflater

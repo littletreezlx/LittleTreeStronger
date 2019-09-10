@@ -5,11 +5,13 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import com.example.littletreestronger.di.httpDiModule
 import com.facebook.stetho.Stetho
+import leakcanary.LeakCanary
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.singleton
+import retrofit2.Retrofit
 import timber.log.Timber
 
 
@@ -44,6 +46,14 @@ open class BaseApplication : Application(), KodeinAware{
         initLogger()
         //database
         initStetho()
+//
+//        if (LeakCanary.isInAnalyzerProcess(this)) {//1
+//            // This process is dedicated to LeakCanary for heap analysis.
+//            // You should not init your app in this process.
+//            return;
+//        }
+//        LeakCanary.
+
 
     }
 

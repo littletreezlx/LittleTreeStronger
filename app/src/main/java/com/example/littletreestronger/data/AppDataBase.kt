@@ -11,6 +11,7 @@ import com.example.littletreestronger.constants.DATABASE_NAME
 import com.example.littletreestronger.constants.ExerciseActionEnum
 import com.example.littletreestronger.data.dao.ExerciseRecordDao
 import com.example.littletreestronger.data.model.ExerciseRecord
+import com.example.littletreestronger.util.runOnIoThread
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
 import kotlin.random.Random
@@ -19,8 +20,6 @@ import kotlin.random.Random
 @Database(entities = [ExerciseRecord::class], version = 1, exportSchema = false)
 @TypeConverters(CalenderConverters::class)
 abstract class AppDatabase : RoomDatabase() {
-
-
 
     abstract fun exerciseRecordDao(): ExerciseRecordDao
 
@@ -34,13 +33,9 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
 
-
-        // Create and pre-populate the database. See this article for more details:
-        // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
         private fun buildDatabase(context: Context): AppDatabase {
             val log = AnkoLogger(AppDatabase::class.java)
             log.debug("build database")
-
 
             return Room.databaseBuilder(context, AppDatabase::class.java,
                 DATABASE_NAME
@@ -51,10 +46,40 @@ abstract class AppDatabase : RoomDatabase() {
 //                        val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
 //                        WorkManager.getInstance().enqueue(request)
 
+                        runOnIoThread {
+                            instance?.let {
+                                val dao = it.exerciseRecordDao()
+                                val log = AnkoLogger(this.javaClass)
+                                log.debug("prepare database")
+                                //dangerous!!!
+                                dao.deleteAll()
+//            val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt(10))
+//            dao.insertExerciseRecord(record)
+                                dao.insertExerciseRecord(
+                                    ExerciseRecord(
+                                        ExerciseActionEnum.values().run {
+                                            get(Random.nextInt(this.size))
+                                        }.chineseName,
+                                        Random.nextInt(100),
+                                        Random.nextInt(12)
+                                    )
+                                )
 
+                                dao.insertExerciseRecord(
+                                    ExerciseRecord(
+                                        ExerciseActionEnum.values().run {
+                                            get(Random.nextInt(this.size))
+                                        }.chineseName,
+                                        Random.nextInt(100),
+                                        Random.nextInt(12)
+                                    )
+                                )
+                            }
 
-                        PopulateDbAsync(instance!!)
-                            .execute()
+                        }
+//
+//                        PopulateDbAsync(instance!!)
+//                            .execute()
 
                     }
                 })
@@ -63,46 +88,27 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
 
-    private class PopulateDbAsync internal constructor(db: AppDatabase) : AsyncTask<Void, Void, Void>() {
-
-        private val dao: ExerciseRecordDao = db.exerciseRecordDao()
-
-//        init {
-//            dao = db.exerciseRecordDao()
-//        }
-
-        override fun doInBackground(vararg params: Void): Void? {
-
-
-            val log = AnkoLogger(this.javaClass)
-            log.debug("prepare database")
-
-
-            //dangerous!!!
-            dao.deleteAll()
-
-//            val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt(10))
-//            dao.insertExerciseRecord(record)
-
-
-                dao.insertExerciseRecord(
-                    ExerciseRecord(
-                        ExerciseActionEnum.values().run {
-                            this.get(Random.nextInt(this.size))
-                        }.chineseName,
-                        Random.nextInt(100),
-                        Random.nextInt(12)
-                    )
-                )
-
-            return null
-        }
-    }
-
-
-}
-
+//    private class PopulateDbAsync internal constructor(db: AppDatabase) : AsyncTask<Void, Void, Void>() {
+//        private val dao: ExerciseRecordDao = db.exerciseRecordDao()
 //
-//fun ExerciseActionEnum.getRandomName() = ExerciseActionEnum.values().apply {
-//    get(Random.nextInt(size))
-//}
+//        override fun doInBackground(vararg params: Void): Void? {
+//
+//            val log = AnkoLogger(this.javaClass)
+//            log.debug("prepare database")
+//            //dangerous!!!
+//            dao.deleteAll()
+////            val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt(10))
+////            dao.insertExerciseRecord(record)
+//                dao.insertExerciseRecord(
+//                    ExerciseRecord(
+//                        ExerciseActionEnum.values().run {
+//                            this.get(Random.nextInt(this.size))
+//                        }.chineseName,
+//                        Random.nextInt(100),
+//                        Random.nextInt(12)
+//                    )
+//                )
+//            return null
+//        }
+//    }
+}

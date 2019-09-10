@@ -6,7 +6,7 @@
 
     <fragment
             android:id="@+id/myselfFragment"
-            android:name="com.example.littletreestronger.ui.MyselfFragment"
+            android:name="com.example.littletreestronger.ui.myself.MyselfFragment"
             android:label="MyselfFragment" />
 
 

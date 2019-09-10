@@ -3,10 +3,10 @@ package com.example.littletreestronger.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.littletreestronger.ui.ContainerCommunityFragment
-import com.example.littletreestronger.ui.ContainerDietFragment
-import com.example.littletreestronger.ui.ContainerExerciseFragment
-import com.example.littletreestronger.ui.ContainerMyselfFragment
+import com.example.littletreestronger.ui.community.ContainerCommunityFragment
+import com.example.littletreestronger.ui.diet.ContainerDietFragment
+import com.example.littletreestronger.ui.exercise.ContainerExerciseFragment
+import com.example.littletreestronger.ui.myself.ContainerMyselfFragment
 
 class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
@@ -28,11 +28,13 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
                 dietFragment
             }
             1 ->{
-                exerciseFragment = ContainerExerciseFragment()
+                exerciseFragment =
+                    ContainerExerciseFragment()
                 exerciseFragment
             }
             2 -> {
-                communityFragment = ContainerCommunityFragment()
+                communityFragment =
+                    ContainerCommunityFragment()
                 communityFragment
             }
             3 -> {

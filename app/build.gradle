@@ -5,7 +5,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion android_configs.compileSdk_version
@@ -21,31 +21,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //MultiDex分包方法
         multiDexEnabled true
-
-        //Arouter路由配置
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [moduleName: project.getName()]
-//                includeCompileClasspath = true
-//            }
-//        }
-
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName()]
-//                includeCompileClasspath = true
-//            }
-//        }
-
-        //ARouter
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
-        }
-
     }
-
 //    signingConfigs {
 //        config {
 //            keyAlias 'amd'
@@ -58,7 +34,6 @@ android {
     buildTypes {
         debug {
 //            signingConfig signingConfigs.config
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -70,77 +45,82 @@ android {
     }
 
 
-}
 
-//configurations.all {
-//    resolutionStrategy.force "com.android.support:support-annotations:$android_configs.supportLibrary_version"
-//}
+
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'androidx.appcompat:appcompat:1.0.2'
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
-
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test:runner:1.1.1'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     //kotlin
-    api root_dependencies.kotlin
-    api root_dependencies.ktx
-    api root_dependencies.anko
-    api root_dependencies.anko_recyclerview
-    api root_dependencies.anko_recyclerview_corountines
+    implementation root_dependencies.kotlin
+    implementation "androidx.core:core-ktx:1.0.2"
+    implementation root_dependencies.anko
+    implementation root_dependencies.anko_recyclerview
+    implementation root_dependencies.anko_recyclerview_corountines
 
 
 //    implementation 'com.jakewharton:butterknife:8.8.1'
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //  retrofit+rxjava网络层
-    api root_dependencies.retrofit
-    api root_dependencies.retrofit_gson
-    api root_dependencies.retrofit_rxjava2
-    api root_dependencies.rxjava2_android
-    api root_dependencies.rxjava2
-    api root_dependencies.okhttp
-    api root_dependencies.okhttp_loginterceptor
+    implementation root_dependencies.retrofit
+    implementation root_dependencies.retrofit_gson
+    implementation root_dependencies.retrofit_rxjava2
+    implementation root_dependencies.rxjava2_android
+    implementation root_dependencies.rxjava2
+    implementation root_dependencies.okhttp
+    implementation root_dependencies.okhttp_loginterceptor
 
     //jetpack
-    kapt root_dependencies.lifecycle_kapt
-    kapt root_dependencies.room_kapt
 
     //lifecycle
-    api root_dependencies.lifecycle_ext
+    kapt           root_dependencies.lifecycle_kapt
+    implementation root_dependencies.lifecycle_ext
     //room
-    api root_dependencies.room
+    kapt           root_dependencies.room_kapt
+    implementation root_dependencies.room
+//    implementation root_dependencies.room_ktx
+
     //paging
-    api root_dependencies.paging
+    implementation root_dependencies.paging
     //navigation
-    api root_dependencies.navigation
-    api root_dependencies.navigation_ui
+    implementation root_dependencies.navigation
+    implementation root_dependencies.navigation_ui
     //workmanager
-    api root_dependencies.workmanager
+    implementation root_dependencies.workmanager
 
 
     //di
-    api root_dependencies.kodein
-    api root_dependencies.kodein_android
-    api root_dependencies.kodein_androidx
+    implementation root_dependencies.kodein
+    implementation root_dependencies.kodein_android
+    implementation root_dependencies.kodein_androidx
 
 
     //common
-    api root_dependencies.gson
-    api root_dependencies.timber
-    api root_dependencies.rxpermissions
+    implementation root_dependencies.gson
+    implementation root_dependencies.timber
+    implementation root_dependencies.rxpermissions
 
     //database
-    api root_dependencies.stetho
+    implementation root_dependencies.stetho
 
 
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0-beta01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha05'
+
+
+    debugImplementation root_dependencies.leakcanary
+
+//    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
 
 }
