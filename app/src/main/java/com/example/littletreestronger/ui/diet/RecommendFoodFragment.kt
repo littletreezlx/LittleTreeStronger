@@ -29,10 +29,13 @@ class RecommendFoodFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tv_rec.setText(
-            RecommendFoodFragmentArgs.fromBundle(
-                arguments!!
-            ).name)
+//        tv_rec.setText(
+//            RecommendFoodFragmentArgs.fromBundle(
+//                arguments!!
+//            ).name)
+
+
+
     }
 
 

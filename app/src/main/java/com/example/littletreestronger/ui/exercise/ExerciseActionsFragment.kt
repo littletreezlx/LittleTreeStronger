@@ -10,10 +10,10 @@ import com.example.littletreestronger.R
 import kotlinx.android.synthetic.main.fragment_exercise.*
 
 
-class ExerciseFragment : BaseFragment() {
+class ExerciseActionsFragment : BaseFragment() {
 
     companion object {
-        fun newInstance() = ExerciseFragment()
+        fun newInstance() = ExerciseActionsFragment()
     }
 
 //    private lateinit var viewModel: MainFragmentViewModel
@@ -22,7 +22,7 @@ class ExerciseFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_exercise, container, false)
+        val view =  inflater.inflate(R.layout.fragment_exercise_actions, container, false)
 
         return view
     }
@@ -31,17 +31,7 @@ class ExerciseFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_exercise_record.setOnClickListener {
-            it.findNavController().navigate(R.id.action_exerciseFragment_to_exerciseTimeFragment)
-        }
 
-        btn_exercise_plan_table.setOnClickListener {
-            it.findNavController().navigate(R.id.action_exerciseFragment_to_exercisePlanTableFragment)
-        }
-
-        btn_exercise_actions.setOnClickListener {
-            it.findNavController().navigate(R.id.action_exerciseFragment_to_exerciseActionsFragment)
-        }
 
     }
 

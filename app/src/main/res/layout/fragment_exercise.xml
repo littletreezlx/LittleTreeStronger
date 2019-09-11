@@ -19,6 +19,13 @@
             android:layout_height="100dp"
             android:text="exercise_plan_table"/>
 
+
+    <Button
+            android:id="@+id/btn_exercise_actions"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="exercise_actions"/>
+
     <Button
             android:id="@+id/btn_exercise_statistics"
             android:layout_width="match_parent"

@@ -12,6 +12,8 @@
     <color name="half_translucent">#80000000</color>
 
 
+    <color name="toolbar_background">#095f92</color>
+
 
 
 </resources>

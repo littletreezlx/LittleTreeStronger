@@ -18,8 +18,6 @@ import timber.log.Timber
 open class BaseApplication : Application(), KodeinAware{
 
 
-
-
     override val kodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApplication }
         import(androidXModule(this@BaseApplication))
@@ -30,7 +28,6 @@ open class BaseApplication : Application(), KodeinAware{
 
     private var application: BaseApplication? = null
 
-//    private var activityManage: ActivityManager? = null
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -53,8 +50,6 @@ open class BaseApplication : Application(), KodeinAware{
 //            return;
 //        }
 //        LeakCanary.
-
-
     }
 
 
@@ -74,7 +69,6 @@ open class BaseApplication : Application(), KodeinAware{
 //            Timber.plant(new CrashReportingTree());
 //        }
     }
-
 
 
     companion object {

@@ -6,12 +6,15 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+
+
+        >
 
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-    >
+            >
+
 
         <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appbar"
@@ -21,15 +24,12 @@
                 android:layout_alignParentTop="true"
         >
 
-            <androidx.appcompat.widget.Toolbar
+            <include
                     android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"/>
+                    layout="@layout/toolbar"
+                    />
 
         </com.google.android.material.appbar.AppBarLayout>
-
-
 
 
         <androidx.viewpager.widget.ViewPager
@@ -42,16 +42,6 @@
         </androidx.viewpager.widget.ViewPager>
 
 
-        <!--<fragment-->
-                <!--android:id="@+id/nav_host_fragment"-->
-                <!--android:name="androidx.navigation.fragment.NavHostFragment"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--app:defaultNavHost="true"-->
-                <!--app:navGraph="@navigation/navigation_exercise"-->
-
-        <!--/>-->
-
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigationview"
@@ -61,9 +51,8 @@
                 app:labelVisibilityMode="labeled"
                 android:layout_alignParentBottom="true"
         />
-
-
     </RelativeLayout>
+
 
     <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation_view"

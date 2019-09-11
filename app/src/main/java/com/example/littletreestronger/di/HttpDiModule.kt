@@ -1,5 +1,7 @@
 package com.example.littletreestronger.di
 
+import com.example.littletreestronger.base.BaseApplication
+import com.example.littletreestronger.data.AppDatabase
 import com.google.gson.Gson
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -54,7 +56,9 @@ val httpDiModule = Kodein.Module(HTTP_DI_MODULE){
     }
 
 
-
+    bind<AppDatabase>() with singleton {
+        AppDatabase.getInstance(BaseApplication.instance())
+    }
 
 
 

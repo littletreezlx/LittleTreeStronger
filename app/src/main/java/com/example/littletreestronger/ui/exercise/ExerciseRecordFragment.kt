@@ -8,8 +8,7 @@ import androidx.lifecycle.Observer
 import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ExerciseRecordAdapter
-import com.example.littletreestronger.data.model.ExerciseRecord
-import com.example.littletreestronger.viewmodel.ExerciseTimeViewModel
+import com.example.littletreestronger.viewmodel.ExerciseRecordViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_exercise_record.*
 import org.kodein.di.KodeinAware
@@ -18,28 +17,12 @@ import org.kodein.di.generic.instance
 
 
 //@Route(path = "/time/exercise")
-class ExerciseTimeFragment: BaseFragment(), KodeinAware{
+class ExerciseRecordFragment: BaseFragment(){
 
 
-    private val viewModel: ExerciseTimeViewModel by instance()
+    private val viewModel: ExerciseRecordViewModel by instance()
 
     private val gson: Gson by instance()
-
-//    override val kodein: Kodein = Kodein{
-//        extend(parentKodein, copy = Copy.All)
-//        import(exerciseTimeDiModule)
-//        bind<ExerciseTimeFragment>() with instance(this@ExerciseTimeFragment)
-//    }
-
-    override val kodein by kodein()
-
-
-//    private val parentKodein by kodein()
-//
-//    override val kodein: Kodein by subKodein {
-//        import(exerciseTimeDiModule)
-//        bind<MainActivity>() with instance(this@MainActivity)
-//    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

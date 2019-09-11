@@ -9,7 +9,9 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.littletreestronger.constants.DATABASE_NAME
 import com.example.littletreestronger.constants.ExerciseActionEnum
+import com.example.littletreestronger.data.dao.DietRecordDao
 import com.example.littletreestronger.data.dao.ExerciseRecordDao
+import com.example.littletreestronger.data.model.DietRecord
 import com.example.littletreestronger.data.model.ExerciseRecord
 import com.example.littletreestronger.util.runOnIoThread
 import org.jetbrains.anko.AnkoLogger
@@ -17,11 +19,14 @@ import org.jetbrains.anko.debug
 import kotlin.random.Random
 
 
-@Database(entities = [ExerciseRecord::class], version = 1, exportSchema = false)
+@Database(entities = [ExerciseRecord::class, DietRecord::class], version = 2, exportSchema = false)
 @TypeConverters(CalenderConverters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun exerciseRecordDao(): ExerciseRecordDao
+
+    abstract fun dietRecordDao(): DietRecordDao
+
 
     companion object {
         @Volatile private var instance: AppDatabase? = null

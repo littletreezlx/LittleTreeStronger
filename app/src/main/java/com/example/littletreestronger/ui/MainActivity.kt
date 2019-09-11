@@ -7,14 +7,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
-import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager
-import com.example.littletreestronger.base.BaseActivity
-import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ViewPagerAdapter
-import com.example.littletreestronger.di.exerciseTimeDiModule
+import com.example.littletreestronger.base.*
+import com.example.littletreestronger.di.dietTimeDiModule
+import com.example.littletreestronger.di.exerciseDiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,21 +30,23 @@ import org.kodein.di.generic.instance
 class MainActivity : BaseActivity(), KodeinAware {
 
 
-//    val instance by lazy { this }
-
-    companion object {
-        val s = this
-    }
-
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
     private val parentKodein by kodein()
 
+    override val kodein: Kodein by retainedKodein {
+        extend(parentKodein, copy = Copy.All)
+        import(exerciseDiModule)
+        import(dietTimeDiModule)
+        bind<MainActivity>() with instance(this@MainActivity)
+    }
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        setStatusBarColor(R.color.full_translucent)
         setContentView(R.layout.activity_main)
 
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
@@ -66,6 +68,15 @@ class MainActivity : BaseActivity(), KodeinAware {
                 }
             }
         })
+
+
+
+        setSupportActionBar(toolbar as Toolbar)
+        setStatusBarFullTransparent()
+
+
+//        steepStatusBar()
+//        setStatusBarColor(R.color.toolbar_background)
     }
 
 
@@ -77,14 +88,6 @@ class MainActivity : BaseActivity(), KodeinAware {
 //        NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
 
     }
-
-    override val kodein: Kodein by retainedKodein {
-        extend(parentKodein, copy = Copy.All)
-        import(exerciseTimeDiModule)
-        bind<MainActivity>() with instance(this@MainActivity)
-    }
-
-
 
 
     private val onBottomNavigationViewClickedListener = BottomNavigationView.OnNavigationItemSelectedListener {
@@ -177,6 +180,28 @@ class MainActivity : BaseActivity(), KodeinAware {
     }
 
 
+    private fun initToolbar() {
+//        setSupportActionBar(toolbar)
+
+
+        //        ActionMenuView actionMenuView = (ActionMenuView) toolbar.findViewById(R.id.action_menu_view);
+        //        getMenuInflater().inflate(R.menu.main_menu, actionMenuView.getMenu());
+        //        actionMenuView.setOnClickListener(new View.OnClickListener() {
+        //            @Override
+        //            public void onClick(View v) {
+        //                startActivity(new Intent(MainActivity.this, AMapDebugActivity.class));
+        //            }
+        //        });
+        //
+        //        actionMenuView.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
+        //            @Override
+        //            public boolean onMenuItemClick(MenuItem item) {
+        //                return false;
+        //            }
+        //        });
+
+        //        toolbar.showOverflowMenu();
+    }
 
 //    override fun onSupportNavigateUp() =
 //        findNavController(

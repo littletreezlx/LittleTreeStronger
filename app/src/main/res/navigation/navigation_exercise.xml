@@ -11,12 +11,27 @@
                 app:destination="@id/exerciseTimeFragment"/>
         <action android:id="@+id/action_exerciseFragment_to_exercisePlanTableFragment"
                 app:destination="@id/exercisePlanTableFragment"/>
+        <action
+                android:id="@+id/action_exerciseFragment_to_exerciseActionsFragment"
+                app:destination="@id/exerciseActionsFragment" />
     </fragment>
 
 
-    <fragment android:id="@+id/exerciseTimeFragment" android:name="com.example.littletreestronger.ui.exercise.ExerciseTimeFragment"
-              android:label="ExerciseTimeFragment"/>
+    <fragment android:id="@+id/exerciseTimeFragment" android:name="com.example.littletreestronger.ui.exercise.ExerciseRecordFragment"
+              android:label="ExerciseTimeFragment">
+        <action
+                android:id="@+id/action_exerciseTimeFragment_to_exerciseActionsFragment"
+                app:destination="@id/exerciseActionsFragment" />
+    </fragment>
     <fragment android:id="@+id/exercisePlanTableFragment"
               android:name="com.example.littletreestronger.ui.exercise.ExercisePlanTableFragment"
-              android:label="ExercisePlanTableFragment"/>
+              android:label="ExercisePlanTableFragment">
+        <action
+                android:id="@+id/action_exercisePlanTableFragment_to_exerciseActionsFragment"
+                app:destination="@id/exerciseActionsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/exerciseActionsFragment"
+            android:name="com.example.littletreestronger.ui.exercise.ExerciseActionsFragment"
+            android:label="ExerciseActionsFragment" />
 </navigation>

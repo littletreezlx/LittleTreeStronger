@@ -3,9 +3,14 @@ package com.example.littletreestronger.base
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
 
 
-open class BaseFragment : Fragment(){
+open class BaseFragment : Fragment(), KodeinAware {
+
+
+    override val kodein by kodein()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

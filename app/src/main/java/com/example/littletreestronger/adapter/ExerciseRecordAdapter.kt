@@ -3,6 +3,7 @@ package com.example.littletreestronger.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -52,15 +53,5 @@ class ExerciseRecordAdapter : PagedListAdapter<ExerciseRecord, ExerciseRecordAda
                 timesTv.text = it.times.toString()
             }
         }
-//        list.let {
-//            it[position].let {
-//                with(viewHolder) {
-//                    titleTv.text = it.title
-//                    weightTv.text = it.weight.toString()
-//                    timesTv.text = it.times.toString()
-//                }
-//            }
-//        }
-
     }
 }

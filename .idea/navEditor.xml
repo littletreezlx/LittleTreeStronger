@@ -274,17 +274,34 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="containerExerciseFragment">
+                  <entry key="exerciseActionsFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="65" />
+                            <option name="x" value="-1191" />
+                            <option name="y" value="1581" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="exerciseFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-2170" />
+                            <option name="y" value="235" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_exerciseFragment_to_exerciseActionsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_exerciseFragment_to_exercisePlanTableFragment">
                               <value>
                                 <LayoutPositions />
@@ -305,9 +322,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="292" />
-                            <option name="y" value="432" />
+                            <option name="x" value="-1776" />
+                            <option name="y" value="161" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_exercisePlanTableFragment_to_exerciseActionsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -317,9 +343,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="292" />
-                            <option name="y" value="12" />
+                            <option name="x" value="-1782" />
+                            <option name="y" value="-232" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_exerciseTimeFragment_to_exerciseActionsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

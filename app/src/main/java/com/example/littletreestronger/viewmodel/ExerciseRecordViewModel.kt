@@ -13,7 +13,7 @@ import org.jetbrains.anko.AnkoLogger
 import java.util.*
 import kotlin.random.Random
 
-class ExerciseTimeViewModel(
+class ExerciseRecordViewModel(
     private val repo: ExerciseRecordRepository
 ) : ViewModel(){
 

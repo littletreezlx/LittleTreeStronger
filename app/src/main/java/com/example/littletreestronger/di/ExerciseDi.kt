@@ -6,29 +6,23 @@ import com.example.littletreestronger.data.AppDatabase
 import com.example.littletreestronger.data.dao.ExerciseRecordDao
 import com.example.littletreestronger.data.repository.ExerciseRecordRepository
 import com.example.littletreestronger.ui.MainActivity
-import com.example.littletreestronger.viewmodel.ExerciseTimeViewModel
-import com.example.littletreestronger.viewmodel.ExerciseTimeViewModelFactory
+import com.example.littletreestronger.viewmodel.ExerciseRecordViewModel
+import com.example.littletreestronger.viewmodel.ExerciseRecordViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.android.ActivityRetainedScope
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.scoped
 import org.kodein.di.generic.singleton
+import java.util.Collections.singleton
 
 
-val EXERCISE_TIME_DI_MODULE = "exerciseTimeDiModule"
+val EXERCISE_TIME_DI_MODULE = "exerciseDiModule"
 
-val exerciseTimeDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
+val exerciseDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
 
-
-
-
-    bind<AppDatabase>() with singleton {
-        AppDatabase.getInstance(BaseApplication.instance())
-    }
 
     bind<ExerciseRecordDao>() with singleton {
-
         instance<AppDatabase>().exerciseRecordDao()
 //        (instance() as AppDatabase).exerciseRecordDao()
     }
@@ -39,10 +33,10 @@ val exerciseTimeDiModule = Kodein.Module(EXERCISE_TIME_DI_MODULE) {
     }
 
 
-    bind<ExerciseTimeViewModel>() with scoped(ActivityRetainedScope.MultiItem).singleton {
+    bind<ExerciseRecordViewModel>() with scoped(ActivityRetainedScope.MultiItem).singleton {
         ViewModelProviders
-            .of(context as MainActivity, ExerciseTimeViewModelFactory(instance()))
-            .get(ExerciseTimeViewModel::class.java)
+            .of(context as MainActivity, ExerciseRecordViewModelFactory(instance()))
+            .get(ExerciseRecordViewModel::class.java)
     }
 
 

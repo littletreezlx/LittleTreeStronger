@@ -48,26 +48,5 @@ data class ExerciseRecord(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var exerciseRecordId: Long = 0
-
-
-
-
-
-//    @ColumnInfo(name = "exercise_date")
-//    val date: Calendar = Calendar.getInstance().apply {
-//        set(this.get(Calendar.YEAR),
-//            date.get(Calendar.MONTH),
-//            date.get(Calendar.DAY_OF_MONTH)
-//        )
-//    }
-
 }
 
-fun createNewRecord() : ExerciseRecord =
-    ExerciseRecord(
-        ExerciseActionEnum.values().run {
-            this.get(this.size)
-        }.chineseName,
-        Random.nextInt(100),
-        Random.nextInt(12)
-    )
