@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.jetbrains.anko.AnkoLogger
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -61,10 +62,7 @@ val httpDiModule = Kodein.Module(HTTP_DI_MODULE){
     }
 
 
-
     //temp
 //    bind() with provider { Retrofit.Builder() }
-
-
 
 }

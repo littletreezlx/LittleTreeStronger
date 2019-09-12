@@ -4,8 +4,9 @@ package com.example.littletreestronger.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.littletreestronger.constants.ExerciseActionEnum
 import java.util.*
-
+import kotlin.random.Random
 
 
 @Entity(
@@ -62,6 +63,24 @@ data class DietRecord(
         val TYPE_MEAL_LUNCH = 1
         val TYPE_MEAL_DINNER = 2
         val TYPE_MEAL_EXTRA = 2
+
+        fun mockDietRecord() = DietRecord("牛奶",
+            Random.nextInt(200),
+            TYPE_MEAL_BREAKFAST,
+            Random.nextInt(200),
+            Random.nextInt(20),
+            Random.nextInt(20),
+            Random.nextInt(20)
+        )
+
+        fun mockDietRecord2() = DietRecord("鸡蛋",
+            Random.nextInt(200),
+            TYPE_MEAL_LUNCH,
+            Random.nextInt(200),
+            Random.nextInt(20),
+            Random.nextInt(20),
+            Random.nextInt(20)
+        )
     }
 }
 

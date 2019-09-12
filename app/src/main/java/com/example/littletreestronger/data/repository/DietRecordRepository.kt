@@ -24,8 +24,11 @@ class DietRecordRepository
     }
 
 
-    fun getDietRecordByDate(date: Calendar) =
-        DietRecordDao.getDietRecordByDate(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH))
+    fun getDietRecordByDate(date: Calendar) = DietRecordDao.getDietRecordByDate(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH))
+
+    fun getBreakfastDietRecordByDate(date: Calendar) = DietRecordDao.getBreakfastDietRecordByDate(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH))
+
+    fun getLunchDietRecordByDate(date: Calendar) = DietRecordDao.getLunchDietRecordByDate(date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH))
 
 
     companion object {

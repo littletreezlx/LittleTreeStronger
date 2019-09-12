@@ -48,5 +48,18 @@ data class ExerciseRecord(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var exerciseRecordId: Long = 0
+
+
+
+    companion object {
+        fun mockExerciseRecord() = ExerciseRecord(
+            ExerciseActionEnum.values().run {
+                get(Random.nextInt(this.size))
+            }.chineseName,
+            Random.nextInt(100),
+            Random.nextInt(12)
+        )
+    }
 }
+
 

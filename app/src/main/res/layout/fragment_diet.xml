@@ -71,23 +71,29 @@
                     android:orientation="horizontal">
 
                 <Button
-                        android:id="@+id/button15"
+                        android:id="@+id/btn_recommend_food"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Pending" />
+                        android:text="Recommend" />
+
+                <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TBD" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_diet_record"
+                    android:id="@+id/recyclerview_diet_record_breakfast"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-            <Button
-                    android:id="@+id/button16"
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_diet_record_lunch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+" />
+                    android:layout_height="match_parent" />
 
         </LinearLayout>
     </ScrollView>

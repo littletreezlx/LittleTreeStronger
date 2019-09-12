@@ -1,7 +1,6 @@
 package com.example.littletreestronger.data
 
 import android.content.Context
-import android.os.AsyncTask
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -42,55 +41,53 @@ abstract class AppDatabase : RoomDatabase() {
             val log = AnkoLogger(AppDatabase::class.java)
             log.debug("build database")
 
-            return Room.databaseBuilder(context, AppDatabase::class.java,
-                DATABASE_NAME
-            )
+            return Room
+                .databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                 .addCallback(object : RoomDatabase.Callback() {
+                    //第一次创建数据库时调用，但是在创建所有表之后调用的
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-//                        val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>().build()
-//                        WorkManager.getInstance().enqueue(request)
 
                         runOnIoThread {
                             instance?.let {
-                                val dao = it.exerciseRecordDao()
-                                val log = AnkoLogger(this.javaClass)
-                                log.debug("prepare database")
-                                //dangerous!!!
-                                dao.deleteAll()
-//            val record = ExerciseRecord(ExerciseActionEnum.YINGLA.chineseName, Random.nextInt(10))
-//            dao.insertExerciseRecord(record)
-                                dao.insertExerciseRecord(
-                                    ExerciseRecord(
-                                        ExerciseActionEnum.values().run {
-                                            get(Random.nextInt(this.size))
-                                        }.chineseName,
-                                        Random.nextInt(100),
-                                        Random.nextInt(12)
-                                    )
-                                )
+                                val exerciseRecordDao = it.exerciseRecordDao()
 
-                                dao.insertExerciseRecord(
-                                    ExerciseRecord(
-                                        ExerciseActionEnum.values().run {
-                                            get(Random.nextInt(this.size))
-                                        }.chineseName,
-                                        Random.nextInt(100),
-                                        Random.nextInt(12)
-                                    )
-                                )
+                                log.debug("first build database")
+                                exerciseRecordDao.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
+                                exerciseRecordDao.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
+
                             }
-
                         }
-//
-//                        PopulateDbAsync(instance!!)
-//                            .execute()
-
                     }
+
+                    //当数据库被打开时调用
+                    override fun onOpen(db: SupportSQLiteDatabase) {
+                        super.onOpen(db)
+                        log.debug("prepare database")
+
+                        runOnIoThread {
+                            instance?.let {
+                                val exerciseRecordDao = it.exerciseRecordDao()
+                                exerciseRecordDao.deleteAll()
+                                exerciseRecordDao.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
+                                exerciseRecordDao.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
+
+                                val dietRecordDao = it.dietRecordDao()
+                                dietRecordDao.deleteAll()
+                                dietRecordDao.insertDietRecord(DietRecord.mockDietRecord())
+                                dietRecordDao.insertDietRecord(DietRecord.mockDietRecord2())
+
+                            }
+                        }
+                    }
+
                 })
                 .build()
         }
     }
+
+
+
 
 
 //    private class PopulateDbAsync internal constructor(db: AppDatabase) : AsyncTask<Void, Void, Void>() {

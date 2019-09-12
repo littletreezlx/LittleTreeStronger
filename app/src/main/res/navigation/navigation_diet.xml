@@ -21,5 +21,12 @@
                 android:name="name"
                 app:argType="string"
                 android:defaultValue="default" />
+        <action
+                android:id="@+id/action_recommendFoodFragment_to_foodDetailFragment"
+                app:destination="@id/foodDetailFragment" />
     </fragment>
+    <fragment
+            android:id="@+id/foodDetailFragment"
+            android:name="com.example.littletreestronger.ui.diet.FoodDetailFragment"
+            android:label="FoodDetailFragment" />
 </navigation>

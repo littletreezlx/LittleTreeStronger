@@ -61,15 +61,7 @@ class ExerciseRecordViewModel(
 
     //test
      fun addExerciseRecords(){
-        repo.insertExerciseRecord(
-            ExerciseRecord(
-                ExerciseActionEnum.values().run {
-                    this.get(Random.nextInt(this.size))
-                }.chineseName,
-                Random.nextInt(100),
-                Random.nextInt(12)
-            )
-        )
+        repo.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
     }
 
 }

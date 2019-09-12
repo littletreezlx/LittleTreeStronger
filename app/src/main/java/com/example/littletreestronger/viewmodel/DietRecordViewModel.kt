@@ -24,18 +24,24 @@ class DietRecordViewModel(
         private const val ENABLE_PLACEHOLDERS = false
     }
 
+    val config = PagedList.Config.Builder()
+        .setPageSize(PAGE_SIZE)                         //配置分页加载的数量
+        .setEnablePlaceholders(ENABLE_PLACEHOLDERS)     //配置是否启动PlaceHolders
+        .setInitialLoadSizeHint(PAGE_SIZE)              //初始化加载的数量
+        .build()
 
     fun getDietRecords(): LiveData<PagedList<DietRecord>> {
-        val config = PagedList.Config.Builder()
-            .setPageSize(PAGE_SIZE)                         //配置分页加载的数量
-            .setEnablePlaceholders(ENABLE_PLACEHOLDERS)     //配置是否启动PlaceHolders
-            .setInitialLoadSizeHint(PAGE_SIZE)              //初始化加载的数量
-            .build()
-
         val records = LivePagedListBuilder(repo.getDietRecordByDate(Calendar.getInstance()), config).build()
         return records
     }
 
+    fun getBreakfastDietRecords(): LiveData<PagedList<DietRecord>> {
+        return LivePagedListBuilder(repo.getBreakfastDietRecordByDate(Calendar.getInstance()), config).build()
+    }
+
+    fun getLunchfastDietRecords(): LiveData<PagedList<DietRecord>> {
+        return LivePagedListBuilder(repo.getLunchDietRecordByDate(Calendar.getInstance()), config).build()
+    }
 
 
 

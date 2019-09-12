@@ -30,8 +30,17 @@ interface DietRecordDao {
 
     @Query("SELECT * FROM diet_record WHERE diet_year = :year And  diet_month = :month And  diet_day = :day ")
     fun getDietRecordByDate(year: Int, month: Int, day: Int): DataSource.Factory<Int, DietRecord>
-    
-    
+
+
+    @Query("SELECT * FROM diet_record WHERE diet_year = :year And  diet_month = :month And  diet_day = :day  And  meal_type = :mealtype")
+    fun getBreakfastDietRecordByDate(year: Int, month: Int, day: Int, mealtype : Int = DietRecord.TYPE_MEAL_BREAKFAST): DataSource.Factory<Int, DietRecord>
+
+    @Query("SELECT * FROM diet_record WHERE diet_year = :year And  diet_month = :month And  diet_day = :day  And  meal_type = :mealtype")
+    fun getLunchDietRecordByDate(year: Int, month: Int, day: Int, mealtype : Int = DietRecord.TYPE_MEAL_LUNCH): DataSource.Factory<Int, DietRecord>
+
+
+
+
     @Query("DELETE FROM diet_record")
     fun deleteAll()
 }

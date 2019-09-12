@@ -50,9 +50,10 @@ class DietRecordAdapter
     }
 
 
-    private fun getRecordItem(position: Int): DietRecord? {
-        return getItem(position - 1)
+    override fun getItem(position: Int): DietRecord? {
+        return super.getItem(position - 1)
     }
+
 
     override fun getItemCount(): Int {
         return super.getItemCount() + 2
@@ -118,4 +119,15 @@ class DietRecordAdapter
     fun bindFooter(viewHolder: ViewHolder, position: Int){
         val holder = viewHolder as FooterViewHolder
     }
+
+
+
+
+
+
+
+
+
+
+
 }
