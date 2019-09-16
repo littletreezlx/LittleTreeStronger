@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat.canScrollVertically
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,20 +54,53 @@ class DietFragment : BaseFragment() {
     }
 
     fun initRecyclerView(){
+
         val breakfastAdapter = DietRecordAdapter(DietRecord.TYPE_MEAL_BREAKFAST)
         recyclerview_diet_record_breakfast.adapter = breakfastAdapter
-        recyclerview_diet_record_breakfast.layoutManager = LinearLayoutManager(context)
+        recyclerview_diet_record_breakfast.layoutManager = object : LinearLayoutManager(context){
+            override  fun canScrollVertically() = false
+        }
         viewModel.getBreakfastDietRecords().observe(this, Observer{
             breakfastAdapter.submitList(it)
         })
+        recyclerview_diet_record_breakfast.setNestedScrollingEnabled(false)
+//        recyclerview_diet_record_breakfast.setFocusable(false)
+
 
         val lunchAdapter = DietRecordAdapter(DietRecord.TYPE_MEAL_LUNCH)
         recyclerview_diet_record_lunch.adapter = lunchAdapter
-        recyclerview_diet_record_lunch.layoutManager = LinearLayoutManager(context)
+        recyclerview_diet_record_lunch.layoutManager = object : LinearLayoutManager(context){
+            override  fun canScrollVertically() = false
+        }
         viewModel.getLunchfastDietRecords().observe(this, Observer{
             lunchAdapter.submitList(it)
         })
 
+
+
+        breakfastAdapter.setOnItemClickListener(object : DietRecordAdapter.OnItemClickListener{
+            override fun onHeaderClick(position: Int) {
+            }
+
+            override fun onBodyClick(position: Int) {
+            }
+
+            override fun onFooterClick(position: Int) {
+                viewModel.addDietRecords()
+            }
+        })
+
+
+////解决数据加载不完的问题
+//        recyclerView.setNestedScrollingEnabled(false);
+//        recyclerView.setHasFixedSize(true);
+////解决数据加载完成后, 没有停留在顶部的问题
+//        recyclerView.setFocusable(false);
+
     }
+
+
+
+
 
 }

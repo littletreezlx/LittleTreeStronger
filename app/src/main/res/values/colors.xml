@@ -12,6 +12,12 @@
     <color name="half_translucent">#80000000</color>
 
 
+    <color name="light_grey">#808080</color>
+    <color name="light_green">#05D175</color>
+    <color name="light_yellow">#FFEB3B</color>
+    <color name="light_red">#E1190B</color>
+
+
     <color name="toolbar_background">#095f92</color>
 
 

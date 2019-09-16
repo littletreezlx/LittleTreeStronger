@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PercentView">
+        <attr name="wordSize" format="integer"/>
+        <attr name="test" format="string"/>
+        <attr name="wordCorlor" format="integer"/>
+        <attr name="bgColor" format="color"/>
+
+    </declare-styleable>
+
+
+</resources>

@@ -44,6 +44,9 @@ class DietRecordViewModel(
     }
 
 
+    fun addDietRecords(){
+        repo.insertDietRecord(DietRecord.mockDietRecord())
+    }
 
 //    //test
 //     fun addExerciseRecords(){

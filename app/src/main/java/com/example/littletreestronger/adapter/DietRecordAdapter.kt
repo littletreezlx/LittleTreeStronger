@@ -9,6 +9,8 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.littletreestronger.data.model.DietRecord
+import com.example.littletreestronger.viewmodel.DietRecordViewModel
+import org.kodein.di.generic.instance
 
 
 class DietRecordAdapter
@@ -116,8 +118,48 @@ class DietRecordAdapter
         }
     }
 
+
     fun bindFooter(viewHolder: ViewHolder, position: Int){
         val holder = viewHolder as FooterViewHolder
+//        getItem(position)?.let {
+//            holder.run {
+//                addBtn.setOnClickListener {
+//
+//                }
+//            }
+//        }
+        holder.addBtn.setOnClickListener {
+            clickListener?.onFooterClick(position)
+        }
+    }
+
+
+
+    interface OnItemClickListener {
+        fun onHeaderClick(position: Int)
+
+        fun onBodyClick(position: Int)
+
+        fun onFooterClick(position: Int)
+
+    }
+
+    private var clickListener: OnItemClickListener? = null
+
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.clickListener = listener
+    }
+
+
+    interface OnItemLongClickListener {
+        fun onClick(position: Int)
+    }
+
+    private var longClickListener: OnItemLongClickListener? = null
+
+    fun setOnItemLongClickListener(longClickListener: OnItemLongClickListener) {
+        this.longClickListener = longClickListener
     }
 
 
