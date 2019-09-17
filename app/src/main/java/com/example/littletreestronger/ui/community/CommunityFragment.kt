@@ -32,7 +32,7 @@ class CommunityFragment : BaseFragment() {
 
 
 
-        percent_view.percent = 130
+//        percent_view.percent = 130
 //        percent_view.invalidate()
 
     }

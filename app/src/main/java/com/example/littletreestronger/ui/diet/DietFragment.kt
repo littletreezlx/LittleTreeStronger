@@ -12,10 +12,13 @@ import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.DietRecordAdapter
 import com.example.littletreestronger.data.model.DietRecord
+import com.example.littletreestronger.view.PercentView
 import com.example.littletreestronger.viewmodel.DietRecordViewModel
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_community.*
 import kotlinx.android.synthetic.main.fragment_diet.*
 import org.kodein.di.generic.instance
+import kotlin.random.Random
 
 
 class DietFragment : BaseFragment() {
@@ -51,6 +54,20 @@ class DietFragment : BaseFragment() {
 
 
         initRecyclerView()
+        other()
+
+    }
+
+
+    fun other(){
+        btn_set_target.setOnClickListener {
+
+            listOf<PercentView>(percent_view_calories, percent_view_protein, percent_view_fat, percent_view_carbohydrate).map {
+                it.percent = Random.nextInt(50) + 80
+                it.invalidate()
+            }
+        }
+
     }
 
     fun initRecyclerView(){

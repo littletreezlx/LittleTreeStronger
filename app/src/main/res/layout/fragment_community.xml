@@ -10,14 +10,6 @@
 
 
 
-    <com.example.littletreestronger.view.PercentView
-            android:id="@+id/percent_view"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            app:bgColor="@color/colorPrimary"
-        />
-
-
 
 
 </LinearLayout>

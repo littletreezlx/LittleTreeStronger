@@ -2,10 +2,8 @@
 <resources>
 
     <declare-styleable name="PercentView">
-        <attr name="wordSize" format="integer"/>
-        <attr name="test" format="string"/>
-        <attr name="wordCorlor" format="integer"/>
         <attr name="bgColor" format="color"/>
+        <attr name="title" format="string"/>
 
     </declare-styleable>
 
