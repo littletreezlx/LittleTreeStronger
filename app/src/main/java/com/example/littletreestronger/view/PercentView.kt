@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.graphics.*
+import android.view.ViewGroup
 import kotlin.math.*
 import com.example.littletreestronger.R
 import org.jetbrains.anko.attr
@@ -162,7 +163,6 @@ class PercentView@JvmOverloads constructor(context: Context, val attrs: Attribut
 
 
 
-
         val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.PercentView, defStyleAttr,0)
         val title = typedArray.getString(R.styleable.PercentView_title)
         typedArray.recycle()
@@ -172,6 +172,7 @@ class PercentView@JvmOverloads constructor(context: Context, val attrs: Attribut
             canvas?.drawText(title, centerX, baseline + 50, textPaint)
 
         }
+
     }
 
 

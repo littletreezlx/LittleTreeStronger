@@ -7,105 +7,161 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="119dp"
-            tools:layout_editor_absoluteY="263dp">
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="horizontal">
 
 
-                <com.example.littletreestronger.view.PercentView
-                        android:id="@+id/percent_view_calories"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        app:title="热量"
-                        />
+    <com.example.littletreestronger.view.PercentView
+            android:id="@+id/percent_view_calories"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
 
-                <Button
-                        android:id="@+id/btn_set_target"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="set_target" />
-            </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.5"
+            app:title="热量" />
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="horizontal">
+    <Button
+            android:id="@+id/btn_set_target"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="set_target"
+            app:layout_constraintBottom_toBottomOf="@+id/percent_view_calories"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/percent_view_calories"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                <com.example.littletreestronger.view.PercentView
-                        android:id="@+id/percent_view_protein"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        app:title="蛋白质"
-                        />
 
-                <com.example.littletreestronger.view.PercentView
-                        android:id="@+id/percent_view_fat"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        app:title="脂肪"
-                        />
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="224dp" />
 
-                <com.example.littletreestronger.view.PercentView
-                        android:id="@+id/percent_view_carbohydrate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        app:title="碳水"
-                        />
 
-            </LinearLayout>
+    <com.example.littletreestronger.view.PercentView
+            android:id="@+id/percent_view_protein"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/percent_view_fat"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
 
-                <Button
-                        android:id="@+id/btn_recommend_food"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Recommend" />
+            app:layout_constraintTop_toBottomOf="@id/percent_view_calories"
+            app:layout_constraintVertical_bias="0.0"
+            app:title="蛋白质" />
 
-                <Button
-                        android:id="@+id/button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TBD" />
-            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_diet_record_breakfast"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+    <com.example.littletreestronger.view.PercentView
+            android:id="@+id/percent_view_fat"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/percent_view_protein"
 
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_diet_record_lunch"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/percent_view_carbohydrate"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/percent_view_protein"
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+            app:layout_constraintTop_toTopOf="@id/percent_view_protein"
+            app:layout_constraintVertical_bias="0.0"
+            app:title="脂肪" />
+
+
+    <com.example.littletreestronger.view.PercentView
+            android:id="@+id/percent_view_carbohydrate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1"
+
+            app:layout_constraintTop_toTopOf="@id/percent_view_protein"
+            app:layout_constraintStart_toEndOf="@id/percent_view_fat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/percent_view_protein"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"
+            app:title="碳水" />
+
+
+    <Button
+            android:id="@+id/btn_recommend_food"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="Recommend"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_tbd"
+            app:layout_constraintHeight_percent="0.1"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/percent_view_protein"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    <Button
+            android:id="@+id/btn_tbd"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="TBD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.1"
+
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/btn_recommend_food"
+            app:layout_constraintTop_toTopOf="@+id/btn_recommend_food"
+
+            app:layout_constraintVertical_bias="0.0"
+
+            />
+
+
+
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_diet_record_breakfast"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            app:layout_constraintTop_toBottomOf="@id/btn_recommend_food"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview_diet_record_lunch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+    />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_diet_record_lunch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            app:layout_constraintTop_toBottomOf="@id/recyclerview_diet_record_breakfast"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.littletreestronger.ui.diet
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.littletreestronger.viewmodel.DietRecordViewModel
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_community.*
 import kotlinx.android.synthetic.main.fragment_diet.*
+import org.jetbrains.anko.windowManager
 import org.kodein.di.generic.instance
 import kotlin.random.Random
 
@@ -56,6 +58,10 @@ class DietFragment : BaseFragment() {
         initRecyclerView()
         other()
 
+//        Handler().postDelayed()
+
+
+
     }
 
 
@@ -67,6 +73,8 @@ class DietFragment : BaseFragment() {
                 it.invalidate()
             }
         }
+
+        traversalViews()
 
     }
 
@@ -117,6 +125,27 @@ class DietFragment : BaseFragment() {
     }
 
 
+
+    fun traversalViews(){
+
+        val handler1 = Handler(Handler.Callback {
+            println("1")
+            true
+        })
+        handler1.post {
+            println("post")
+        }
+
+
+        val handler2 = Handler(Handler.Callback {
+            println("2")
+            true
+        })
+    }
+
+    fun testInSampleSize(){
+
+    }
 
 
 
