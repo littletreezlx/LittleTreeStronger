@@ -119,6 +119,11 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha05'
 
 
+    implementation root_dependencies.glide
+    kapt root_dependencies.glide_kapt
+
+
+
     debugImplementation root_dependencies.leakcanary
 
 //    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'

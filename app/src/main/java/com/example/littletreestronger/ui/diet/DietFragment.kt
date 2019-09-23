@@ -60,20 +60,16 @@ class DietFragment : BaseFragment() {
 
 //        Handler().postDelayed()
 
-
-
     }
 
 
     fun other(){
         btn_set_target.setOnClickListener {
-
             listOf<PercentView>(percent_view_calories, percent_view_protein, percent_view_fat, percent_view_carbohydrate).map {
                 it.percent = Random.nextInt(50) + 80
                 it.invalidate()
             }
         }
-
         traversalViews()
 
     }

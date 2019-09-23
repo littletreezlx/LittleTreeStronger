@@ -8,10 +8,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.jetbrains.anko.AnkoLogger
 import org.kodein.di.Kodein
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.singleton
+import org.kodein.di.generic.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -57,12 +54,22 @@ val httpDiModule = Kodein.Module(HTTP_DI_MODULE){
     }
 
 
+
+
+    bind<Retrofit>() with factory {url : String ->
+        instance<Retrofit.Builder>()
+            .baseUrl(url)
+            .client(instance())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+
     bind<AppDatabase>() with singleton {
         AppDatabase.getInstance(BaseApplication.instance())
     }
 
 
-    //temp
-//    bind() with provider { Retrofit.Builder() }
 
 }
