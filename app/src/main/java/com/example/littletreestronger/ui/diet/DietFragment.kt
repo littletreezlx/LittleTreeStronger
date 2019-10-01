@@ -2,6 +2,8 @@ package com.example.littletreestronger.ui.diet
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_community.*
 import kotlinx.android.synthetic.main.fragment_diet.*
 import org.jetbrains.anko.windowManager
 import org.kodein.di.generic.instance
+import timber.log.Timber
 import kotlin.random.Random
 
 
@@ -124,19 +127,40 @@ class DietFragment : BaseFragment() {
 
     fun traversalViews(){
 
+
+
         val handler1 = Handler(Handler.Callback {
-            println("1")
+            Timber.d("MyHandler___1___%s___%s",it.what,Thread.currentThread().name)
             true
         })
-        handler1.post {
-            println("post")
-        }
+
+//        handler1.sendMessage(Message().also {
+//            it.what = 111
+//        })
+
+//        handler1.post {
+//            Timber.d("MyHandler___post")
+//        }
 
 
-        val handler2 = Handler(Handler.Callback {
-            println("2")
-            true
-        })
+        Thread(Runnable {
+            Looper.prepare()
+            val handler2 = Handler(Handler.Callback {
+                Timber.d("MyHandler___2___%s___%s",it.what,Thread.currentThread().name)
+                true
+            })
+            handler1.sendEmptyMessage(2)
+            handler2.sendEmptyMessage(2)
+
+            Looper.loop()
+
+
+        }).start()
+
+
+
+
+
     }
 
     fun testInSampleSize(){

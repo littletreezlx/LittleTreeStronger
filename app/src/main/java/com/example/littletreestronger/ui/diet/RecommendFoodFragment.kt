@@ -40,6 +40,11 @@ class RecommendFoodFragment : BaseFragment() {
         }
 
 
+
+//        fragmentManager.beginTransaction().add()
+//        fragmentManager.beginTransaction().replace()
+
+
     }
 
 

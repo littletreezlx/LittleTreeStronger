@@ -15,6 +15,7 @@ import com.example.littletreestronger.data.model.ExerciseRecord
 import com.example.littletreestronger.util.runOnIoThread
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.debug
+import timber.log.Timber
 import kotlin.random.Random
 
 
@@ -38,8 +39,10 @@ abstract class AppDatabase : RoomDatabase() {
 
 
         private fun buildDatabase(context: Context): AppDatabase {
-            val log = AnkoLogger(AppDatabase::class.java)
-            log.debug("build database")
+//            val log = AnkoLogger(AppDatabase::class.java)
+//            log.debug("build database")
+//
+            Timber.d("build database")
 
             return Room
                 .databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
@@ -52,7 +55,7 @@ abstract class AppDatabase : RoomDatabase() {
                             instance?.let {
                                 val exerciseRecordDao = it.exerciseRecordDao()
 
-                                log.debug("first build database")
+                                Timber.d("first build database")
                                 exerciseRecordDao.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
                                 exerciseRecordDao.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
 
@@ -63,7 +66,7 @@ abstract class AppDatabase : RoomDatabase() {
                     //当数据库被打开时调用
                     override fun onOpen(db: SupportSQLiteDatabase) {
                         super.onOpen(db)
-                        log.debug("prepare database")
+                        Timber.d("prepare database")
 
                         runOnIoThread {
                             instance?.let {

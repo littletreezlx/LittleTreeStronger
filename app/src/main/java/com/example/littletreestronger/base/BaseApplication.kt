@@ -17,6 +17,10 @@ import timber.log.Timber
 
 open class BaseApplication : Application(), KodeinAware{
 
+    companion object {
+        private var instance: Application? = null
+        fun instance() = instance!!
+    }
 
     override val kodein: Kodein = Kodein.lazy {
         bind<Context>() with singleton { this@BaseApplication }
@@ -71,10 +75,6 @@ open class BaseApplication : Application(), KodeinAware{
     }
 
 
-    companion object {
-        private var instance: Application? = null
-        fun instance() = instance!!
-    }
 
     fun isDebug(context: Context): Boolean {
         return context.applicationInfo != null && context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
