@@ -3,7 +3,6 @@ package com.example.littletreestronger.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -40,7 +39,7 @@ class ExerciseRecordAdapter : PagedListAdapter<ExerciseRecord, ExerciseRecordAda
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseRecordViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_exercise_record, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.exercise_recycle_item_record, parent, false)
         return ExerciseRecordViewHolder(view)
     }
 

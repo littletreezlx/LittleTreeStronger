@@ -10,9 +10,7 @@ import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ExerciseRecordAdapter
 import com.example.littletreestronger.viewmodel.ExerciseRecordViewModel
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_exercise_record.*
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
+import kotlinx.android.synthetic.main.exercise_fragment_record.*
 import org.kodein.di.generic.instance
 
 
@@ -35,7 +33,7 @@ class ExerciseRecordFragment: BaseFragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_exercise_record, container, false)
+        val view = inflater.inflate(R.layout.exercise_fragment_record, container, false)
 
         return view
     }

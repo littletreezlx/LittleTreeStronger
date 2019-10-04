@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
-import kotlinx.android.synthetic.main.fragment_diet_recommend.*
+import kotlinx.android.synthetic.main.diet_fragment_recommend.*
 
 
 class RecommendFoodFragment : BaseFragment() {
@@ -22,7 +22,7 @@ class RecommendFoodFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_diet_recommend, container, false)
+        val view =  inflater.inflate(R.layout.diet_fragment_recommend, container, false)
         return view
     }
 

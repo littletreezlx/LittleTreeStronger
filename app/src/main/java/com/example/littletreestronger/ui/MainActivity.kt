@@ -17,7 +17,7 @@ import com.example.littletreestronger.di.dietTimeDiModule
 import com.example.littletreestronger.di.exerciseDiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tbruyelle.rxpermissions2.RxPermissions
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity.*
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -47,7 +47,7 @@ class MainActivity : BaseActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
 
 //        setStatusBarColor(R.color.full_translucent)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.main_activity)
 
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewpager.adapter = viewPagerAdapter

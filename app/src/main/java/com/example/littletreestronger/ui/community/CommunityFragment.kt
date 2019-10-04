@@ -7,16 +7,8 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
-import com.example.littletreestronger.util.BingRetrofitRequest
-import com.example.littletreestronger.view.PercentView
-import com.example.littletreestronger.viewmodel.DietRecordViewModel
 import com.google.gson.Gson
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_community.*
-import org.kodein.di.Factory
-import org.kodein.di.generic.factory
+import kotlinx.android.synthetic.main.community_fragment.*
 import org.kodein.di.generic.instance
 import retrofit2.Retrofit
 
@@ -36,7 +28,7 @@ class CommunityFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_community, container, false)
+        val view =  inflater.inflate(R.layout.community_fragment, container, false)
         return view
     }
 

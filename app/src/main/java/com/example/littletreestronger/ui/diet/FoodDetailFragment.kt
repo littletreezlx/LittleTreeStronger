@@ -4,16 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
-import com.example.littletreestronger.adapter.DietRecordAdapter
-import com.example.littletreestronger.data.model.DietRecord
 import com.example.littletreestronger.viewmodel.DietRecordViewModel
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_diet.*
+import kotlinx.android.synthetic.main.main_activity.*
 import org.kodein.di.generic.instance
 
 
@@ -32,7 +27,7 @@ class FoodDetailFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_diet_food_detail, container, false)
+        val view =  inflater.inflate(R.layout.diet_fragment_food_detail, container, false)
         return view
     }
 

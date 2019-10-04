@@ -21,7 +21,7 @@
             android:layout_marginRight="16dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".ExerciseRecordListFragment"
-            tools:listitem="@layout/item_exercise_record"
+            tools:listitem="@layout/exercise_recycle_item_record"
             android:layout_alignParentTop="true"
     />
 

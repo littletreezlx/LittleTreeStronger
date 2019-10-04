@@ -1,6 +1,8 @@
 package com.example.littletreestronger.base
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.view.*
@@ -12,9 +14,41 @@ import org.jetbrains.anko.displayMetrics
 import android.view.WindowManager
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+import kotlin.math.min
+import kotlin.math.round
 
 
+//UI
 
+fun Context.getCompressedBitmap(resId: Int, reqHeight: Int, reqWidth: Int):  Bitmap {
+    val options = BitmapFactory.Options()
+    options.inJustDecodeBounds = true
+    BitmapFactory.decodeResource(resources, resId, options)
+
+    options.inSampleSize = calculateInSampleSize(options, reqHeight, reqWidth)
+    options.inJustDecodeBounds
+    return  BitmapFactory.decodeResource(resources, resId, options)
+}
+
+fun calculateInSampleSize(options: BitmapFactory.Options, reqHeight: Int, reqWidth: Int): Int{
+    val height = options.outHeight
+    val width = options.outWidth
+    var inSampleSize = 1
+    if (height > reqHeight || width > reqWidth) {
+        val heightRatio = round(height.toFloat() / reqHeight.toFloat())
+        val widthRatio = round(width.toFloat() / reqWidth.toFloat())
+        inSampleSize = min(heightRatio, widthRatio).toInt()
+
+        //计算原始图片总像素
+        val totalPixels = width * height
+        //所需总像素*2,长和宽的根号2倍
+        val totalReqPixelsCap = reqWidth * reqHeight * 2
+        //如果遇到很长，或者是很宽的图片时，这个算法比较有用 
+        while (totalPixels / (inSampleSize * inSampleSize) > totalReqPixelsCap)
+            inSampleSize++
+    }
+    return inSampleSize
+}
 
 
 fun Context.getScreenWidthPx(): Int {

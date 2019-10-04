@@ -9,8 +9,6 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.littletreestronger.data.model.DietRecord
-import com.example.littletreestronger.viewmodel.DietRecordViewModel
-import org.kodein.di.generic.instance
 
 
 class DietRecordAdapter
@@ -35,9 +33,9 @@ class DietRecordAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return when (viewType) {
-            TYPE_HEADER -> HeaderViewHolder(LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.item_diet_record_header, parent, false))
-            TYPE_FOOTER -> FooterViewHolder(LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.item_diet_record_footer, parent, false))
-            else -> ItemViewHolder(LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.item_diet_record_body, parent, false))
+            TYPE_HEADER -> HeaderViewHolder(LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.diet_recycle_item_record_header, parent, false))
+            TYPE_FOOTER -> FooterViewHolder(LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.diet_recycle_item_record_footer, parent, false))
+            else -> ItemViewHolder(LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.diet_recycle_item_record_body, parent, false))
         }
 //        return DietRecordViewHolder(view)
     }

@@ -9,7 +9,7 @@ import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ExercisePlanTableAdapter
 import com.example.littletreestronger.viewmodel.ExercisePlanViewModel
-import kotlinx.android.synthetic.main.fragment_exercise_plan_table.*
+import kotlinx.android.synthetic.main.exercise_fragment_plan_table.*
 
 
 class ExercisePlanTableFragment : BaseFragment() {
@@ -28,7 +28,7 @@ class ExercisePlanTableFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_exercise_plan_table, container, false)
+        val view =  inflater.inflate(R.layout.exercise_fragment_plan_table, container, false)
 
         return view
     }

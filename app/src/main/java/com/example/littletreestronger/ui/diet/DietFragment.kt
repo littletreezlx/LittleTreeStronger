@@ -3,11 +3,9 @@ package com.example.littletreestronger.ui.diet
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat.canScrollVertically
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,9 +16,7 @@ import com.example.littletreestronger.data.model.DietRecord
 import com.example.littletreestronger.view.PercentView
 import com.example.littletreestronger.viewmodel.DietRecordViewModel
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_community.*
-import kotlinx.android.synthetic.main.fragment_diet.*
-import org.jetbrains.anko.windowManager
+import kotlinx.android.synthetic.main.diet_fragment.*
 import org.kodein.di.generic.instance
 import timber.log.Timber
 import kotlin.random.Random
@@ -41,7 +37,7 @@ class DietFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_diet, container, false)
+        val view =  inflater.inflate(R.layout.diet_fragment, container, false)
 
         return view
     }
@@ -63,6 +59,9 @@ class DietFragment : BaseFragment() {
 
 //        Handler().postDelayed()
 
+
+
+        btn_recommend_food.invalidate(1,2,3,4)
     }
 
 
@@ -76,6 +75,7 @@ class DietFragment : BaseFragment() {
         traversalViews()
 
     }
+
 
     fun initRecyclerView(){
 

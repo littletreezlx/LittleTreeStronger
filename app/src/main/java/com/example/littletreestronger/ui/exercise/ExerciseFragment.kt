@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.littletreestronger.base.BaseFragment
 import com.example.littletreestronger.R
-import kotlinx.android.synthetic.main.fragment_exercise.*
+import kotlinx.android.synthetic.main.exercise_fragment.*
 
 
 class ExerciseFragment : BaseFragment() {
@@ -22,7 +22,7 @@ class ExerciseFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_exercise, container, false)
+        val view =  inflater.inflate(R.layout.exercise_fragment, container, false)
 
         return view
     }

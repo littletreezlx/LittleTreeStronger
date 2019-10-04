@@ -20,7 +20,7 @@ class ContainerExerciseFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_container_exercise, container, false)
+        val view =  inflater.inflate(R.layout.exercise_fragment_container, container, false)
 
         return view
     }

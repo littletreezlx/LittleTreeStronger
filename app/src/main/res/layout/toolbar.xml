@@ -18,7 +18,7 @@
             android:id="@+id/leftentry_btn"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/main_leftentry"
+            android:background="@drawable/main_toolbar_left_icon"
 
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="15dp"
@@ -42,7 +42,7 @@
             android:id="@+id/rightentry_btn"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/main_rightentry"
+            android:background="@drawable/main_toolbar_right_icon"
 
             android:layout_alignParentRight="true"
             android:layout_marginRight="23dp"

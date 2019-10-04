@@ -20,7 +20,7 @@ class MyselfFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_myself, container, false)
+        val view =  inflater.inflate(R.layout.myself_fragment, container, false)
 
 
         val i =1

@@ -24,7 +24,7 @@ class ExercisePlanTableAdapter
         val viewHolder: ViewHolder
         if (convertView == null) {
             viewHolder = ViewHolder()
-            convertView = LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.item_exercise_plan_table, null)
+            convertView = LayoutInflater.from(parent.context).inflate(com.example.littletreestronger.R.layout.exercise_recycle_item_plan, null)
             viewHolder.title = convertView!!.findViewById(com.example.littletreestronger.R.id.item_tv_plan_name) as TextView
             convertView.tag = viewHolder
 
