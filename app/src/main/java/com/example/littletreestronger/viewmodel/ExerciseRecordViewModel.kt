@@ -5,13 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.example.littletreestronger.constants.ExerciseActionEnum
-import com.example.littletreestronger.data.AppDatabase
 import com.example.littletreestronger.data.model.ExerciseRecord
 import com.example.littletreestronger.data.repository.ExerciseRecordRepository
 import org.jetbrains.anko.AnkoLogger
 import java.util.*
-import kotlin.random.Random
 
 class ExerciseRecordViewModel(
     private val repo: ExerciseRecordRepository

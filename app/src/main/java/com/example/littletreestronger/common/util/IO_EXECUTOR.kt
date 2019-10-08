@@ -1,4 +1,4 @@
-package com.example.littletreestronger.util
+package com.example.littletreestronger.common.util
 
 import java.util.concurrent.Executors
 

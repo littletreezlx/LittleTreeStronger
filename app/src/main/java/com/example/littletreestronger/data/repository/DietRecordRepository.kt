@@ -1,6 +1,6 @@
 package com.example.littletreestronger.data.repository
 
-import com.example.littletreestronger.util.runOnIoThread
+import com.example.littletreestronger.common.util.runOnIoThread
 import com.example.littletreestronger.data.dao.DietRecordDao
 import com.example.littletreestronger.data.model.DietRecord
 import java.util.*

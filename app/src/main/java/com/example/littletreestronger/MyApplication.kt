@@ -1,7 +1,6 @@
 package com.example.littletreestronger
 
-import com.example.littletreestronger.base.BaseApplication
-import com.example.littletreestronger.ui.MainActivity
+import com.example.littletreestronger.common.base.BaseApplication
 
 
 class MyApplication : BaseApplication(){

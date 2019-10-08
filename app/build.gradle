@@ -52,7 +52,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test:runner:1.1.1'
@@ -60,7 +60,7 @@ dependencies {
 
     //kotlin
     implementation root_dependencies.kotlin
-    implementation "androidx.core:core-ktx:1.0.2"
+    implementation "androidx.core:core-ktx:1.1.0"
     implementation root_dependencies.anko
     implementation root_dependencies.anko_recyclerview
     implementation root_dependencies.anko_recyclerview_corountines
@@ -72,9 +72,11 @@ dependencies {
     //  retrofit+rxjava网络层
     implementation root_dependencies.retrofit
     implementation root_dependencies.retrofit_gson
-    implementation root_dependencies.retrofit_rxjava2
-    implementation root_dependencies.rxjava2_android
-    implementation root_dependencies.rxjava2
+
+//    implementation root_dependencies.retrofit_rxjava2
+//    implementation root_dependencies.rxjava2_android
+//    implementation root_dependencies.rxjava2
+
     implementation root_dependencies.okhttp
     implementation root_dependencies.okhttp_loginterceptor
 
@@ -116,15 +118,19 @@ dependencies {
 
 //    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
 
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha05'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
 
 
     implementation root_dependencies.glide
     kapt root_dependencies.glide_kapt
+    implementation root_dependencies.glide_transformations
 
 
 
     debugImplementation root_dependencies.leakcanary
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
+
 
 //    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
 

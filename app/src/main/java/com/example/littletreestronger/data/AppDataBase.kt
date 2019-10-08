@@ -6,17 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.littletreestronger.constants.DATABASE_NAME
-import com.example.littletreestronger.constants.ExerciseActionEnum
+import com.example.littletreestronger.common.constants.DATABASE_NAME
 import com.example.littletreestronger.data.dao.DietRecordDao
 import com.example.littletreestronger.data.dao.ExerciseRecordDao
 import com.example.littletreestronger.data.model.DietRecord
 import com.example.littletreestronger.data.model.ExerciseRecord
-import com.example.littletreestronger.util.runOnIoThread
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.debug
+import com.example.littletreestronger.common.util.runOnIoThread
 import timber.log.Timber
-import kotlin.random.Random
 
 
 @Database(entities = [ExerciseRecord::class, DietRecord::class], version = 2, exportSchema = false)

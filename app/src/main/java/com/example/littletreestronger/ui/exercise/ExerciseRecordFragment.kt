@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import com.example.littletreestronger.base.BaseFragment
+import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ExerciseRecordAdapter
 import com.example.littletreestronger.viewmodel.ExerciseRecordViewModel

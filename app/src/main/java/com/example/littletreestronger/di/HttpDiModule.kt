@@ -1,16 +1,19 @@
 package com.example.littletreestronger.di
 
-import com.example.littletreestronger.base.BaseApplication
+import SSLSocketClient
+import com.bumptech.glide.Glide
+import com.bumptech.glide.GlideBuilder
+import com.bumptech.glide.load.engine.cache.LruResourceCache
+import com.example.littletreestronger.common.base.BaseApplication
+import com.example.littletreestronger.common.util.getSLLContext
 import com.example.littletreestronger.data.AppDatabase
 import com.google.gson.Gson
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.jetbrains.anko.AnkoLogger
 import org.kodein.di.Kodein
 import org.kodein.di.generic.*
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -34,6 +37,8 @@ val httpDiModule = Kodein.Module(HTTP_DI_MODULE){
 
     bind<OkHttpClient>() with singleton {
         instance<OkHttpClient.Builder>()
+            .sslSocketFactory(SSLSocketClient().getSSLSocketFactory())//配置
+            .hostnameVerifier(SSLSocketClient().getHostnameVerifier())//配
             .connectTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
             .readTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
             .addInterceptor(instance(HTTP_DI_MODULE_LOG_TAG))
@@ -44,23 +49,33 @@ val httpDiModule = Kodein.Module(HTTP_DI_MODULE){
     //retrofit
     bind<Retrofit.Builder>() with provider { Retrofit.Builder() }
 
-    bind<Retrofit>() with singleton {
-        instance<Retrofit.Builder>()
-            .baseUrl(BASE_URL)
-            .client(instance())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
 
 
+//    bind<Retrofit>() with singleton {
+//        instance<Retrofit.Builder>()
+//            .baseUrl(BASE_URL)
+//            .client(instance())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//    }
 
 
-    bind<Retrofit>() with factory {url : String ->
+//    bind<Retrofit>(tag = "DnD10") with multiton {url : String ->
+//        instance<Retrofit.Builder>()
+//            .baseUrl(url)
+//            .client(instance())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//    }
+
+    bind<Retrofit>() with multiton {url : String ->
         instance<Retrofit.Builder>()
             .baseUrl(url)
             .client(instance())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

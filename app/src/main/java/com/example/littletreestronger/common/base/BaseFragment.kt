@@ -1,35 +1,42 @@
-package com.example.littletreestronger.base
+package com.example.littletreestronger.common.base
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import timber.log.Timber
+import kotlin.coroutines.CoroutineContext
 
 
+open class BaseFragment : Fragment(), KodeinAware, CoroutineScope {
 
 
+    val job = Job()
 
-open class BaseFragment : Fragment(), KodeinAware {
-
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
     override val kodein by kodein()
 
 //    private val TAG = this.javaClass.name
 
-    private val TAG by lazy {
+     val TAG by lazy {
         this.javaClass.name + "___LifeCycle___"
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
-
         Timber.d("%sonAttach",TAG)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +84,7 @@ open class BaseFragment : Fragment(), KodeinAware {
 
     override fun onDestroy() {
         super.onDestroy()
+        job.cancel()
         Timber.d("%sonDestroy",TAG)
     }
 

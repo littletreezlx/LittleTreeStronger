@@ -1,10 +1,8 @@
-package com.example.littletreestronger.base
+package com.example.littletreestronger.common.base
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import timber.log.Timber
-import java.util.logging.Logger
 
 
 open class BaseActivity : AppCompatActivity(){

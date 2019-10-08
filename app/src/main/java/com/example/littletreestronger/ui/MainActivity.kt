@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ViewPagerAdapter
-import com.example.littletreestronger.base.*
+import com.example.littletreestronger.common.base.*
 import com.example.littletreestronger.di.dietTimeDiModule
 import com.example.littletreestronger.di.exerciseDiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -121,20 +121,23 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 
     fun requestPermissions(){
-        RxPermissions(this)
-            .requestEach(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_PHONE_STATE
-            )
-            .subscribe { permission ->
-                if (permission.granted) {
-                    //agree
-//                    onGranted()
-                } else {
-                    showDialog(permission.name)
-                }
-            }
+
+//        RxPermissions(this)
+//            .requestEach(
+//                Manifest.permission.ACCESS_FINE_LOCATION,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                Manifest.permission.READ_PHONE_STATE
+//            )
+//            .subscribe { permission ->
+//                if (permission.granted) {
+//                    //agree
+////                    onGranted()
+//                } else {
+//                    showDialog(permission.name)
+//                }
+//            }
+
+
 //            .subscribe(new Consumer<Permission>() {
 //                @Override
 //                public void accept(Permission permission) throws Exception {

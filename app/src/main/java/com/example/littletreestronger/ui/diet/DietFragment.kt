@@ -9,8 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.littletreestronger.base.BaseFragment
-import com.example.littletreestronger.R
+import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.adapter.DietRecordAdapter
 import com.example.littletreestronger.data.model.DietRecord
 import com.example.littletreestronger.view.PercentView
@@ -20,6 +19,7 @@ import kotlinx.android.synthetic.main.diet_fragment.*
 import org.kodein.di.generic.instance
 import timber.log.Timber
 import kotlin.random.Random
+import com.example.littletreestronger.ui.CommentDialogFragment
 
 
 class DietFragment : BaseFragment() {
@@ -37,7 +37,7 @@ class DietFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.diet_fragment, container, false)
+        val view =  inflater.inflate(com.example.littletreestronger.R.layout.diet_fragment, container, false)
 
         return view
     }
@@ -71,9 +71,12 @@ class DietFragment : BaseFragment() {
                 it.percent = Random.nextInt(50) + 80
                 it.invalidate()
             }
-        }
-        traversalViews()
 
+            val s = CommentDialogFragment()
+            s.show(fragmentManager!!, "dialog")
+        }
+
+        traversalViews()
     }
 
 
@@ -100,8 +103,6 @@ class DietFragment : BaseFragment() {
             lunchAdapter.submitList(it)
         })
 
-
-
         breakfastAdapter.setOnItemClickListener(object : DietRecordAdapter.OnItemClickListener{
             override fun onHeaderClick(position: Int) {
             }
@@ -113,8 +114,6 @@ class DietFragment : BaseFragment() {
                 viewModel.addDietRecords()
             }
         })
-
-
 ////解决数据加载不完的问题
 //        recyclerView.setNestedScrollingEnabled(false);
 //        recyclerView.setHasFixedSize(true);
@@ -125,8 +124,11 @@ class DietFragment : BaseFragment() {
 
 
 
-    fun traversalViews(){
 
+
+
+
+    fun traversalViews(){
 
 
         val handler1 = Handler(Handler.Callback {

@@ -3,7 +3,7 @@ package com.example.littletreestronger.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.littletreestronger.constants.ExerciseActionEnum
+import com.example.littletreestronger.common.constants.ExerciseActionEnum
 import java.util.*
 import kotlin.random.Random
 

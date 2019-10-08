@@ -1,7 +1,6 @@
 package com.example.littletreestronger.di
 
 import androidx.lifecycle.ViewModelProviders
-import com.example.littletreestronger.base.BaseApplication
 import com.example.littletreestronger.data.AppDatabase
 import com.example.littletreestronger.data.dao.ExerciseRecordDao
 import com.example.littletreestronger.data.repository.ExerciseRecordRepository
@@ -14,7 +13,6 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.scoped
 import org.kodein.di.generic.singleton
-import java.util.Collections.singleton
 
 
 val EXERCISE_TIME_DI_MODULE = "exerciseDiModule"
