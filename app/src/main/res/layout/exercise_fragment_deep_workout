@@ -1,0 +1,98 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/layout_deep_workout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+    <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Rest"
+            android:textSize="30dp"
+            app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintDimensionRatio="1"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintVertical_bias="0.5"
+            />
+
+
+
+    <EditText
+            android:id="@+id/edt_set_time"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintWidth_percent="0.5"
+
+            app:layout_constraintBottom_toTopOf="@+id/spinner_timer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            />
+
+
+
+<!--    <Button-->
+<!--            android:id="@+id/btn_set_time_confirm"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:text="Set"-->
+<!--            android:background="@color/full_translucent"-->
+<!--            app:layout_constraintWidth_percent="0.2"-->
+<!--            app:layout_constraintDimensionRatio="1"-->
+
+
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            />-->
+
+
+
+    <Spinner
+            android:id="@+id/spinner_timer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="45sp"
+            android:textAlignment="center"
+            android:entries="@array/deep_workout_timer"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintWidth_percent="0.5"
+
+            app:layout_constraintBottom_toTopOf="@+id/spinner_tone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            />
+
+
+    <Spinner
+            android:id="@+id/spinner_tone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="45sp"
+            android:textAlignment="center"
+            android:entries="@array/deep_workout_tone"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintWidth_percent="0.5"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

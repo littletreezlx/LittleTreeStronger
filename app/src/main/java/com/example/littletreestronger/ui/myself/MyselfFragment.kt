@@ -1,11 +1,17 @@
 package com.example.littletreestronger.ui.myself
 
 import android.os.Bundle
+import android.os.Looper
+import android.util.SparseIntArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.R
+import com.example.littletreestronger.ui.diet.DietFragmentDirections
+import kotlinx.android.synthetic.main.diet_fragment.*
+import kotlin.concurrent.thread
 
 
 class MyselfFragment : BaseFragment() {
@@ -27,6 +33,14 @@ class MyselfFragment : BaseFragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+
+        thread {
+            Looper.prepare()
+            Looper.loop()
+        }.start()
+    }
 
 }

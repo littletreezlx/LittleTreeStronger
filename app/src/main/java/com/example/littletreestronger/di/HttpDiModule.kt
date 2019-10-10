@@ -31,6 +31,7 @@ val httpDiModule = Kodein.Module(HTTP_DI_MODULE){
     //okhttp
     bind<OkHttpClient.Builder>() with singleton { OkHttpClient.Builder() }
 
+    //log Interceptor
     bind<Interceptor>(HTTP_DI_MODULE_LOG_TAG) with singleton {
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }

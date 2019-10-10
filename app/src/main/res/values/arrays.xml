@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="deep_workout_tone">
+        <item>华语</item>
+        <item>流行</item>
+        <item>摇滚</item>
+    </string-array>
+
+
+    <string-array name="deep_workout_timer">
+        <item>alarm</item>
+        <item>seekbar</item>
+        <item>awesome</item>
+    </string-array>
+
+
+
+</resources>
