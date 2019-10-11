@@ -1,35 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_main_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
->
+        >
 
-    <Button
-            android:id="@+id/btn_exercise_record"
+
+    <GridView
+            android:id="@+id/gridview"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="exercise_record"/>
+            android:layout_height="match_parent"
+            android:numColumns="auto_fit"
+            android:horizontalSpacing="20dp"
+            android:verticalSpacing="20dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            >
+    </GridView>
 
-    <Button
-            android:id="@+id/btn_exercise_plan_table"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="exercise_plan_table"/>
 
+    <!--无法使图标对齐中间，而且在大块按钮的小间隙中加入图标有一些不协调，暂取消，在首次启动中提示可左右滑动以代替。-->
+    <!--<Button-->
+    <!--android:id="@+id/button_left_arrow"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/left_arrow"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--/>-->
 
-    <Button
-            android:id="@+id/btn_exercise_actions"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="exercise_actions"/>
+    <!--<Button-->
+    <!--android:id="@+id/button_right_arrow"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/right_arrow"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--/>-->
 
-    <Button
-            android:id="@+id/btn_exercise_statistics"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="exercise_statistics"/>
 
 </LinearLayout>
+
+
+
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        >-->
+<!--    <GridView-->
+<!--            android:id="@+id/gridview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:horizontalSpacing="20dp"-->
+<!--            android:numColumns="3"-->
+<!--            android:stretchMode="columnWidth"-->
+<!--            android:verticalSpacing="20dp"-->
+
+
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHeight_percent="1"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.0"-->
+<!--            app:layout_constraintWidth_percent="1" />-->
+
+<!--    &lt;!&ndash;    android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+

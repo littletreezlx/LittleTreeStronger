@@ -40,7 +40,7 @@ class MyselfFragment : BaseFragment() {
         thread {
             Looper.prepare()
             Looper.loop()
-        }.start()
+        }
     }
 
 }

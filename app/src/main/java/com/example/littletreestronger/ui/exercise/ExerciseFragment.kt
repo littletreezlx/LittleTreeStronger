@@ -4,10 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.GridView
+import androidx.core.view.get
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.R
+import com.example.littletreestronger.adapter.ExerciseGridViewAdapter
 import kotlinx.android.synthetic.main.exercise_fragment.*
+import org.jetbrains.anko.support.v4.find
 
 
 class ExerciseFragment : BaseFragment() {
@@ -16,13 +22,14 @@ class ExerciseFragment : BaseFragment() {
         fun newInstance() = ExerciseFragment()
     }
 
-//    private lateinit var viewModel: MainFragmentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view =  inflater.inflate(R.layout.exercise_fragment, container, false)
+
+
 
         return view
     }
@@ -31,21 +38,60 @@ class ExerciseFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_exercise_record.setOnClickListener {
-            it.findNavController().navigate(R.id.action_exerciseFragment_to_exerciseTimeFragment)
+        val titles = arrayOf("Deep Workout", "Run", "Plan", "Record", "Actions")
+        val images = intArrayOf(
+            R.drawable.error,
+            R.drawable.ic_dashboard_black_24dp,
+            R.drawable.apple,
+            R.drawable.ic_home_black_24dp,
+            R.drawable.ic_home_black_24dp
+
+        )
+        val onclick = arrayOf(
+            ::onClickDeepWorkOut,
+            ::onClickRun,
+            ::onClickPlan,
+            ::onClickRecord,
+            ::onClickActions
+        )
+
+        val adapter = ExerciseGridViewAdapter(context!!, titles, images)
+        gridview.adapter = adapter
+        gridview.setOnItemClickListener { parent, view, position, id ->
+            onclick[position].invoke()
         }
 
-        btn_exercise_plan_table.setOnClickListener {
-            it.findNavController().navigate(R.id.action_exerciseFragment_to_exercisePlanTableFragment)
-        }
+        adapter.notifyDataSetChanged()
 
-        btn_exercise_actions.setOnClickListener {
-            it.findNavController().navigate(R.id.action_exerciseFragment_to_exerciseActionsFragment)
-        }
+
+        val a =adapter.getItem(0)
+        val b =adapter.getItem(3)
+        gridview.invalidate()
 
     }
 
 
+
+    private fun onClickDeepWorkOut(){
+        findNavController().navigate(R.id.action_exerciseFragment_to_deepWorkoutFragment)
+    }
+
+
+    private fun onClickRun(){
+    //
+    }
+
+    private fun onClickPlan(){
+        findNavController().navigate(R.id.action_exerciseFragment_to_exercisePlanTableFragment)
+    }
+
+    private fun onClickRecord(){
+        findNavController().navigate(R.id.action_exerciseFragment_to_exerciseTimeFragment)
+    }
+
+    private fun onClickActions(){
+        findNavController().navigate(R.id.action_exerciseFragment_to_exerciseActionsFragment)
+    }
 
 
 }

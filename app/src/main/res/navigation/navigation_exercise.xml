@@ -14,6 +14,9 @@
         <action
                 android:id="@+id/action_exerciseFragment_to_exerciseActionsFragment"
                 app:destination="@id/exerciseActionsFragment" />
+        <action
+                android:id="@+id/action_exerciseFragment_to_deepWorkoutFragment"
+                app:destination="@id/deepWorkoutFragment" />
     </fragment>
 
 
@@ -34,4 +37,8 @@
             android:id="@+id/exerciseActionsFragment"
             android:name="com.example.littletreestronger.ui.exercise.ExerciseActionsFragment"
             android:label="ExerciseActionsFragment" />
+    <fragment
+            android:id="@+id/deepWorkoutFragment"
+            android:name="com.example.littletreestronger.ui.exercise.DeepWorkoutFragment"
+            android:label="DeepWorkoutFragment" />
 </navigation>

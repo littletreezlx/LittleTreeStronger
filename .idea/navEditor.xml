@@ -295,13 +295,25 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="deepWorkoutFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1550" />
+                            <option name="y" value="-625" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="exerciseActionsFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-1191" />
-                            <option name="y" value="1581" />
+                            <option name="x" value="-1523" />
+                            <option name="y" value="749" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -318,6 +330,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_exerciseFragment_to_deepWorkoutFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_exerciseFragment_to_exerciseActionsFragment">
                               <value>
                                 <LayoutPositions />
