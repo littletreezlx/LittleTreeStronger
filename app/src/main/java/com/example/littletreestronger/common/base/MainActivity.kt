@@ -1,6 +1,5 @@
-package com.example.littletreestronger.ui
+package com.example.littletreestronger
 
-import android.Manifest
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -10,13 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager
-import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ViewPagerAdapter
 import com.example.littletreestronger.common.base.*
 import com.example.littletreestronger.di.dietTimeDiModule
 import com.example.littletreestronger.di.exerciseDiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.main_activity.*
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
@@ -44,6 +41,8 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.BaseTheme)
+
         super.onCreate(savedInstanceState)
 
 //        setStatusBarColor(R.color.full_translucent)
@@ -51,6 +50,8 @@ class MainActivity : BaseActivity(), KodeinAware {
 
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewpager.adapter = viewPagerAdapter
+        viewpager.offscreenPageLimit = 4
+
         bottom_navigationview.setOnNavigationItemSelectedListener(onBottomNavigationViewClickedListener)
         requestPermissions()
 
@@ -113,9 +114,7 @@ class MainActivity : BaseActivity(), KodeinAware {
                 false
             }
         }
-
 //        navigation.getMenu().getItem(position).getItemId());
-
 //        false
     }
 
