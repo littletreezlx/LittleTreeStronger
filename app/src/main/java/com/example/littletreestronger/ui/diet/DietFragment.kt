@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.adapter.DietRecordAdapter
+import com.example.littletreestronger.common.AopOnclick
 import com.example.littletreestronger.data.model.DietRecord
 import com.example.littletreestronger.view.PercentView
 import com.example.littletreestronger.viewmodel.DietRecordViewModel
@@ -62,21 +63,25 @@ class DietFragment : BaseFragment() {
 
 
         btn_recommend_food.invalidate(1,2,3,4)
+
+
+        Thread.sleep(30000)
     }
 
 
     fun other(){
-        btn_set_target.setOnClickListener {
+
+        btn_set_target.setOnClickListener@AopOnclick(1000)
+        {
             listOf<PercentView>(percent_view_calories, percent_view_protein, percent_view_fat, percent_view_carbohydrate).map {
                 it.percent = Random.nextInt(50) + 80
                 it.invalidate()
             }
 
-            val s = CommentDialogFragment()
-            s.show(fragmentManager!!, "dialog")
+//            val s = CommentDialogFragment()
+//            s.show(fragmentManager!!, "dialog")
         }
 
-        traversalViews()
     }
 
 
@@ -122,52 +127,6 @@ class DietFragment : BaseFragment() {
 
     }
 
-
-
-
-
-
-
-    fun traversalViews(){
-
-
-        val handler1 = Handler(Handler.Callback {
-            Timber.d("MyHandler___1___%s___%s",it.what,Thread.currentThread().name)
-            true
-        })
-
-//        handler1.sendMessage(Message().also {
-//            it.what = 111
-//        })
-
-//        handler1.post {
-//            Timber.d("MyHandler___post")
-//        }
-
-
-        Thread(Runnable {
-            Looper.prepare()
-            val handler2 = Handler(Handler.Callback {
-                Timber.d("MyHandler___2___%s___%s",it.what,Thread.currentThread().name)
-                true
-            })
-            handler1.sendEmptyMessage(2)
-            handler2.sendEmptyMessage(2)
-
-            Looper.loop()
-
-
-        }).start()
-
-
-
-
-
-    }
-
-    fun testInSampleSize(){
-
-    }
 
 
 

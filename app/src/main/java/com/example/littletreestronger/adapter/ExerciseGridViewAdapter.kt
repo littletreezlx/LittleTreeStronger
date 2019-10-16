@@ -51,18 +51,15 @@ class ExerciseGridViewAdapter(
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val viewHolder: ViewHolder
-        val resultConvertView: View
+        var viewHolder: ViewHolder
+        var resultConvertView = convertView
 
-        if (convertView == null) {
+        if (resultConvertView == null) {
             resultConvertView = LayoutInflater.from(parent?.context).inflate(R.layout.exercise_grid_item, parent, false)
             viewHolder = ViewHolder(resultConvertView)
             resultConvertView.tag = viewHolder
-        } else {
-            resultConvertView = convertView
-            viewHolder = resultConvertView.tag as ViewHolder
         }
-
+        viewHolder = resultConvertView?.tag as ViewHolder
         prepareViewHolder(viewHolder, position)
         return resultConvertView
     }

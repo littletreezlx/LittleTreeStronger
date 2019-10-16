@@ -30,68 +30,68 @@ open class BaseFragment : Fragment(), KodeinAware, CoroutineScope {
 
      val TAG by lazy {
         this.javaClass.name + "___LifeCycle___"
-    }
+     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Timber.d("%sonAttach",TAG)
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Timber.d("%sonCreate",TAG)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        Timber.d("%sonCreateView",TAG)
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Timber.d("%sonViewCreated",TAG)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Timber.d("%sonStart",TAG)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.d("%sonResume",TAG)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.d("%sonPause",TAG)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.d("%sonStop",TAG)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.d("%sonDestroyView",TAG)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        job.cancel()
-        Timber.d("%sonDestroy",TAG)
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Timber.d("%sonDetach",TAG)
-    }
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        Timber.d("$TAG onAttach")
+//    }
+//
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        Timber.d("$TAG onCreate")
+//    }
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        Timber.d("$TAG onCreateView")
+//        return super.onCreateView(inflater, container, savedInstanceState)
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        Timber.d("$TAG onViewCreated")
+//    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//        Timber.d("$TAG onStart")
+//    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//        Timber.d("$TAG onResume")
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        Timber.d("$TAG onPause")
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        Timber.d("$TAG onStop")
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        Timber.d("$TAG onDestroyView")
+//    }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        job.cancel()
+//        Timber.d("$TAG onDestroy")
+//    }
+//
+//    override fun onDetach() {
+//        super.onDetach()
+//        Timber.d("$TAG onDetach")
+//    }
 
 
 

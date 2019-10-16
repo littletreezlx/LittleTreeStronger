@@ -19,6 +19,7 @@ import com.google.gson.Gson
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.community_fragment.*
 import kotlinx.coroutines.*
+import org.jetbrains.anko.imageResource
 import org.kodein.di.Factory
 import org.kodein.di.bindings.Multiton
 import org.kodein.di.generic.factory
@@ -45,6 +46,8 @@ class CommunityFragment : BaseFragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        val s=iv.imageResource
 
 
         btn_add_Image.setOnClickListener {

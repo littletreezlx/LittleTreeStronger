@@ -7,14 +7,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.littletreestronger.common.base.BaseFragment
 import android.widget.Spinner
-import com.example.littletreestronger.R
 import kotlinx.android.synthetic.main.exercise_fragment_deep_workout.*
 import android.widget.AdapterView
-import android.R
-import com.facebook.stetho.common.LogUtil
-import android.R
-
-
+import timber.log.Timber
 
 
 class DeepWorkoutFragment : BaseFragment() {
@@ -55,14 +50,7 @@ class DeepWorkoutFragment : BaseFragment() {
 
         spinner.setOnItemSelectedListener(object:AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent:AdapterView<*>, view:View, pos:Int, id:Long) {
-
-                LogUtil.i(
-                    "onItemSelected : parent.id=" + parent.id +
-                            ",isSpinnerId=" + (parent.id == com.example.littletreestronger.R.id.spinner_1) +
-                            ",viewid=" + view.id + ",pos=" + pos + ",id=" + id
-                )
-
-
+                Timber.d("onItemSelected: viewid=" + view.id + ",pos=" + pos + ",id=" + id)
             }
             override fun onNothingSelected(parent:AdapterView<*>) {
             }

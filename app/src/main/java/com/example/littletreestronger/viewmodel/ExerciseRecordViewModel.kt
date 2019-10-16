@@ -49,7 +49,7 @@ class ExerciseRecordViewModel(
 ////        if (exerciseRecords.value == null){
 ////            exerciseRecords = MutableLiveData()
 ////        }
-////        exerciseRecords.value!!.add(ExerciseRecord("a",0))
+////        exerciseRecords.value!!.add(ExerciseRecord("TestAnnotation",0))
 //    }
 
 

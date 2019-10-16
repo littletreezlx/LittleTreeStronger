@@ -7,40 +7,41 @@ import timber.log.Timber
 
 open class BaseActivity : AppCompatActivity(){
 
+
+    val TAG by lazy {
+        this.javaClass.name + "___LifeCycle___"
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        BaseApplication.instance().getActivityManage().addActivity(this)
-
-
-
-        Timber.d("onCreste")
+        Timber.d("$TAG onCreste")
     }
 
 
     override fun onStart() {
         super.onStart()
-        Timber.d("onStart")
+        Timber.d("$TAG onStart")
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.d("onResume")
+        Timber.d("$TAG onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Timber.d("onPause")
+        Timber.d("$TAG onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Timber.d("onStop")
+        Timber.d("$TAG onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.d("onDestroy")
-//        BaseApplication.getApplication()!!.getActivityManage().removeActivityty(this)
+        Timber.d("$TAG onDestroy")
     }
 
 

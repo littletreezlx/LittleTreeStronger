@@ -1,4 +1,4 @@
-package com.example.littletreestronger
+package com.example.littletreestronger.common.base
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager
+import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ViewPagerAdapter
-import com.example.littletreestronger.common.base.*
 import com.example.littletreestronger.di.dietTimeDiModule
 import com.example.littletreestronger.di.exerciseDiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView

@@ -1,8 +1,7 @@
-package com.example.littletreestronger
+package com.example.littletreestronger.common.base
 
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.example.littletreestronger.common.base.BaseApplication
 
 
 class MyApplication : BaseApplication(){

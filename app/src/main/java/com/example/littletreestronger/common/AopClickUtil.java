@@ -3,6 +3,10 @@ package com.example.littletreestronger.common;
 import android.os.SystemClock;
 import android.view.View;
 
+import java.util.Timer;
+
+import timber.log.Timber;
+
 public class AopClickUtil {
     /**
      * 最近一次点击的时间
@@ -13,14 +17,14 @@ public class AopClickUtil {
      */
     private static int mLastClickViewId;
 
-    /**
-     * 是否是快速点击
-     *
-     * @param v  点击的控件
-     * @param intervalMillis  时间间期（毫秒）
-     * @return  true:是，false:不是
-     */
+
+    private static String s ="1";
+
+
     public static boolean isFastDoubleClick(View v, long intervalMillis) {
+
+        Timber.d("点击间隔: %s", intervalMillis);
+        Timber.d(AopOnclick.class.getPackage().getName());
         int viewId = v.getId();
 //        long time = System.currentTimeMillis();
         long time = SystemClock.elapsedRealtime();

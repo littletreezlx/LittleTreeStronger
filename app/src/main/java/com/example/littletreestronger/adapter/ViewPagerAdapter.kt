@@ -8,7 +8,7 @@ import com.example.littletreestronger.ui.diet.ContainerDietFragment
 import com.example.littletreestronger.ui.exercise.ContainerExerciseFragment
 import com.example.littletreestronger.ui.myself.ContainerMyselfFragment
 
-class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private lateinit var topFragment: Fragment
 

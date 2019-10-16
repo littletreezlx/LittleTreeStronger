@@ -11,6 +11,7 @@ import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.R
 import com.example.littletreestronger.ui.diet.DietFragmentDirections
 import kotlinx.android.synthetic.main.diet_fragment.*
+import kotlinx.android.synthetic.main.myself_fragment.*
 import kotlin.concurrent.thread
 
 
@@ -37,10 +38,7 @@ class MyselfFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        thread {
-            Looper.prepare()
-            Looper.loop()
-        }
+//        tv_myself_test.requestLayout()
     }
 
 }

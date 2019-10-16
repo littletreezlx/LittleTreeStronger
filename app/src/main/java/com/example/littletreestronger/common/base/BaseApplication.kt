@@ -31,19 +31,11 @@ open class BaseApplication : Application(), KodeinAware{
     private var application: BaseApplication? = null
 
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        application = this
-        //MultiDex分包方法 必须最先初始化
-//        MultiDex.install(this)
-    }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
-        //log
         initLogger()
-        //database
         initStetho()
 //
 //        if (LeakCanary.isInAnalyzerProcess(this)) {//1
@@ -71,7 +63,6 @@ open class BaseApplication : Application(), KodeinAware{
 //            Timber.plant(new CrashReportingTree());
 //        }
     }
-
 
 
     fun isDebug(context: Context): Boolean {

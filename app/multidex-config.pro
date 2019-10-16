@@ -1,1 +1,1 @@
--keep class com.example.** { *; } // All classes in the com.example package
+-keep class com.example.** { *; }

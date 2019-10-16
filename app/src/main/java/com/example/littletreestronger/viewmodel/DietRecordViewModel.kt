@@ -12,6 +12,9 @@ class DietRecordViewModel(
     private val repo: DietRecordRepository
 ) : ViewModel(){
 
+
+
+
     companion object {
         private const val PAGE_SIZE = 15
         private const val ENABLE_PLACEHOLDERS = false

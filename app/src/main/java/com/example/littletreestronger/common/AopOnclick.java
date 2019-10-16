@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface TestAOP {
+public @interface AopOnclick {
 
     /**
      * 点击间隔时间

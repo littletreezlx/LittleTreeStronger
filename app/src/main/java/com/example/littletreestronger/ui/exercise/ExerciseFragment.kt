@@ -29,8 +29,6 @@ class ExerciseFragment : BaseFragment() {
     ): View? {
         val view =  inflater.inflate(R.layout.exercise_fragment, container, false)
 
-
-
         return view
     }
 

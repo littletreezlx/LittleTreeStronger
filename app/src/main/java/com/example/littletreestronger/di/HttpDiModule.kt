@@ -5,7 +5,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.GlideBuilder
 import com.bumptech.glide.load.engine.cache.LruResourceCache
 import com.example.littletreestronger.common.base.BaseApplication
-import com.example.littletreestronger.common.util.getSLLContext
 import com.example.littletreestronger.data.AppDatabase
 import com.google.gson.Gson
 import okhttp3.Interceptor

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.littletreestronger.MyApplication
+import com.example.littletreestronger.common.base.MyApplication
 
 
 class ExercisePlanViewModel() : AndroidViewModel(MyApplication.instance as Application){
@@ -21,8 +21,12 @@ class ExercisePlanViewModel() : AndroidViewModel(MyApplication.instance as Appli
         exercisePlanNameList.value?.let {
             it.add(planName)
         }
+
+
+
     }
 
 
 
+    fun String.compareTo(){}
 }
