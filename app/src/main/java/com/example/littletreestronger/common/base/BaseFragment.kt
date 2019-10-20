@@ -16,13 +16,13 @@ import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
 
-open class BaseFragment : Fragment(), KodeinAware, CoroutineScope {
+open class BaseFragment : Fragment(), KodeinAware {
 
 
-    val job = Job()
+//    val job = Job()
 
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + job
+//    override val coroutineContext: CoroutineContext
+//        get() = Dispatchers.Main + job
 
     override val kodein by kodein()
 

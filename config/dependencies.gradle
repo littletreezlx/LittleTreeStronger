@@ -37,11 +37,11 @@ ext {
             okhttp_version = "3.10.0",
 
             //jetpack
-            lifecycle_version = "2.0.0",
-            room_version = "2.0.0",
-            navigation_version = "1.0.0",
+            lifecycle_version = "2.2.0-beta01",
+            room_version = "2.2.0",
+            navigation_version = "2.2.0-beta01",
             paging_version = "2.1.0",
-            work_version = "1.0.0",
+            work_version = "2.2.0",
 
 
 
@@ -92,8 +92,10 @@ ext {
 
             //jetpack
             //lifecycle
+            lifecycle_viewmodel     : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
             lifecycle_kapt          : "androidx.lifecycle:lifecycle-compiler:$lifecycle_version",
             lifecycle_ext           : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
+            lifecycle_test          : "androidx.arch.core:core-testing:$lifecycle_version",
             //room
             room_kapt               : "androidx.room:room-compiler:$room_version",
             room                    : "androidx.room:room-runtime:$room_version",
@@ -101,10 +103,11 @@ ext {
             //paging
             paging                  : "androidx.paging:paging-runtime-ktx:$paging_version",
             //navigation
-            navigation              : "android.arch.navigation:navigation-fragment-ktx:$navigation_version",
-            navigation_ui           : "android.arch.navigation:navigation-ui-ktx:$navigation_version",
+            navigation              : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            navigation_ui           : "androidx.navigation:navigation-ui-ktx:$navigation_version",
+
             //workmanager
-            workmanager             : "android.arch.work:work-runtime-ktx:$work_version",
+            workmanager             : "androidx.work:work-runtime-ktx:$work_version",
 
 
             //di

@@ -1,6 +1,5 @@
 package com.example.littletreestronger.viewmodel
 
-import org.bouncycastle.asn1.x500.style.RFC4519Style.description
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement

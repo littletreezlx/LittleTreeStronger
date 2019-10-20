@@ -48,8 +48,6 @@ class CommunityFragment : BaseFragment(){
         super.onViewCreated(view, savedInstanceState)
 
 //        val s=iv.imageResource
-
-
         btn_add_Image.setOnClickListener {
 //            Glide.with(this)
 //                .load("104.199.227.200:22/images/random")
@@ -57,13 +55,12 @@ class CommunityFragment : BaseFragment(){
 //                .error(R.drawable.error)
 //                .centerCrop()
 //                .into(iv)
-            launch(Dispatchers.IO) {
-                val image = getImage()
-                withContext(Dispatchers.Main){
-                    showImage(image)
-                }
-            }
-
+//            launch(Dispatchers.IO) {
+//                val image = getImage()
+//                withContext(Dispatchers.Main){
+//                    showImage(image)
+//                }
+//            }
         }
     }
 

@@ -1,5 +1,5 @@
 def android_configs = rootProject.ext.android_configs
-def root_dependencies = rootProject.ext.dependencies
+def libs = rootProject.ext.dependencies
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -70,6 +70,11 @@ android {
         enabledForTests = true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 
@@ -110,42 +115,59 @@ afterEvaluate {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Core library
-    androidTestImplementation 'androidx.test:core:1.2.0'
+    // Dependencies for local unit tests
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.mockito:mockito-core:3.1.0"
+    testImplementation "org.hamcrest:hamcrest-all:1.3"
+//    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
+    testImplementation "org.robolectric:robolectric:4.3.1"
+    testImplementation "androidx.test.espresso:espresso-core:3.2.0"
+    testImplementation "androidx.test.espresso:espresso-contrib:3.2.0"
+    testImplementation "androidx.test.espresso:espresso-intents:3.2.0"
+    testImplementation "com.google.truth:truth:1.0"
+// AndroidX Test - JVM testing
+    testImplementation "androidx.test:core-ktx:1.2.0"
+    testImplementation "androidx.test.ext:junit-ktx:1.1.1"
+    testImplementation "androidx.test:rules:1.2.0"
 
+
+    // Dependencies for Android unit tests
+    androidTestImplementation "junit:junit:4.12"
+//    androidTestImplementation "org.mockito:mockito-core:3.1.0"
+    //tbd
+//    androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:$dexMakerVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
+    // AndroidX Test - Instrumented testing
+    androidTestImplementation "androidx.test:core-ktx:1.2.0"
     // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
-
-    // Assertions
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.ext:truth:1.2.0'
-    androidTestImplementation 'com.google.truth:truth:1.0'
-
-    // Espresso dependencies
+    androidTestImplementation "androidx.test.ext:junit-ktx:1.1.1"
+//    androidTestImplementation 'androidx.test.ext:truth:1.2.0'
+//    androidTestImplementation 'com.google.truth:truth:1.0'
+    androidTestImplementation "androidx.room:room-testing:2.2.0"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-accessibility:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-web:3.2.0'
     androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:3.2.0'
-    // Optional -- Hamcrest library
-    androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
-    // Optional -- UI testing with UI Automator
+    androidTestImplementation "org.robolectric:annotations:4.3.1"
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-
+    implementation "androidx.test.espresso:espresso-idling-resource:3.2.0"
+    // Optional -- Hamcrest library
+//    androidTestImplementation 'org.hamcrest:hamcrest-library:1.3'
 
 
 //    testImplementation 'junit:junit:4.12'
 //    testImplementation "org.mockito:mockito-core:3.1.0"
-//    testImplementation "org.powermock:powermock-module-junit4:2.0.2"
-//    testImplementation "org.powermock:powermock-module-junit4-rule:2.0.2"
-//    testImplementation "org.powermock:powermock-api-mockito2:2.0.2" //注意这里是mockito2
-//    testImplementation "org.powermock:powermock-classloading-xstream:2.0.2"
+    testImplementation "org.powermock:powermock-module-junit4:2.0.2"
+    testImplementation "org.powermock:powermock-module-junit4-rule:2.0.2"
+    testImplementation "org.powermock:powermock-api-mockito2:2.0.2" //注意这里是mockito2
+    testImplementation "org.powermock:powermock-classloading-xstream:2.0.2"
 //    testImplementation "org.robolectric:robolectric:4.3.1"
-
-//    androidTestImplementation 'androidx.test:runner:1.2.0'
-//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //android
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -156,61 +178,64 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
 
     //kotlin
-    implementation root_dependencies.kotlin
+    implementation libs.kotlin
     implementation "androidx.core:core-ktx:1.1.0"
-    implementation root_dependencies.anko
-    implementation root_dependencies.anko_recyclerview
-    implementation root_dependencies.anko_recyclerview_corountines
+    implementation libs.anko
+    implementation libs.anko_recyclerview
+    implementation libs.anko_recyclerview_corountines
 
     //  retrofit+rxjava网络层
-    implementation root_dependencies.retrofit
-    implementation root_dependencies.retrofit_gson
+    implementation libs.retrofit
+    implementation libs.retrofit_gson
 
-//    implementation root_dependencies.retrofit_rxjava2
-//    implementation root_dependencies.rxjava2_android
-//    implementation root_dependencies.rxjava2
+//    implementation libs.retrofit_rxjava2
+//    implementation libs.rxjava2_android
+//    implementation libs.rxjava2
 
-    implementation root_dependencies.okhttp
-    implementation root_dependencies.okhttp_loginterceptor
+    implementation libs.okhttp
+    implementation libs.okhttp_loginterceptor
 
     //jetpack
-
     //lifecycle
-    kapt           root_dependencies.lifecycle_kapt
-    implementation root_dependencies.lifecycle_ext
+    kapt           libs.lifecycle_kapt
+    implementation libs.lifecycle_ext
+//    implementation libs.lifecycle_viewmodel
+//    testImplementation libs.lifecycle_test
+
     //room
-    kapt           root_dependencies.room_kapt
-    implementation root_dependencies.room
-//    implementation root_dependencies.room_ktx
+    kapt           libs.room_kapt
+    implementation libs.room
+//    implementation libs.room_ktx
 
     //paging
-    implementation root_dependencies.paging
+    implementation libs.paging
     //navigation
-    implementation root_dependencies.navigation
-    implementation root_dependencies.navigation_ui
+    implementation libs.navigation
+    implementation libs.navigation_ui
     //workmanager
-    implementation root_dependencies.workmanager
+    implementation libs.workmanager
 
     //di
-    implementation root_dependencies.kodein
-    implementation root_dependencies.kodein_android
-    implementation root_dependencies.kodein_androidx
+    implementation libs.kodein
+    implementation libs.kodein_android
+    implementation libs.kodein_androidx
 
     //database
-    implementation root_dependencies.stetho
+    implementation libs.stetho
 
 //    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
 
-
     implementation 'org.aspectj:aspectjrt:1.8.13'
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
+//    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
 
     //common
-    implementation root_dependencies.gson
-    implementation root_dependencies.timber
-    implementation root_dependencies.rxpermissions
-    debugImplementation root_dependencies.leakcanary
-    implementation root_dependencies.glide
-    kapt root_dependencies.glide_kapt
-    implementation root_dependencies.glide_transformations
+    implementation libs.gson
+    implementation libs.timber
+    implementation libs.rxpermissions
+    debugImplementation libs.leakcanary
+    implementation libs.glide
+    kapt libs.glide_kapt
+    implementation libs.glide_transformations
 
 }

@@ -1,14 +1,14 @@
 package com.example.littletreestronger.viewmodel
 
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
 
-import org.junit.Assert.*
+import org.junit.After
+import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Rule
-import org.mockito.Mock
+import org.junit.Test
 import org.mockito.Mockito
-import java.util.*
+import kotlin.random.Random
+
 
 class TestViewModelTest {
 
@@ -20,7 +20,6 @@ class TestViewModelTest {
 
     @Before
     fun setUp() {
-        model = TestViewModel()
     }
 
     @After
@@ -37,7 +36,7 @@ class TestViewModelTest {
     @Test
     fun add() {
         val result = model.add(1,2)
-        assertEquals("sss",5, result)
+    assertEquals("sss",5, result)
     }
 
     @Test
@@ -50,9 +49,9 @@ class TestViewModelTest {
     @Test
     fun ve(){
         val mock = Mockito.mock(Random::class.java)
-        val s = TestViewModel()
-        s.ran = mock
-        s.verify()
+//        val s = TestViewModel()
+//        s.ran = mock
+//        s.verify()
         Mockito.verify(mock).nextLong()
     }
 

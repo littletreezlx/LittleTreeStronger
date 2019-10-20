@@ -6,7 +6,9 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.littletreestronger.common.base.BaseFragment
@@ -21,6 +23,7 @@ import org.kodein.di.generic.instance
 import timber.log.Timber
 import kotlin.random.Random
 import com.example.littletreestronger.ui.CommentDialogFragment
+import com.example.littletreestronger.viewmodel.DietRecordViewModelFactory
 
 
 class DietFragment : BaseFragment() {
@@ -92,9 +95,11 @@ class DietFragment : BaseFragment() {
         recyclerview_diet_record_breakfast.layoutManager = object : LinearLayoutManager(context){
             override  fun canScrollVertically() = false
         }
+
         viewModel.getBreakfastDietRecords().observe(this, Observer{
             breakfastAdapter.submitList(it)
         })
+
         recyclerview_diet_record_breakfast.setNestedScrollingEnabled(false)
 //        recyclerview_diet_record_breakfast.setFocusable(false)
 

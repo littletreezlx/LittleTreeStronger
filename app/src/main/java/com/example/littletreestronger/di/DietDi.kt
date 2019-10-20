@@ -1,5 +1,6 @@
 package com.example.littletreestronger.di
 
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.littletreestronger.data.AppDatabase
@@ -33,9 +34,10 @@ val dietTimeDiModule = Kodein.Module(DIET_TIME_DI_MODULE) {
 
 
     bind<DietRecordViewModel>() with scoped(ActivityRetainedScope.MultiItem).singleton {
-        ViewModelProviders
-            .of(context as MainActivity, DietRecordViewModelFactory(instance()))
-            .get(DietRecordViewModel::class.java)
+//        ViewModelProviders
+//            .of(context as MainActivity, DietRecordViewModelFactory(instance()))
+//            .get(DietRecordViewModel::class.java)
+        ViewModelProvider(context as MainActivity, DietRecordViewModelFactory(instance())).get(DietRecordViewModel::class.java)
     }
 
 

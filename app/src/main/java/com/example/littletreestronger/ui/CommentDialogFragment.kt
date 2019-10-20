@@ -27,6 +27,7 @@ class CommentDialogFragment: BaseDialogFragment() {
     ): View? {
 //        val view =  inflater.inflate(R.layout.diet_fragment_food_detail, container, false)
         return view
+
     }
 
 
@@ -49,9 +50,9 @@ class CommentDialogFragment: BaseDialogFragment() {
             }).create()
 
 
-        val h = Handler()
-        h.sendMessageDelayed()
-        OkHttpClient.Builder().protocols()
+//        val h = Handler()
+//        h.sendMessageDelayed()
+//        OkHttpClient.Builder().protocols()
     }
 
 
