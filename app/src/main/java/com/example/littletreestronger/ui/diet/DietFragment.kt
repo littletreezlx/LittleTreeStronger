@@ -11,10 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.littletreestronger.R
 import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.adapter.DietRecordAdapter
 import com.example.littletreestronger.common.AopOnclick
-import com.example.littletreestronger.data.model.DietRecord
+import com.example.littletreestronger.data.model.TYPE_MEAL_BREAKFAST
+import com.example.littletreestronger.data.model.TYPE_MEAL_DINNER
+import com.example.littletreestronger.data.model.TYPE_MEAL_LUNCH
 import com.example.littletreestronger.view.PercentView
 import com.example.littletreestronger.viewmodel.DietRecordViewModel
 import com.google.gson.Gson
@@ -41,34 +45,16 @@ class DietFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(com.example.littletreestronger.R.layout.diet_fragment, container, false)
+        val view =  inflater.inflate(R.layout.diet_fragment, container, false)
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        btn_recommend_food.setOnClickListener {
-            val directions = DietFragmentDirections.actionDietFragmentToRecommendFoodFragment()
-                .run {
-                setName("alice")
-            }
-            it.findNavController().navigate(directions)
-        }
-
-
         initRecyclerView()
         other()
-
-//        Handler().postDelayed()
-
-
-
-        btn_recommend_food.invalidate(1,2,3,4)
-
-
-        Thread.sleep(30000)
+        updatePercentView()
     }
 
 
@@ -80,7 +66,6 @@ class DietFragment : BaseFragment() {
                 it.percent = Random.nextInt(50) + 80
                 it.invalidate()
             }
-
 //            val s = CommentDialogFragment()
 //            s.show(fragmentManager!!, "dialog")
         }
@@ -88,32 +73,29 @@ class DietFragment : BaseFragment() {
     }
 
 
-    fun initRecyclerView(){
+    private fun initRecyclerView(){
+        initAdapter(recyclerview_diet_record_breakfast, TYPE_MEAL_BREAKFAST)
+        initAdapter(recyclerview_diet_record_lunch, TYPE_MEAL_LUNCH)
+        initAdapter(recyclerview_diet_record_dinner, TYPE_MEAL_DINNER)
+    }
 
-        val breakfastAdapter = DietRecordAdapter(DietRecord.TYPE_MEAL_BREAKFAST)
-        recyclerview_diet_record_breakfast.adapter = breakfastAdapter
-        recyclerview_diet_record_breakfast.layoutManager = object : LinearLayoutManager(context){
+
+    private fun initAdapter(view: RecyclerView,mealType: Int){
+        val adapter = DietRecordAdapter(mealType)
+        view.adapter = adapter
+        view.layoutManager = object : LinearLayoutManager(context){
             override  fun canScrollVertically() = false
         }
+        ////解决数据加载不完的问题
+        view.setNestedScrollingEnabled(false)
+//        view.setHasFixedSize(true)
+        ////解决数据加载完成后, 没有停留在顶部的问题
+        view.setFocusable(false)
 
-        viewModel.getBreakfastDietRecords().observe(this, Observer{
-            breakfastAdapter.submitList(it)
+        viewModel.getDietRecords(mealType).observe(this, Observer{
+            adapter.submitList(it)
         })
-
-        recyclerview_diet_record_breakfast.setNestedScrollingEnabled(false)
-//        recyclerview_diet_record_breakfast.setFocusable(false)
-
-
-        val lunchAdapter = DietRecordAdapter(DietRecord.TYPE_MEAL_LUNCH)
-        recyclerview_diet_record_lunch.adapter = lunchAdapter
-        recyclerview_diet_record_lunch.layoutManager = object : LinearLayoutManager(context){
-            override  fun canScrollVertically() = false
-        }
-        viewModel.getLunchfastDietRecords().observe(this, Observer{
-            lunchAdapter.submitList(it)
-        })
-
-        breakfastAdapter.setOnItemClickListener(object : DietRecordAdapter.OnItemClickListener{
+        adapter.setOnItemClickListener(object : DietRecordAdapter.OnItemClickListener{
             override fun onHeaderClick(position: Int) {
             }
 
@@ -121,15 +103,29 @@ class DietFragment : BaseFragment() {
             }
 
             override fun onFooterClick(position: Int) {
-                viewModel.addDietRecords()
+                viewModel.addDietRecords(mealType)
             }
         })
-////解决数据加载不完的问题
-//        recyclerView.setNestedScrollingEnabled(false);
-//        recyclerView.setHasFixedSize(true);
-////解决数据加载完成后, 没有停留在顶部的问题
-//        recyclerView.setFocusable(false);
+    }
 
+
+    private fun updatePercentView(){
+        viewModel.calorySum.observe(this, Observer{
+            percent_view_calories.percent = it  * 100 / 2000
+            percent_view_calories.invalidate()
+        })
+        viewModel.proteinSum.observe(this, Observer{
+            percent_view_protein.percent = it  * 100 / 2000
+            percent_view_protein.invalidate()
+        })
+        viewModel.fatSum.observe(this, Observer{
+            percent_view_fat.percent = it  * 100 / 2000
+            percent_view_fat.invalidate()
+        })
+        viewModel.carbohydrateSum.observe(this, Observer{
+            percent_view_carbohydrate.percent = it  * 100 / 2000
+            percent_view_carbohydrate.invalidate()
+        })
     }
 
 

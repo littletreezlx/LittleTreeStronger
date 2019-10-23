@@ -93,6 +93,7 @@ ext {
             //jetpack
             //lifecycle
             lifecycle_viewmodel     : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            lifecycle_livedata      : "androidx.lifecycle:lifecycle-livedate:$lifecycle_version",
             lifecycle_kapt          : "androidx.lifecycle:lifecycle-compiler:$lifecycle_version",
             lifecycle_ext           : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
             lifecycle_test          : "androidx.arch.core:core-testing:$lifecycle_version",

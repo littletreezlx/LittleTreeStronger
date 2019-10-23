@@ -11,7 +11,9 @@ import com.example.littletreestronger.R
 import org.jetbrains.anko.attr
 
 
-class PercentView@JvmOverloads constructor(context: Context, val attrs: AttributeSet? = null, val defStyleAttr: Int = 0): View(context, attrs, defStyleAttr) {
+class PercentView
+@JvmOverloads constructor(context: Context, val attrs: AttributeSet? = null, val defStyleAttr: Int = 0)
+    : View(context, attrs, defStyleAttr) {
 
     init {
     }
@@ -161,17 +163,35 @@ class PercentView@JvmOverloads constructor(context: Context, val attrs: Attribut
         canvas?.drawText(text, centerX, baseline, textPaint)
 
 
+//        val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.PercentView, defStyleAttr,0)
+//        val n = typedArray.getIndexCount()
+
+//        for (int i = 0; i <= n; i++){
+//            val attr = a.getIndex(i)
+//
+//            if (attr == R.styleable.PercentView_title){
+//                val title
+//            }
+//             (attr) {
+//                //注意获取属性的方式为 styleable的名称_属性名称
+//                case R . styleable . YText_viewText :
+//                mText = a.getString(attr);
+//                break;
+//            }
+//        }
+
+//        val title = typedArray.getString(R.styleable.PercentView_android_title)
+//        title?.let{
+//            textPaint.textSize = 40f
+//            canvas?.drawText(title, centerX, baseline + 50, textPaint)
+//        }
+//        typedArray.recycle()
 
 
-        val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.PercentView, defStyleAttr,0)
-        val title = typedArray.getString(R.styleable.PercentView_title)
-        typedArray.recycle()
-
-        title?.let{
-            textPaint.textSize = 40f
-            canvas?.drawText(title, centerX, baseline + 50, textPaint)
-
-        }
+//        name?.let{
+//            textPaint.textSize = 40f
+//            canvas?.drawText(name, centerX, baseline + 50, textPaint)
+//        }
 
     }
 

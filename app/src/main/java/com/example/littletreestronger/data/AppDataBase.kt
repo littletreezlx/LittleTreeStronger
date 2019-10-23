@@ -6,7 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.littletreestronger.common.constants.DATABASE_NAME
 import com.example.littletreestronger.data.dao.DietRecordDao
 import com.example.littletreestronger.data.dao.ExerciseRecordDao
 import com.example.littletreestronger.data.model.DietRecord
@@ -41,7 +40,9 @@ abstract class AppDatabase : RoomDatabase() {
             Timber.d("build database")
 
             return Room
-                .databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
+                .databaseBuilder(context, AppDatabase::class.java,
+                    DATABASE_NAME
+                )
                 .addCallback(object : RoomDatabase.Callback() {
                     //第一次创建数据库时调用，但是在创建所有表之后调用的
                     override fun onCreate(db: SupportSQLiteDatabase) {
@@ -66,6 +67,7 @@ abstract class AppDatabase : RoomDatabase() {
 
                         runOnIoThread {
                             instance?.let {
+
                                 val exerciseRecordDao = it.exerciseRecordDao()
                                 exerciseRecordDao.deleteAll()
                                 exerciseRecordDao.insertExerciseRecord(ExerciseRecord.mockExerciseRecord())
@@ -73,9 +75,7 @@ abstract class AppDatabase : RoomDatabase() {
 
                                 val dietRecordDao = it.dietRecordDao()
                                 dietRecordDao.deleteAll()
-                                dietRecordDao.insertDietRecord(DietRecord.mockDietRecord())
-                                dietRecordDao.insertDietRecord(DietRecord.mockDietRecord2())
-
+//                                dietRecordDao.insertDietRecord(DietRecord.mockDietRecord())
                             }
                         }
                     }

@@ -6,7 +6,6 @@ import android.os.Handler
 import android.view.Gravity
 import android.view.Window
 import android.view.WindowManager
-import com.example.littletreestronger.common.base.MainActivity
 import com.example.littletreestronger.common.base.BaseActivity
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.textView

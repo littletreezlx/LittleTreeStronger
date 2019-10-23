@@ -6,7 +6,13 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 import kotlin.random.Random
+import kotlin.random.Random.Default.nextInt
 
+
+const val TYPE_MEAL_BREAKFAST = 0
+const val TYPE_MEAL_LUNCH = 1
+const val TYPE_MEAL_DINNER = 2
+const val TYPE_MEAL_EXTRA = 3
 
 @Entity(
     tableName = "diet_record"
@@ -55,33 +61,19 @@ data class DietRecord(
     @ColumnInfo(name = "id")
     var id: Long = 0
 
-
-
     companion object {
-        val TYPE_MEAL_BREAKFAST = 0
-        val TYPE_MEAL_LUNCH = 1
-        val TYPE_MEAL_DINNER = 2
-        val TYPE_MEAL_EXTRA = 2
-
-        fun mockDietRecord() = DietRecord("牛奶",
-            Random.nextInt(200),
-            TYPE_MEAL_BREAKFAST,
-            Random.nextInt(200),
-            Random.nextInt(20),
-            Random.nextInt(20),
-            Random.nextInt(20)
-        )
-
-        fun mockDietRecord2() = DietRecord("鸡蛋",
-            Random.nextInt(200),
-            TYPE_MEAL_LUNCH,
-            Random.nextInt(200),
-            Random.nextInt(20),
-            Random.nextInt(20),
-            Random.nextInt(20)
+        fun mockDietRecord(mealType: Int) = DietRecord(
+            arrayOf("牛奶","鸡蛋","水果").get(Random.nextInt(3)),
+            weight = Random.nextInt(200),
+            mealType = mealType,
+            calories = Random.nextInt(200),
+            protein = Random.nextInt(20),
+            fat = Random.nextInt(20),
+            carbohydrate = Random.nextInt(20)
         )
     }
 }
+
 
 
 

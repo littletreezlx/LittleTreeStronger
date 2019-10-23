@@ -93,7 +93,7 @@ aspectjx {
 
 //    include 'com.example.littletreestronger'
 
-//    exclude("com.example.littletreestronger.common.base.MainActivity")
+//    exclude("com.example.littletreestronger.ui.MainActivity")
 }
 
 afterEvaluate {
@@ -147,7 +147,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.1"
 //    androidTestImplementation 'androidx.test.ext:truth:1.2.0'
 //    androidTestImplementation 'com.google.truth:truth:1.0'
-    androidTestImplementation "androidx.room:room-testing:2.2.0"
+    testImplementation "androidx.room:room-testing:2.2.0"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
@@ -187,10 +187,9 @@ dependencies {
     //  retrofit+rxjava网络层
     implementation libs.retrofit
     implementation libs.retrofit_gson
-
-//    implementation libs.retrofit_rxjava2
-//    implementation libs.rxjava2_android
-//    implementation libs.rxjava2
+    implementation libs.retrofit_rxjava2
+    implementation libs.rxjava2_android
+    implementation libs.rxjava2
 
     implementation libs.okhttp
     implementation libs.okhttp_loginterceptor
@@ -200,12 +199,13 @@ dependencies {
     kapt           libs.lifecycle_kapt
     implementation libs.lifecycle_ext
 //    implementation libs.lifecycle_viewmodel
+//    implementation libs.lifecycle_livedata
 //    testImplementation libs.lifecycle_test
 
     //room
     kapt           libs.room_kapt
     implementation libs.room
-//    implementation libs.room_ktx
+    implementation libs.room_ktx
 
     //paging
     implementation libs.paging

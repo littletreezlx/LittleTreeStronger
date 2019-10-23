@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.littletreestronger.data.AppDatabase
 import com.example.littletreestronger.data.dao.ExerciseRecordDao
 import com.example.littletreestronger.data.repository.ExerciseRecordRepository
-import com.example.littletreestronger.common.base.MainActivity
+import com.example.littletreestronger.ui.MainActivity
 import com.example.littletreestronger.viewmodel.ExerciseRecordViewModel
 import com.example.littletreestronger.viewmodel.ExerciseRecordViewModelFactory
 import org.kodein.di.Kodein

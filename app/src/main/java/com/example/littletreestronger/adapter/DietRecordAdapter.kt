@@ -9,6 +9,9 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.littletreestronger.data.model.DietRecord
+import com.example.littletreestronger.data.model.TYPE_MEAL_BREAKFAST
+import com.example.littletreestronger.data.model.TYPE_MEAL_DINNER
+import com.example.littletreestronger.data.model.TYPE_MEAL_LUNCH
 
 
 class DietRecordAdapter
@@ -72,6 +75,8 @@ class DietRecordAdapter
 //        abstract fun getType(): Int
     }
 
+
+
     inner class HeaderViewHolder(itemView: View) : ViewHolder(itemView){
         var headerTv: TextView
         init {
@@ -95,13 +100,12 @@ class DietRecordAdapter
         }
     }
 
-
     fun bindHeader(viewHolder: ViewHolder, position: Int){
         val holder = viewHolder as HeaderViewHolder
         holder.headerTv.text = when (mealType) {
-            DietRecord.TYPE_MEAL_BREAKFAST -> "早餐"
-            DietRecord.TYPE_MEAL_LUNCH -> "午餐"
-            DietRecord.TYPE_MEAL_DINNER -> "晚餐"
+            TYPE_MEAL_BREAKFAST -> "早餐"
+            TYPE_MEAL_LUNCH -> "午餐"
+            TYPE_MEAL_DINNER -> "晚餐"
             else -> "加餐"
         }
     }
@@ -111,11 +115,10 @@ class DietRecordAdapter
         getItem(position)?.let {
             holder.run {
                 nameTv.text = it.name
-                weightTv.text = it.weight.toString()
+                weightTv.text = it.weight.toString() + "g"
             }
         }
     }
-
 
     fun bindFooter(viewHolder: ViewHolder, position: Int){
         val holder = viewHolder as FooterViewHolder

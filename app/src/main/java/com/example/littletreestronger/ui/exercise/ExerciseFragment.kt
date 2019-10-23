@@ -38,12 +38,11 @@ class ExerciseFragment : BaseFragment() {
 
         val titles = arrayOf("Deep Workout", "Run", "Plan", "Record", "Actions")
         val images = intArrayOf(
-            R.drawable.error,
             R.drawable.ic_dashboard_black_24dp,
-            R.drawable.apple,
-            R.drawable.ic_home_black_24dp,
-            R.drawable.ic_home_black_24dp
-
+            R.drawable.ic_dashboard_black_24dp,
+            R.drawable.ic_dashboard_black_24dp,
+            R.drawable.ic_dashboard_black_24dp,
+            R.drawable.ic_dashboard_black_24dp
         )
         val onclick = arrayOf(
             ::onClickDeepWorkOut,

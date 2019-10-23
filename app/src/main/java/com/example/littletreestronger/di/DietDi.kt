@@ -1,12 +1,11 @@
 package com.example.littletreestronger.di
 
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 
 import com.example.littletreestronger.data.AppDatabase
 import com.example.littletreestronger.data.dao.DietRecordDao
 import com.example.littletreestronger.data.repository.DietRecordRepository
-import com.example.littletreestronger.common.base.MainActivity
+import com.example.littletreestronger.ui.MainActivity
 import com.example.littletreestronger.viewmodel.DietRecordViewModel
 import com.example.littletreestronger.viewmodel.DietRecordViewModelFactory
 import org.kodein.di.Kodein

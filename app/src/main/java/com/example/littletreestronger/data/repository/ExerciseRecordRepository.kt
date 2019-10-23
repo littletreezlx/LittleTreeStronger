@@ -29,7 +29,6 @@ class ExerciseRecordRepository
 
 
     companion object {
-
         // For Singleton instantiation
         @Volatile private var instance: ExerciseRecordRepository? = null
 

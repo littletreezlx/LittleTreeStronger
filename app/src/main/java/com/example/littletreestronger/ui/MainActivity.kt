@@ -1,19 +1,27 @@
-package com.example.littletreestronger.common.base
+package com.example.littletreestronger.ui
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.system.Os.accept
+import android.util.Log
 import android.view.KeyEvent
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ViewPagerAdapter
+import com.example.littletreestronger.common.base.BaseActivity
+import com.example.littletreestronger.common.base.setStatusBarFullTransparent
 import com.example.littletreestronger.di.dietTimeDiModule
 import com.example.littletreestronger.di.exerciseDiModule
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.main_activity.*
 import org.kodein.di.Copy
 import org.kodein.di.Kodein
@@ -25,7 +33,6 @@ import org.kodein.di.generic.instance
 
 
 class MainActivity : BaseActivity(), KodeinAware {
-
 
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
@@ -39,17 +46,15 @@ class MainActivity : BaseActivity(), KodeinAware {
     }
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.BaseTheme)
-
         super.onCreate(savedInstanceState)
-
 //        setStatusBarColor(R.color.full_translucent)
         setContentView(R.layout.main_activity)
 
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewpager.adapter = viewPagerAdapter
+
         viewpager.offscreenPageLimit = 4
 
         bottom_navigationview.setOnNavigationItemSelectedListener(onBottomNavigationViewClickedListener)
@@ -88,6 +93,7 @@ class MainActivity : BaseActivity(), KodeinAware {
 //        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.main_bottomnavigationview)
 //        NavigationUI.setupWithNavController(bottomNavigationView,navHostFragment.navController)
 
+        val i =1
     }
 
 
@@ -120,42 +126,27 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 
     fun requestPermissions(){
-
-//        RxPermissions(this)
-//            .requestEach(
-//                Manifest.permission.ACCESS_FINE_LOCATION,
-//                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                Manifest.permission.READ_PHONE_STATE
-//            )
-//            .subscribe { permission ->
-//                if (permission.granted) {
-//                    //agree
-////                    onGranted()
-//                } else {
-//                    showDialog(permission.name)
-//                }
-//            }
-
-
-//            .subscribe(new Consumer<Permission>() {
-//                @Override
-//                public void accept(Permission permission) throws Exception {
-//                    if (permission.granted) {
-//                        // 用户已经同意该权限
-//                        Log.d(TAG, permission.name + " is granted.");
-//                    } else if (permission.shouldShowRequestPermissionRationale) {
-//                        // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
-//                        Log.d(TAG, permission.name + " is denied. More info should be provided.");
-//                    } else {
-//                        // 用户拒绝了该权限，并且选中『不再询问』
-//                        Log.d(TAG, permission.name + " is denied.");
-//                    }
-//                }
-//            });
-
-
+        val dispose = RxPermissions(this)
+            .requestEach(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE
+            )
+            .subscribe { permission ->
+                if (permission.granted) {
+//                    onGranted()
+                    Log.d(TAG, permission.name + " is granted.")
+                }
+                else if (permission.shouldShowRequestPermissionRationale){
+                    // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
+                    Log.d(TAG, permission.name + " is denied. More info should be provided.");
+                }
+                else {
+                    Log.d(TAG, permission.name + " is denied.");
+                    showDialog(permission.name)
+                }
+            }
     }
-
 
 
     fun showDialog(permissionName : String){
@@ -184,25 +175,22 @@ class MainActivity : BaseActivity(), KodeinAware {
 
     private fun initToolbar() {
 //        setSupportActionBar(toolbar)
-
-
-        //        ActionMenuView actionMenuView = (ActionMenuView) toolbar.findViewById(R.id.action_menu_view);
-        //        getMenuInflater().inflate(R.menu.main_menu, actionMenuView.getMenu());
-        //        actionMenuView.setOnClickListener(new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View v) {
-        //                startActivity(new Intent(MainActivity.this, AMapDebugActivity.class));
-        //            }
-        //        });
-        //
-        //        actionMenuView.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
-        //            @Override
-        //            public boolean onMenuItemClick(MenuItem item) {
-        //                return false;
-        //            }
-        //        });
-
-        //        toolbar.showOverflowMenu();
+//                ActionMenuView actionMenuView = (ActionMenuView) toolbar.findViewById(R.id.action_menu_view);
+//                getMenuInflater().inflate(R.menu.main_menu, actionMenuView.getMenu());
+//                actionMenuView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        startActivity(new Intent(MainActivity.this, AMapDebugActivity.class));
+//                    }
+//                });
+//
+//                actionMenuView.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
+//                    @Override
+//                    public boolean onMenuItemClick(MenuItem item) {
+//                        return false;
+//                    }
+//                });
+//                toolbar.showOverflowMenu();
     }
 
 //    override fun onSupportNavigateUp() =
