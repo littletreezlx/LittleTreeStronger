@@ -16,6 +16,11 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.*
 
+/**
+ *@Author LittleTree
+ *@CreateTime 2019/10/29 11:05
+ *@Description viewmodel
+ */
 class DietRecordViewModel(
     private val repo: DietRecordRepository
 ) : ViewModel(){
@@ -39,9 +44,9 @@ class DietRecordViewModel(
 
 
     val calorySum: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
-    var proteinSum = MutableLiveData<Int>()
-    var fatSum = MutableLiveData<Int>()
-    var carbohydrateSum = MutableLiveData<Int>()
+    var proteinSum: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
+    var fatSum: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
+    var carbohydrateSum: MutableLiveData<Int> = MutableLiveData<Int>().apply { value = 0 }
 
 
 //    fun getDietRecords(): LiveData<PagedList<DietRecord>> {
@@ -68,6 +73,9 @@ class DietRecordViewModel(
 //    }
 
 
+    /**
+     *@Description get DietRecords by mealType(breakfast...)
+     */
     fun getDietRecords(mealType: Int): LiveData<PagedList<DietRecord>> {
         //默认异步？
 //        lateinit var dietRecord: LiveData<PagedList<DietRecord>>
@@ -85,14 +93,16 @@ class DietRecordViewModel(
 //        return LivePagedListBuilder(repo.getDietRecordByDateAndMealType(Calendar.getInstance(), mealType), config).build()
     }
 
+
+    //todo: to improve
     fun addDietRecords(mealType: Int){
         val record = DietRecord.mockDietRecord(mealType)
         repo.insertDietRecord(DietRecord.mockDietRecord(mealType))
 
         calorySum.value = calorySum.value?.plus(record.calories)
-        proteinSum.value = calorySum.value?.plus(record.protein)
-        fatSum.value = calorySum.value?.plus(record.fat)
-        carbohydrateSum.value = calorySum.value?.plus(record.carbohydrate)
+        proteinSum.value = proteinSum.value?.plus(record.protein)
+        fatSum.value = fatSum.value?.plus(record.fat)
+        carbohydrateSum.value = carbohydrateSum.value?.plus(record.carbohydrate)
 
         Timber.d("calorySum" + calorySum.value + record.calories)
     }

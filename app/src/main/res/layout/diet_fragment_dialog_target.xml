@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="400dp"
+        android:layout_height="600dp"
+        android:background="@color/white"
+        >
+
+
+    <TextView
+            android:id="@+id/tv_calory"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintWidth_percent="0.2"
+            android:text="calory"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/edt_calory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+            android:id="@+id/edt_calory"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintWidth_percent="0.8"
+            android:hint="calory"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_calory"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+<!--    <EditText-->
+<!--            android:id="@+id/edt_protein"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_below="@id/edt_calory"-->
+<!--            android:hint="protein"-->
+<!--            android:textSize="30sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edt_calory" />-->
+
+<!--    <EditText-->
+<!--            android:id="@+id/edt_fat"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_below="@id/edt_protein"-->
+<!--            android:hint="fat"-->
+<!--            android:textSize="30sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edt_protein" />-->
+
+<!--    <EditText-->
+<!--            android:id="@+id/edt_carbohydrate"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_below="@id/edt_fat"-->
+<!--            android:hint="carbohydrate"-->
+<!--            android:textSize="30sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edt_fat" />-->
+
+
+<!--    <Button-->
+<!--            android:id="@+id/btn_confirm"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_below="@id/edt_carbohydrate"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:text="confrim"-->
+<!--            android:textSize="20sp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edt_carbohydrate"-->
+<!--            />-->
+
+<!--    <Button-->
+<!--            android:id="@+id/btn_cancel"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_below="@id/edt_carbohydrate"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:text="cancel"-->
+<!--            android:textSize="20sp"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/edt_carbohydrate" -->
+<!--            />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        xmlns:tools="http://schemas.android.com/tools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        >-->
+
+
+<!--    <ImageView-->
+<!--            android:id="@+id/iv_item"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/tv_item"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--    />-->
+
+<!--    <TextView-->
+<!--            android:id="@+id/tv_item"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="音乐"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="30sp"-->
+
+
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/iv_item"-->
+
+<!--            />-->
+
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

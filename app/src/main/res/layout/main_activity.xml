@@ -45,7 +45,6 @@
                 app:menu="@menu/main_nav_bottom"
                 android:layout_alignParentBottom="true"
                 app:labelVisibilityMode="labeled"
-
                 />
 
     </RelativeLayout>

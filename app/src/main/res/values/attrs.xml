@@ -3,7 +3,7 @@
 
     <declare-styleable name="PercentView">
         <attr name="bgColor" format="color"/>
-        <attr name="title" format="string"/>
+        <attr name="percentview_title" format="string"/>
 
     </declare-styleable>
 

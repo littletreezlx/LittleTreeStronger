@@ -47,7 +47,8 @@ class MainActivity : BaseActivity(), KodeinAware {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.BaseTheme)
+//        setTheme(R.style.BaseTheme)
+
         super.onCreate(savedInstanceState)
 //        setStatusBarColor(R.color.full_translucent)
         setContentView(R.layout.main_activity)
@@ -75,8 +76,6 @@ class MainActivity : BaseActivity(), KodeinAware {
             }
         })
 
-
-
         setSupportActionBar(toolbar as Toolbar)
         setStatusBarFullTransparent()
 
@@ -84,6 +83,8 @@ class MainActivity : BaseActivity(), KodeinAware {
 //        steepStatusBar()
 //        setStatusBarColor(R.color.toolbar_background)
     }
+
+
 
 
 

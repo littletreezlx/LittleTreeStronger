@@ -86,14 +86,10 @@ aspectjx {
     exclude 'com.squareup.leakcanary'
     exclude 'leakcanary'
     exclude 'androidx'
-    exclude 'com.google.android'
 
-//    exclude("com.example.littletreestronger.common")
-//    exclude("com.example.littletreestronger.adapter")
+//    exclude 'com.google.android'
 
-//    include 'com.example.littletreestronger'
 
-//    exclude("com.example.littletreestronger.ui.MainActivity")
 }
 
 afterEvaluate {
@@ -237,5 +233,8 @@ dependencies {
     implementation libs.glide
     kapt libs.glide_kapt
     implementation libs.glide_transformations
+
+
+    implementation "com.google.android.material:material:1.0.0"
 
 }

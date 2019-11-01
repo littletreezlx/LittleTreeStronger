@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.littletreestronger.R
@@ -66,9 +67,15 @@ class DietFragment : BaseFragment() {
                 it.percent = Random.nextInt(50) + 80
                 it.invalidate()
             }
+
 //            val s = CommentDialogFragment()
-//            s.show(fragmentManager!!, "dialog")
+//            s.show(parentFragmentManager, "dialog")
+
+//            findNavController().navigate(R.id.action_dietFragment_to_commentDialogFragment)
         }
+
+
+
 
     }
 

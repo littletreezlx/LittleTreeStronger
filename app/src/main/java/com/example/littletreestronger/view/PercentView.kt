@@ -163,7 +163,7 @@ class PercentView
         canvas?.drawText(text, centerX, baseline, textPaint)
 
 
-//        val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.PercentView, defStyleAttr,0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.PercentView, defStyleAttr,0)
 //        val n = typedArray.getIndexCount()
 
 //        for (int i = 0; i <= n; i++){
@@ -180,12 +180,14 @@ class PercentView
 //            }
 //        }
 
-//        val title = typedArray.getString(R.styleable.PercentView_android_title)
-//        title?.let{
-//            textPaint.textSize = 40f
-//            canvas?.drawText(title, centerX, baseline + 50, textPaint)
-//        }
-//        typedArray.recycle()
+        val title = typedArray.getString(R.styleable.PercentView_percentview_title)
+
+
+        title?.let{
+            textPaint.textSize = 40f
+            canvas?.drawText(title, centerX, baseline + 50, textPaint)
+        }
+        typedArray.recycle()
 
 
 //        name?.let{

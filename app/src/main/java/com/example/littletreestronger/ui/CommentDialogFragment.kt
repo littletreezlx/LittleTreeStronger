@@ -10,6 +10,7 @@ import org.kodein.di.generic.instance
 import android.content.DialogInterface
 import android.os.Handler
 import androidx.appcompat.app.AlertDialog
+import com.example.littletreestronger.R
 import com.example.littletreestronger.common.base.BaseDialogFragment
 import okhttp3.OkHttpClient
 import org.jetbrains.anko.support.v4.toast
@@ -25,35 +26,27 @@ class CommentDialogFragment: BaseDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        val view =  inflater.inflate(R.layout.diet_fragment_food_detail, container, false)
+        val view =  inflater.inflate(R.layout.diet_fragment_dialog_target, container, false)
+
+
         return view
 
     }
 
 
-    //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
+//    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+////        return super.onCreateDialog(savedInstanceState)
+//        return AlertDialog.Builder(context!!)
+//            .setTitle("神灯")
+//            .setMessage("来选择你要实现的一个愿望把")
+//            .setPositiveButton("车子", DialogInterface.OnClickListener { dialog, which ->
+//                toast("车子")
+//            })
+//            .setNegativeButton("房子", DialogInterface.OnClickListener { dialog, which ->
+//                toast("房子")
+//            }).create()
+//
 //    }
-
-
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-//        return super.onCreateDialog(savedInstanceState)
-        return AlertDialog.Builder(context!!)
-            .setTitle("神灯")
-            .setMessage("来选择你要实现的一个愿望把")
-            .setPositiveButton("车子", DialogInterface.OnClickListener { dialog, which ->
-                toast("车子")
-            })
-            .setNegativeButton("房子", DialogInterface.OnClickListener { dialog, which ->
-                toast("房子")
-            }).create()
-
-
-//        val h = Handler()
-//        h.sendMessageDelayed()
-//        OkHttpClient.Builder().protocols()
-    }
 
 
 

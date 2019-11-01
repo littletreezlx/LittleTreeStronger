@@ -14,6 +14,9 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right" />
+        <action
+                android:id="@+id/action_dietFragment_to_commentDialogFragment"
+                app:destination="@id/commentDialogFragment" />
     </fragment>
     <fragment android:id="@+id/recommendFoodFragment" android:name="com.example.littletreestronger.ui.diet.RecommendFoodFragment"
               android:label="RecommendFoodFragment">
@@ -29,4 +32,8 @@
             android:id="@+id/foodDetailFragment"
             android:name="com.example.littletreestronger.ui.diet.FoodDetailFragment"
             android:label="FoodDetailFragment" />
+    <fragment
+            android:id="@+id/commentDialogFragment"
+            android:name="com.example.littletreestronger.ui.CommentDialogFragment"
+            android:label="CommentDialogFragment" />
 </navigation>
