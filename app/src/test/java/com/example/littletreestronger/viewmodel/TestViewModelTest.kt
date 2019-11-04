@@ -8,6 +8,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito
 import kotlin.random.Random
+import org.mockito.Mockito.*
 
 
 class TestViewModelTest {

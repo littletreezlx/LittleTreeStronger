@@ -17,6 +17,7 @@ import com.example.littletreestronger.R
 import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.adapter.DietRecordAdapter
 import com.example.littletreestronger.common.AopOnclick
+import com.example.littletreestronger.data.model.DietRecord
 import com.example.littletreestronger.data.model.TYPE_MEAL_BREAKFAST
 import com.example.littletreestronger.data.model.TYPE_MEAL_DINNER
 import com.example.littletreestronger.data.model.TYPE_MEAL_LUNCH
@@ -110,7 +111,7 @@ class DietFragment : BaseFragment() {
             }
 
             override fun onFooterClick(position: Int) {
-                viewModel.addDietRecords(mealType)
+                viewModel.addDietRecords(DietRecord.mockDietRecord(mealType))
             }
         })
     }

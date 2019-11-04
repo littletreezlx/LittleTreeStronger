@@ -11,6 +11,6 @@ import org.robolectric.annotation.Config
 
 @RunWith(PowerMockRunner::class)
 @PowerMockRunnerDelegate(RobolectricTestRunner::class)
-@Config(sdk = intArrayOf(21))
-@PowerMockIgnore("org.mockito.*", "org.robolectric.*", "android.*")
+//@Config(sdk = intArrayOf(23))
+@PowerMockIgnore("or.mockito.*", "org.robolectric.*", "android.*")
 abstract class PowerRobTest

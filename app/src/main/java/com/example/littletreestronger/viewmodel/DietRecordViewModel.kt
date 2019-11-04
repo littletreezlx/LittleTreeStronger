@@ -95,9 +95,9 @@ class DietRecordViewModel(
 
 
     //todo: to improve
-    fun addDietRecords(mealType: Int){
-        val record = DietRecord.mockDietRecord(mealType)
-        repo.insertDietRecord(DietRecord.mockDietRecord(mealType))
+    fun addDietRecords(record: DietRecord){
+//        val record = DietRecord.mockDietRecord(mealType)
+        repo.insertDietRecord(record)
 
         calorySum.value = calorySum.value?.plus(record.calories)
         proteinSum.value = proteinSum.value?.plus(record.protein)

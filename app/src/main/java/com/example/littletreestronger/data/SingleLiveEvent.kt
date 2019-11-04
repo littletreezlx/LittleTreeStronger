@@ -5,36 +5,46 @@ package com.example.littletreestronger.data
 
 import android.util.Log
 import androidx.annotation.MainThread
-import androidx.databinding.adapters.NumberPickerBindingAdapter.setValue
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 
+/**
+ *@Author zlx
+ *@CreateTime 2019/11/2 14:49
+ *@Description 防止数据倒灌
+ */
 class SingleLiveEvent<T> : MutableLiveData<T>() {
 
     private val mPending = AtomicBoolean(false)
 
+
+
     @MainThread
-    fun observe(owner: LifecycleOwner, observer: Observer<T>) {
+    override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
+        super.observe(owner, observer)
 
         if (hasActiveObservers()) {
             Log.w(TAG, "Multiple observers registered but only one will be notified of changes.")
         }
-
         // Observe the internal MutableLiveData
-        super.observe(owner, object : Observer<T>() {
-            fun onChanged(@Nullable t: T) {
+        super.observe(owner, object : Observer<T> {
+            override fun onChanged(t: T) {
                 if (mPending.compareAndSet(true, false)) {
                     observer.onChanged(t)
                 }
             }
-        })
+        }
+        )
     }
 
 
+
     @MainThread
-    override fun setValue(@Nullable t: T?) {
+    override fun setValue(t: T?) {
         mPending.set(true)
         super.setValue(t)
     }
@@ -51,4 +61,5 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
 
         private val TAG = "SingleLiveEvent"
     }
+
 }
