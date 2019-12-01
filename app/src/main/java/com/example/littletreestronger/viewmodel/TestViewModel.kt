@@ -2,15 +2,11 @@ package com.example.littletreestronger.viewmodel
 
 import androidx.lifecycle.ViewModel
 import java.util.*
-import android.R.id.checkbox
-import android.content.Context
-import android.view.View
-import android.widget.CheckBox
 
 
 
 
-class TestViewModel(val context: Context) {
+class TestViewModel(val str: String): ViewModel() {
 
 //    companion object {
 //        private const val PAGE_SIZE = 15
@@ -41,10 +37,13 @@ class TestViewModel(val context: Context) {
     }
 
 
-    fun inverse(view: View) {
-        val cb= CheckBox(context)
-        cb.isChecked = !cb.isChecked
-    }
+
+
+//
+//    fun inverse(view: View) {
+//        val cb= CheckBox(context)
+//        cb.isChecked = !cb.isChecked
+//    }
 
 
 }

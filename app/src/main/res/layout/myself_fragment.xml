@@ -15,5 +15,19 @@
     />
 
 
+    <Button
+            android:id="@+id/btn_myself"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="update"
+            />
+
+    <Button
+            android:id="@+id/btn_myself0"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="hhh"
+            />
+
 
 </LinearLayout>

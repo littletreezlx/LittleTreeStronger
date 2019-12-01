@@ -16,6 +16,7 @@ class MyRule : TestRule {
                 val methodName = description?.getMethodName() // 获取测试方法的名字
                 println(methodName + "测试开始！")
                 base?.evaluate()  // 运行的测试方法
+//                base.e
                 // evaluate后执行方法相当于@After
                 println(methodName + "测试结束！")
             }

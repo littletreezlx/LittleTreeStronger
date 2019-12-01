@@ -6,9 +6,7 @@ package com.example.littletreestronger.viewmodel
 
 
 import android.content.Context
-import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.After
 import org.junit.Before
@@ -17,18 +15,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
-import kotlin.random.Random
-import org.mockito.Mockito.*
-import org.mockito.MockitoAnnotations
+import org.mockito.Mockito.`when`
 import org.powermock.api.mockito.PowerMockito
 import org.powermock.core.classloader.annotations.PrepareForTest
-import org.powermock.modules.junit4.PowerMockRunner
-import com.example.littletreestronger.ui.MainActivity
-import org.robolectric.Robolectric
-import org.robolectric.RuntimeEnvironment
-
-import org.junit.Assert.assertThat
-import org.hamcrest.Matchers.*
 
 
 
@@ -60,9 +49,7 @@ class TestTest {
     fun setUp() {
         // 必须要调用这行代码初始化 Mock
 //        MockitoAnnotations.initMocks(this)
-
 //        mainActivity = Robolectric.setupActivity(MainActivity::class.java)
-
     }
 
     @After
@@ -86,10 +73,8 @@ class TestTest {
     @PrepareForTest(TestClass::class)
     fun ves(){
         val testClass = PowerMockito.mock(TestClass::class.java)
-
 //        PowerMockito.`when`(testClass._getStr()).thenCallRealMethod()
 //        PowerMockito.`when`(testClass, "_getStr").thenReturn("111")
-
 //        PowerMockito.`when`(testClass, "_getStr").thenReturn("111")
 
     }

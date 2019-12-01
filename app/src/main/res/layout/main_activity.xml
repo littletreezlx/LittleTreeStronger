@@ -42,8 +42,11 @@
                 android:id="@+id/bottom_navigationview"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:menu="@menu/main_nav_bottom"
+                android:background="@color/white"
+
                 android:layout_alignParentBottom="true"
+
+                app:menu="@menu/main_nav_bottom"
                 app:labelVisibilityMode="labeled"
                 />
 

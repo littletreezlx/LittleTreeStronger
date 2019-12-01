@@ -5,10 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.graphics.*
-import android.view.ViewGroup
 import kotlin.math.*
 import com.example.littletreestronger.R
-import org.jetbrains.anko.attr
 
 
 class PercentView

@@ -10,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import org.jetbrains.anko.displayMetrics
-import android.view.WindowManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import kotlin.math.min
 import kotlin.math.round
 
@@ -49,21 +51,21 @@ fun calculateInSampleSize(options: BitmapFactory.Options, reqHeight: Int, reqWid
 }
 
 
-fun Context.getScreenWidthPx(): Int {
-    return displayMetrics.widthPixels
-}
-
-fun Context.getScreenHeightPx(): Int {
-    return displayMetrics.widthPixels
-}
-
-fun Context.getScreenWidthDp(): Int {
-    return (displayMetrics.widthPixels / displayMetrics.density).toInt()
-}
-
-fun Context.getScreenHeightDp(): Int {
-    return (displayMetrics.heightPixels / displayMetrics.density).toInt()
-}
+//fun Context.getScreenWidthPx(): Int {
+//    return displayMetrics.widthPixels
+//}
+//
+//fun Context.getScreenHeightPx(): Int {
+//    return displayMetrics.widthPixels
+//}
+//
+//fun Context.getScreenWidthDp(): Int {
+//    return (displayMetrics.widthPixels / displayMetrics.density).toInt()
+//}
+//
+//fun Context.getScreenHeightDp(): Int {
+//    return (displayMetrics.heightPixels / displayMetrics.density).toInt()
+//}
 
 fun Context.getStateBarHeightPx(): Int {
     var result = 60
@@ -147,14 +149,14 @@ fun AppCompatActivity.hideBottomUIMenu() {
 }
 
 
-fun Int.toDp(context: Context): Int{
-    return (this / context.displayMetrics.density + 0.5f).toInt()
-}
-
-
-fun Int.toPx(context: Context): Int{
-    return (this * context.displayMetrics.density + 0.5f).toInt()
-}
+//fun Int.toDp(context: Context): Int{
+//    return (this / context.displayMetrics.density + 0.5f).toInt()
+//}
+//
+//
+//fun Int.toPx(context: Context): Int{
+//    return (this * context.displayMetrics.density + 0.5f).toInt()
+//}
 
 
 //fun Context.toast
@@ -173,4 +175,16 @@ fun androidx.fragment.app.FragmentActivity.addFragment(fragment: Fragment, frame
 
 fun androidx.fragment.app.FragmentActivity.replaceFragment(fragment: Fragment, frameId: Int) {
     supportFragmentManager.inTransaction{replace(frameId, fragment)}
+}
+
+
+
+fun CoroutineScope.getAsyncResult(asyncTask: Any, f: () -> Unit){
+    this.launch {
+        val deferred =  async(Dispatchers.IO) {
+            asyncTask
+        }
+        val response = deferred.await()
+        f
+    }
 }

@@ -4,5 +4,10 @@
     <string name = "app_name">小树运动</string>
 
 
+    <string name = "diet">饮食</string>
+    <string name = "exercise">运动</string>
+    <string name = "community">社区</string>
+    <string name = "myself">我</string>
+
 
 </resources>

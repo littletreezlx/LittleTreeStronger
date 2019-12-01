@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/diet"
+            android:id="@+id/menu_item_diet"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="饮食"/>
+            android:title="@string/diet"/>
 
     <item
-            android:id="@+id/exercise"
+            android:id="@+id/menu_item_exercise"
             android:icon="@drawable/ic_dashboard_black_24dp"
-            android:title="运动"/>
+            android:title="@string/exercise"/>
 
     <item
-            android:id="@+id/community"
+            android:id="@+id/menu_item_community"
             android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="社区"/>
+            android:title="@string/community"/>
 
     <item
-            android:id="@+id/myself"
-            android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="我"/>
+            android:id="@+id/menu_item_myself"
+            android:icon="@drawable/ic_person_outline_black_24dp"
+            android:title="@string/myself"/>
 
 </menu>

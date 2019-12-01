@@ -1,19 +1,13 @@
 package com.example.littletreestronger.ui
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.gson.Gson
-import org.kodein.di.generic.instance
-import android.content.DialogInterface
-import android.os.Handler
-import androidx.appcompat.app.AlertDialog
 import com.example.littletreestronger.R
 import com.example.littletreestronger.common.base.BaseDialogFragment
-import okhttp3.OkHttpClient
-import org.jetbrains.anko.support.v4.toast
+import com.google.gson.Gson
+import org.kodein.di.generic.instance
 
 
 class CommentDialogFragment: BaseDialogFragment() {

@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import com.example.littletreestronger.common.base.BaseFragment
-import android.widget.Spinner
-import kotlinx.android.synthetic.main.exercise_fragment_deep_workout.*
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.example.littletreestronger.common.base.BaseFragment
+import kotlinx.android.synthetic.main.exercise_fragment_deep_workout.*
 import timber.log.Timber
 
 
@@ -43,7 +43,7 @@ class DeepWorkoutFragment : BaseFragment() {
         //spinner.setPrompt("Spinner Title"); //弹出框标题，在dialog下有效
         val spinnerItems = arrayOf("10", "200", "400")
         //自定义选择填充后的字体样式
-        val spinnerAdapter = ArrayAdapter(context, com.example.littletreestronger.R.layout.item_select, spinnerItems)
+        val spinnerAdapter = ArrayAdapter<String>(context!!, com.example.littletreestronger.R.layout.item_select, spinnerItems)
         //自定义下拉的字体样式
         spinnerAdapter.setDropDownViewResource(com.example.littletreestronger.R.layout.item_drop)
         spinner.setAdapter(spinnerAdapter)

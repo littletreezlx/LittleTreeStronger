@@ -12,7 +12,6 @@ import android.os.Build
 import android.os.IBinder
 import android.view.View
 import android.widget.RemoteViews
-import org.jetbrains.anko.notificationManager
 
 class DeepWorkoutService : Service() {
 

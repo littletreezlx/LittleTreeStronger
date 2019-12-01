@@ -55,7 +55,6 @@ class MainActivity : BaseActivity(), KodeinAware {
 
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewpager.adapter = viewPagerAdapter
-
         viewpager.offscreenPageLimit = 4
 
         bottom_navigationview.setOnNavigationItemSelectedListener(onBottomNavigationViewClickedListener)
@@ -78,11 +77,11 @@ class MainActivity : BaseActivity(), KodeinAware {
 
         setSupportActionBar(toolbar as Toolbar)
         setStatusBarFullTransparent()
-
-
 //        steepStatusBar()
 //        setStatusBarColor(R.color.toolbar_background)
     }
+
+
 
 
 
@@ -100,20 +99,20 @@ class MainActivity : BaseActivity(), KodeinAware {
 
     private val onBottomNavigationViewClickedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         when (it.itemId){
-            R.id.diet -> {
+            R.id.menu_item_diet -> {
                 viewpager.currentItem = 0
                 true
             }
-            R.id.exercise -> {
+            R.id.menu_item_exercise -> {
                 viewpager.currentItem = 1
 //                bottom_navigationview.selectedItemId = R.id.exercise
                 true
             }
-            R.id.community -> {
+            R.id.menu_item_community -> {
                 viewpager.currentItem = 2
                 true
             }
-            R.id.myself -> {
+            R.id.menu_item_myself -> {
                 viewpager.currentItem = 3
                 true
             }

@@ -13,7 +13,6 @@ import com.example.littletreestronger.common.base.BaseFragment
 import com.example.littletreestronger.R
 import com.example.littletreestronger.adapter.ExerciseGridViewAdapter
 import kotlinx.android.synthetic.main.exercise_fragment.*
-import org.jetbrains.anko.support.v4.find
 
 
 class ExerciseFragment : BaseFragment() {

@@ -7,7 +7,6 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.littletreestronger.data.model.ExerciseRecord
 import com.example.littletreestronger.data.repository.ExerciseRecordRepository
-import org.jetbrains.anko.AnkoLogger
 import java.util.*
 
 class ExerciseRecordViewModel(
@@ -51,9 +50,6 @@ class ExerciseRecordViewModel(
 ////        }
 ////        exerciseRecords.value!!.add(ExerciseRecord("TestAnnotation",0))
 //    }
-
-
-    private val log = AnkoLogger(this.javaClass)
 
 
     //test
